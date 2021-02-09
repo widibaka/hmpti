@@ -13,7 +13,9 @@
     
 
     <!-- Bootstrap core CSS -->
-<link href="assets/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link href="assets/fontawesome/css/all.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -46,16 +48,29 @@
         box-shadow: 0 0 15px #ccc;
       }
 
+      .to_top{
+        font-size: 30pt; 
+        position: fixed; 
+        bottom: 10px; 
+        right: 50px;
+      }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .to_top{
+          display: none;
         }
       }
     </style>
 
     
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="assets/bootstrap5/carousel.css" rel="stylesheet">
   </head>
   <body>
     
@@ -71,7 +86,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
+            <a class="nav-link" aria-current="page" href="index.html#">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -81,8 +96,8 @@
               Dropdown
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="struktur_organisasi.html">Struktur Organisasi</a></li>
+              <li><a class="dropdown-item" href="visi_misi.html">Visi & Misi</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
@@ -109,7 +124,7 @@
       <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active" style="background: url('assets/img/e.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+      <div class="carousel-item active" style="background: url('assets/img/a.jpg?a'); background-position: center; background-size: cover; background-repeat: no-repeat;">
 
         <div class="container">
           <div class="carousel-caption text-start">
@@ -122,7 +137,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item" style="background: url('assets/img/f.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+      <div class="carousel-item" style="background: url('assets/img/b.jpg?a'); background-position: center; background-size: cover; background-repeat: no-repeat;">
 
         <div class="container">
           <div class="carousel-caption">
@@ -135,7 +150,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item" style="background: url('assets/img/c.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+      <div class="carousel-item" style="background: url('assets/img/e.jpg?a'); background-position: center; background-size: cover; background-repeat: no-repeat;">
 
         <div class="container">
           <div class="carousel-caption text-end">
@@ -250,12 +265,6 @@
   </div><!-- /.container -->
 
 
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>Himpunan Mahasiswa TI Universitas Duta Bangsa 2021</p>
-  </footer>
-
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -274,10 +283,26 @@
     </div>
   </div> <!-- /.modal -->
 
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <a href="#" class="to_top"><i class="fa fa-arrow-circle-up"></i></a>
+    <p>Himpunan Mahasiswa TI Universitas Duta Bangsa 2021</p>
+  </footer>
+
 </main>
 
 
     <script src="assets/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <!-- Tooltip -->
+    <!-- <script src="assets/bootstrap5/tooltip.js"></script> -->
+
+    <script type="text/javascript">
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      })
+    </script>
 
       
   </body>
