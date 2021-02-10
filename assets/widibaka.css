@@ -43,6 +43,27 @@ footer{
   right: 50px;
 }
 
+.marketing{
+  margin-top: 140px;
+  border-bottom: solid 1px #ccc;
+}
+
+.divisi{
+  margin-bottom: 50px;
+}
+
+.anggota{
+  margin-top: 15px;
+}
+
+a .link_ke_profil{
+  color: #ddd;
+}
+
+a .link_ke_profil:hover{
+  color: #327ba8;
+}
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
