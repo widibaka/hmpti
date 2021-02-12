@@ -8,4 +8,9 @@ class Model_divisi extends CI_model {
 	{
 		return $this->db->get($this->table);
 	}
+	public function get_tunggal($id_divisi)
+	{
+		$this->db->where("id_divisi", $id_divisi);
+		return $this->db->get($this->table);
+	}
 }

@@ -13,6 +13,7 @@ class P extends CI_Controller {
 		$this->load->model("Model_member");
 		$this->load->model("Model_divisi");
 		$this->load->model("Model_jabatan");
+		$this->load->model("Model_proker");
 
 		$this->all_divisi = $this->Model_divisi->get()->result_array();
 	}
@@ -24,11 +25,13 @@ class P extends CI_Controller {
 		$this->load->view('end_user/home_page', $data);
 		$this->load->view('end_user/templates/footer', $data);
 	}
-	public function divisi()
+	public function divisi($id_divisi)
 	{
-		$this->load->view('end_user/templates/header');
-		$this->load->view('end_user/divisi');
-		$this->load->view('end_user/templates/footer');
+		$data = $this->Model_divisi->get_tunggal($id_divisi)->row_array();
+		$data['proker_jamak'] = $this->Model_proker->get_by_divisi($id_divisi)->result_array();
+		$this->load->view('end_user/templates/header', $data);
+		$this->load->view('end_user/divisi', $data);
+		$this->load->view('end_user/templates/footer', $data);
 	}
 	public function profil()
 	{

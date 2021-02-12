@@ -47,7 +47,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <?php foreach ($this->all_divisi as $key => $divisi): ?>
-                    <li><a class="dropdown-item" href="<?php echo base_url() ?>p/divisi"><?php echo $divisi['nama_divisi'] ?></a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url() ?>p/divisi/<?php echo $divisi['id_divisi'] ?>"><?php echo $divisi['nama_divisi'] ?></a></li>
                   <?php endforeach ?>
                   <!-- <li><hr class="dropdown-divider"></li> -->
                 </ul>
