@@ -54,18 +54,19 @@ DROP TABLE IF EXISTS `h_divisi`;
 CREATE TABLE IF NOT EXISTS `h_divisi` (
   `id_divisi` int(11) NOT NULL AUTO_INCREMENT,
   `nama_divisi` varchar(255) NOT NULL DEFAULT '',
+  `deskripsi` text DEFAULT NULL,
   PRIMARY KEY (`id_divisi`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table db_hmpti.h_divisi: ~5 rows (approximately)
 DELETE FROM `h_divisi`;
 /*!40000 ALTER TABLE `h_divisi` DISABLE KEYS */;
-INSERT INTO `h_divisi` (`id_divisi`, `nama_divisi`) VALUES
-	(1, 'Ketua & Wakil Ketua'),
-	(2, 'Sekretaris'),
-	(3, 'Bendahara'),
-	(4, 'Divisi 1'),
-	(5, 'Divisi 2');
+INSERT INTO `h_divisi` (`id_divisi`, `nama_divisi`, `deskripsi`) VALUES
+	(1, 'Ketua & Wakil Ketua', 'Ketua Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.'),
+	(2, 'Sekretaris', 'Sekretaris Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.'),
+	(3, 'Bendahara', 'Bendahara Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.'),
+	(4, 'Divisi Riset & Informasi', 'Divisi 1 Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.'),
+	(5, 'Divisi Media & Informasi', 'Divisi 2 Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.');
 /*!40000 ALTER TABLE `h_divisi` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_jabatan
@@ -98,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `h_member` (
   PRIMARY KEY (`nim`)
 ) ENGINE=InnoDB AUTO_INCREMENT=180103070 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_hmpti.h_member: ~2 rows (approximately)
+-- Dumping data for table db_hmpti.h_member: ~5 rows (approximately)
 DELETE FROM `h_member`;
 /*!40000 ALTER TABLE `h_member` DISABLE KEYS */;
 INSERT INTO `h_member` (`nim`, `nama`, `id_jabatan`, `kontak`) VALUES
@@ -108,6 +109,25 @@ INSERT INTO `h_member` (`nim`, `nama`, `id_jabatan`, `kontak`) VALUES
 	(180103068, 'Lupa', 4, ''),
 	(180103069, 'Mas Tomi', 5, '');
 /*!40000 ALTER TABLE `h_member` ENABLE KEYS */;
+
+-- Dumping structure for table db_hmpti.h_proker
+DROP TABLE IF EXISTS `h_proker`;
+CREATE TABLE IF NOT EXISTS `h_proker` (
+  `id_proker` int(11) NOT NULL AUTO_INCREMENT,
+  `judul` varchar(50) DEFAULT '',
+  `waktu` varchar(50) DEFAULT '',
+  `deskripsi` text DEFAULT '',
+  `id_divisi` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_proker`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table db_hmpti.h_proker: ~0 rows (approximately)
+DELETE FROM `h_proker`;
+/*!40000 ALTER TABLE `h_proker` DISABLE KEYS */;
+INSERT INTO `h_proker` (`id_proker`, `judul`, `waktu`, `deskripsi`, `id_divisi`) VALUES
+	(1, 'Website HMPTI', 'Februari 2021', 'Deskripsi Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', 4),
+	(2, 'Makrab', 'Februari 2021', 'MakrabLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', 1);
+/*!40000 ALTER TABLE `h_proker` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

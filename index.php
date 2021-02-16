@@ -1,4 +1,8 @@
 <?php
+// Widibaka
+// Set timezone supaya lokal indonesia barat
+date_default_timezone_set("Asia/Bangkok");
+
 /**
  * CodeIgniter
  *

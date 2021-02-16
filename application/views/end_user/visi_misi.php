@@ -1,5 +1,3 @@
-		<main>
-
 
 		  <!-- Marketing messaging and featurettes
 		  ================================================== -->
@@ -10,7 +8,7 @@
 
 		    <div class="about row">
 		      <div class="col-md-4 text-center">
-		        <img width="100%" src="<?php echo base_url() ?>assets/img/logo.png" style="max-width: 200px;">
+		        <img width="100%" src="<?php echo base_url() ?>assets/img/<?php echo $this->website['image'] ?>" style="max-width: 200px;">
 		      </div>
 		      <div class="col-md-8">
 		        <h2 class="display-3">Tentang Kami</h2>
@@ -49,13 +47,3 @@
 		    <!-- /END THE FEATURETTES -->
 
 		  </div><!-- /.container -->
-
-
-
-		  <!-- FOOTER -->
-		  <footer class="container">
-		    <a href="#" class="to_top"><i class="fa fa-arrow-circle-up"></i></a>
-		    <p>Himpunan Mahasiswa TI Universitas Duta Bangsa 2021</p>
-		  </footer>
-
-		</main>
