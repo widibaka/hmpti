@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `h_carousel` (
 DELETE FROM `h_carousel`;
 /*!40000 ALTER TABLE `h_carousel` DISABLE KEYS */;
 INSERT INTO `h_carousel` (`id_carousel`, `include_logo`, `judul`, `paragraf`, `image`, `posisi`) VALUES
-	(2, 0, 'Choku City', 'Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.', '3.jpg', 'end'),
+	(2, 1, 'Petrol', 'Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.', '3.jpg?1613579395', 'middle'),
 	(3, 1, 'Time Out', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'x.jpg', 'middle'),
 	(4, 0, 'Imlek', '', 'imlek.jpg', 'middle');
 /*!40000 ALTER TABLE `h_carousel` ENABLE KEYS */;
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `h_detail_organisasi` (
 DELETE FROM `h_detail_organisasi`;
 /*!40000 ALTER TABLE `h_detail_organisasi` DISABLE KEYS */;
 INSERT INTO `h_detail_organisasi` (`id`, `tentang_kami`, `visi`, `misi`, `navbar_bg`, `navbar_text`, `image`) VALUES
-	(1, 'HMP TI adalah satu organisasi yang Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Visi HMP TI adalah Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Mengemban misi yaitu Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', '#7D0404', '#F1F1F1', 'logo.png?1613450304');
+	(1, 'HMP TI adalah satu organisasi yang Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Visi HMP TI adalah Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Mengemban misi yaitu Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', '#1F840E', '#F1F1F1', 'logo.png?1613450304');
 /*!40000 ALTER TABLE `h_detail_organisasi` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_divisi
@@ -132,22 +132,23 @@ CREATE TABLE IF NOT EXISTS `h_member` (
   `deskripsi` text DEFAULT '',
   `image` varchar(255) DEFAULT '',
   `aktif` int(1) DEFAULT 1,
-  PRIMARY KEY (`nim`)
+  PRIMARY KEY (`nim`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=190103156 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_hmpti.h_member: ~6 rows (approximately)
+-- Dumping data for table db_hmpti.h_member: ~9 rows (approximately)
 DELETE FROM `h_member`;
 /*!40000 ALTER TABLE `h_member` DISABLE KEYS */;
 INSERT INTO `h_member` (`nim`, `email`, `nama`, `id_jabatan`, `kontak`, `deskripsi`, `image`, `aktif`) VALUES
 	(121212122, 'widi@ggvvvvvvvvvvvvvvv', 'Dummy', 8, '', 'a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ', '', 1),
 	(180103065, ' andreas_abi@fikom.udb.ac.id', 'Andreas Abi Permana', 1, 'Email: andreas_abi@fikom.udb.ac.id, Whatsapp: 088888888', 'Ketua Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103065.jpeg?1613381510', 1),
-	(180103066, ' ', 'Matin', 2, 'Email: matin@gmail.com', 'Ketua Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103066.jpg?1613380182', 1),
-	(180103067, ' ', 'Mbak Jami', 3, '', 'Sekretaris Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103067.jpg?1613381569', 1),
-	(180103068, ' ', 'Lupa', 4, '', 'Bendahara Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103068.jpeg?1613381587', 1),
-	(180103069, ' ', 'Mas Tomi', 5, '', 'Bendahara Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103069.jpg?1613381628', 1),
-	(180103123, ' ', 'Yulidar', 9, '', 'Yulidar adalah seorang manusia. Manusia yang bernama Yulidar.', '180103123.png?1613404722', 1),
+	(180103066, 'f', 'Matin', 2, 'Email: matin@gmail.com', 'Ketua Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103066.jpg?1613380182', 1),
+	(180103067, 'e', 'Mbak Jami', 3, '', 'Sekretaris Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103067.jpg?1613381569', 1),
+	(180103068, 'd', 'Lupa', 4, '', 'Bendahara Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103068.jpeg?1613381587', 1),
+	(180103069, 'c', 'Mas Tomi', 5, '', 'Bendahara Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.', '180103069.jpg?1613381628', 1),
+	(180103123, 'b', 'Yulidar', 9, '', 'Yulidar adalah seorang manusia. Manusia yang bernama Yulidar.', '180103123.png?1613404722', 1),
 	(180103159, 'widi_dwi@fikom.udb.ac.id', 'Widi Baka', 6, 'Email: hmpti@gmail.com, Whatsapp: 08XXXXXXXX', 'Aku seorang pelaut. Aku suka memancing ikan cupang.', '180103159.jpg?1613384185', 1),
-	(190103155, ' ', 'Yahya', 8, '', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '190103155.jpg?1613384119', 1);
+	(190103155, 'a', 'Yahya', 8, '', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '190103155.jpg?1613384119', 1);
 /*!40000 ALTER TABLE `h_member` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_proker

@@ -9,23 +9,23 @@
 <!-- page script -->
 <script>
   //Edit divisi
-  function edit_prepare(nim) {
-    let nama = $("#nama-"+nim).html();
-    let email = $("#email-"+nim).html();
-    let id_jabatan = $("#id_jabatan-"+nim).html();
-    let kontak = $("#kontak-"+nim).html();
-    let deskripsi = $("#deskripsi-"+nim).html();
-    let image = $("#image-"+nim).find("img").attr("src");
+  function edit_prepare(id) {
+    let include_logo = $("#include_logo-"+id).html();
+    let judul = $("#judul-"+id).html();
+    let paragraf = $("#paragraf-"+id).html();
+    let posisi = $("#posisi-"+id).html();
+    let image = $("#image-"+id).find("img").attr("src");
+    let filename = $("#image-"+id).attr("filename");
+
     // masukkan ke form
-    $("#edit_nim").val(nim);
-    $("#edit_nama").val(nama);
-    $("#edit_email").val(email);
+    $("#edit_id_carousel").val(id);
+    $("#edit_judul").val(judul);
+    $("#edit_paragraf").val(paragraf);
     $("#edit_preview").attr("src", image);
-    $("#edit_kontak").val(kontak);
-    $("#edit_deskripsi").val(deskripsi);
-    $("#edit_id_jabatan").val(id_jabatan);
-    // select divisinya
-    document.getElementById(id_jabatan).selected = "true"
+    $("#edit_image_filename").val(filename);
+    // select 
+    document.getElementById(include_logo).selected = "true";
+    document.getElementById(posisi).selected = "true";
   }
 
   // preview image before upload

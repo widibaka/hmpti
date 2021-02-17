@@ -9,11 +9,12 @@ class Model_jabatan extends CI_model {
 		$this->db->where('id_divisi', $id_divisi);
 		return $this->db->get($this->table);
 	}
-	// public function id_to_jabatan($id_jabatan)
-	// {
-	// 	$this->db->where('id_jabatan', $id_jabatan);
-	// 	return $this->db->get($this->table)->row_array()['nama_jabatan'];
-	// }
+	public function id_to_jabatan($id_jabatan)
+	{
+		$this->db->where('id_jabatan', $id_jabatan);
+		return $this->db->get($this->table)->row_array()['nama_jabatan'];
+	}
+	
 
 
 	#for admin

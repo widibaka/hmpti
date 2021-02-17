@@ -31,6 +31,12 @@ class Organisasi extends CI_Controller {
 	public function edit()
 	{
 		$post = $this->input->post(NULL, true);
+		foreach ($post as $name => $val) { //<-- langsung sapu semua
+			$this->form_validation->set_rules($name, $name, 'trim|strip_tags');
+		}
+		$this->form_validation->run();
+		$post = $this->input->post(NULL, true);
+		
 
 		$upload = $this->do_upload();
 		if ( !empty($upload) ) {

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Anggota extends CI_Controller {
+class Carousel extends CI_Controller {
 
 	public $all_divisi = '';
 	public $website = '';
@@ -11,25 +11,23 @@ class Anggota extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Model_detail_organisasi");
 		$this->load->model("Model_divisi");
-		$this->load->model("Model_jabatan");
-		$this->load->model("Model_member");
+		$this->load->model("Model_carousel");
 		$this->all_divisi = $this->Model_divisi->get()->result_array();
 		$this->website = $this->Model_detail_organisasi->get()->row_array();
 	}
 	public function index()
 	{
-		$data['title'] = "Keanggotaan";
-		$data['subtitle'] = "Anggota";
+		$data['title'] = "Website";
+		$data['subtitle'] = "Carousel";
 		
-		$data['main_data'] = $this->Model_member->get_all_and_join()->result_array();
-		$data['jabatan'] = $this->Model_jabatan->get_all()->result_array();
+		$data['main_data'] = $this->Model_carousel->get()->result_array();
 
 		$this->load->view('member/templates/header', $data);
 		$this->load->view('member/templates/sidebar', $data);
 		$this->load->view('member/templates/navbar', $data);
-		$this->load->view('member/anggota', $data);
+		$this->load->view('member/carousel', $data);
 		$this->load->view('member/templates/footer', $data);
-		$this->load->view('member/anggota_js', $data);
+		$this->load->view('member/carousel_js', $data);
 	}
 	public function edit()
 	{
@@ -40,15 +38,23 @@ class Anggota extends CI_Controller {
 		$this->form_validation->run();
 		$post = $this->input->post(NULL, true);
 
-
-		$upload = $this->do_upload($post['nim']);
+		$filename_without_ext = explode(".", $post['image_filename'])[0];
+		$upload = $this->do_upload($filename_without_ext);
 		if ( !empty($upload) ) {
 		 	$post['image'] = $upload;
 		} //<-- To update image file name
 
-		$this->Model_member->edit( $post );
+		// delete previous image
+		if ( file_exists( "assets/img/carousel/" . $post['image_filename'] ) ) {
+			unlink( "assets/img/carousel/" . $post['image_filename'] );
+		}
+
+		// unset array element image_filename
+		unset( $post['image_filename'] );
+
+		$this->Model_carousel->edit( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil diubah.");
-		redirect(base_url() . "admin/anggota");
+		redirect(base_url() . "admin/carousel");
 	}
 	public function add()
 	{
@@ -67,16 +73,16 @@ class Anggota extends CI_Controller {
 
 		$this->Model_member->add( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil ditambahkan.");
-		redirect(base_url() . "admin/anggota");
+		redirect(base_url() . "admin/carousel");
 	}
 
 	public function do_upload($nim)
 	{
-        $config['upload_path']          = './assets/img/members';
+        $config['upload_path']          = './assets/img/carousel';
         $config['allowed_types']        = 'gif|jpg|jpeg|png';
-        $config['max_size']             = 700;
-        $config['max_width']            = 1300;
-        $config['max_height']           = 1300;
+        $config['max_size']             = 800;
+        $config['max_width']            = 1600;
+        $config['max_height']           = 800;
         $config['file_name']           = $nim;
         $config['overwrite']           = true;
 
@@ -87,7 +93,7 @@ class Anggota extends CI_Controller {
             $error = $this->upload->display_errors(); 
             if ( $error != '<p>Anda belum memilih berkas untuk diunggah.</p>' ) { //<-- kalau errornya karena gak ada file, ya berarti ga ada error. User emang gak mau upload
             	$this->session->set_flashdata("msg", "error#Proses Gagal::".$error);
-            	redirect(base_url() . "admin/anggota");
+            	redirect(base_url() . "admin/carousel");
             }
         }
         else{

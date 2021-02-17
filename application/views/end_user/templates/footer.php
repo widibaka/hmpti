@@ -3,7 +3,12 @@
       <!-- FOOTER -->
       <footer class="container">
         <a href="#" class="to_top"><i class="fa fa-arrow-circle-up"></i></a>
-        <p>Himpunan Mahasiswa TI Universitas Duta Bangsa 2021</p>
+        <p>Himpunan Mahasiswa TI Universitas Duta Bangsa 2021 <?php 
+          if ( date("Y") > "2021" ) {
+            echo "- ".date("Y");
+          }
+        ?></p>
+        <!-- .widibaka was here -->
       </footer>
 
     </main>

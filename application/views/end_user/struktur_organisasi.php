@@ -18,7 +18,7 @@
 		  	    <?php foreach ($divisi as $key => $div): ?>
 		  	    	<div class="divisi row">
 		  	    	  <div class="col-lg-4 text-start">
-		  	    	    <h2><?php echo $div['nama_divisi'] ?></h2>
+		  	    	    <h2><?php echo $div['nama_divisi'] ?> <a href="<?php echo base_url() . "p/divisi/" . $div['id_divisi'] ?>"><i class="link_ke_profil fas fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Buka informasi tentang divisi ini"></i></a></h2>
 		  	    	  </div>
 		  	    	  <div class="col-lg-8 row text-center">
 		  	    	    <?php 

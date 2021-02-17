@@ -31,13 +31,29 @@ class Divisi extends CI_Controller {
 	}
 	public function edit()
 	{
-		$this->Model_divisi->edit( $this->input->post(NULL, true) );
+		$post = $this->input->post(NULL, true);
+		foreach ($post as $name => $val) { //<-- langsung sapu semua
+			$this->form_validation->set_rules($name, $name, 'trim|strip_tags');
+		}
+		$this->form_validation->run();
+		$post = $this->input->post(NULL, true);
+
+
+		$this->Model_divisi->edit( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil diubah.");
 		redirect(base_url() . "admin/divisi");
 	}
 	public function add()
 	{
-		$this->Model_divisi->add( $this->input->post(NULL, true) );
+		$post = $this->input->post(NULL, true);
+		foreach ($post as $name => $val) { //<-- langsung sapu semua
+			$this->form_validation->set_rules($name, $name, 'trim|strip_tags');
+		}
+		$this->form_validation->run();
+		$post = $this->input->post(NULL, true);
+
+
+		$this->Model_divisi->add( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil ditambahkan.");
 		redirect(base_url() . "admin/divisi");
 	}

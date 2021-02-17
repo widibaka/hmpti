@@ -9,7 +9,7 @@
 
         <div class="carousel-inner">
         <?php foreach ($carousel as $key => $car): ?>
-          <div class="carousel-item <?php echo ($key === 0) ? 'active' : ''; ?>" style="background: url('<?php echo base_url() ?>assets/img/carousel/<?php echo $car['image'] ?>'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+          <div class="carousel-item <?php echo ($key === 0) ? 'active' : ''; ?>" style="background: url('<?php echo base_url() ?>assets/img/carousel/<?php echo $car['image'] ?>'); background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #000000;">
 
             <div class="container">
               <div class="carousel-caption text-<?php echo $car['posisi'] ?>">
