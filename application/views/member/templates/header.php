@@ -69,12 +69,33 @@
                 transition: border 1.0s linear, box-shadow 1.0s linear;
     }
 
+    .bg-body {
+      background-image: url('<?php echo base_url() ?>assets/img/bg_admin.jpg');
+      background-position: left top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    .bg-sidebar-navbar {
+      background-image: url('<?php echo base_url() ?>assets/img/bg_admin_sidebar.jpg');
+      background-position: left top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    @media (max-width: 768px) {
+      .bg-sidebar-navbar {
+        background-image: none;
+      }
+    }
+
   </style>
 
 </head>
 <span class="d-none" id="title"><?php echo $title ?></span>
 <span class="d-none" id="subtitle"><?php echo $subtitle ?></span>
-<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed" style="opacity: 0.94">
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed bg-body" style="opacity: 0.94; background-color: #282c31;">
 <!-- Site wrapper -->
-<div class="wrapper" style="background-color: #282c31;">
+<div class="wrapper bg-transparent"
 

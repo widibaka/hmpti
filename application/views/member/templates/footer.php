@@ -8,7 +8,7 @@
   </div>
 
     <!-- /.content -->
-  <footer class="main-footer" style="border-top: none; background-color: #282c31;">
+  <footer class="main-footer bg-transparent" style="border-top: none;">
   </footer>
 
   <!-- Control Sidebar -->

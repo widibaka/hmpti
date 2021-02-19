@@ -1,11 +1,6 @@
 
   <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="
-        background-image: url('<?php echo base_url() ?>assets/img/bg1.png');
-        background-position: left;
-        background-size: auto 100%;
-        background-repeat: no-repeat;
-    ">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-sidebar-navbar">
       <!-- Brand Logo -->
       <a href="#" class="brand-link bg-transparent">
         <img src="<?= base_url() ?>assets/img/logo.png?v2"
@@ -120,7 +115,7 @@
 
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="background-color: #282c31;">
+  <div class="content-wrapper bg-transparent">
 
     <!-- Main content -->
     <section class="content">
