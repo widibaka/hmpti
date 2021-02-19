@@ -1,8 +1,13 @@
 
   <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="
+        background-image: url('<?php echo base_url() ?>assets/img/bg1.png');
+        background-position: left;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+    ">
       <!-- Brand Logo -->
-      <a href="#" class="brand-link">
+      <a href="#" class="brand-link bg-transparent">
         <img src="<?= base_url() ?>assets/img/logo.png?v2"
              alt="Koreksoft Logo"
              class="brand-image">

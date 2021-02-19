@@ -54,7 +54,13 @@
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url() ?>assets/bootstrap5/carousel.css" rel="stylesheet">
   </head>
-  <body class="bg-gray-1">
+  <body class="bg-gray-1" style="
+      background-image: url('<?php echo base_url() ?>assets/img/bg0.png');
+      /*background-attachment: fixed;*/
+      background-position: left bottom;
+      background-size: auto 60%;
+      background-repeat: no-repeat;
+  ">
     <header>
       <nav class="navbar navbar-expand-md fixed-top custom_navbar">
         <div class="container-fluid">

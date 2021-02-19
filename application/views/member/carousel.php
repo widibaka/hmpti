@@ -100,11 +100,11 @@
               </select>
       		  </div>
             <div class="form-group">
-              <label for="edit_judul">Judul</label>
+              <label for="edit_judul">Judul (opsional)</label>
               <input type="text" name="judul" class="form-control" id="edit_judul" placeholder="Judul ...">
             </div>
             <div class="form-group">
-              <label for="edit_paragraf">Paragraf</label>
+              <label for="edit_paragraf">Paragraf (opsional)</label>
               <textarea class="form-control" name="paragraf" id="edit_paragraf" rows="7" placeholder="Paragraf ..."></textarea>
             </div>
             <div class="form-group">

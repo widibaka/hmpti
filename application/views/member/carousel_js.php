@@ -80,47 +80,25 @@ $(document).ready(function () {
   // });
   $('#editForm').validate({
     rules: {
-      nim: {
-        required: true,
-        number: true,
-        minlength: 8
-      },
-      nama: {
-        required: true,
-        minlength: 1
-      },
-      email: {
-        required: true,
-        email: true
-      },
-      id_jabatan: {
+      // image: {
+      //   required: true,
+      // },
+      include_logo: {
         required: true,
       },
-      deskripsi: {
+      posisi: {
         required: true,
-        minlength: 50
       },
     },
     messages: {
-      nim: {
-        required: "Mohon isi NIM mahasiswa",
-        number: "Mohon isi hanya dengan angka",
-        minlength: "Minimal harus 8 digit",
+      // image: {
+      //   required: "Mohon pilih gambar",
+      // },
+      include_logo: {
+        required: "Mohon isi bagian ini",
       },
-      nama: {
-        required: "Mohon isi nama individu ini",
-        minlength: "Minimal harus 1 karakter",
-      },
-      email: {
-        required: "Mohon isi email",
-        email: "Mohon isi format email dengan betul",
-      },
-      id_jabatan: {
-        required: "Mohon pilih jabatan",
-      },
-      deskripsi: {
-        required: "Mohon isi deskripsi individu ini",
-        minlength: "Minimal harus 50 karakter",
+      posisi: {
+        required: "Mohon isi bagian ini",
       },
     },
     errorElement: 'span',

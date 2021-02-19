@@ -42,12 +42,13 @@ class Carousel extends CI_Controller {
 		$upload = $this->do_upload($filename_without_ext);
 		if ( !empty($upload) ) {
 		 	$post['image'] = $upload;
-		} //<-- To update image file name
 
-		// delete previous image
-		if ( file_exists( "assets/img/carousel/" . $post['image_filename'] ) ) {
-			unlink( "assets/img/carousel/" . $post['image_filename'] );
-		}
+		 	// delete previous image
+		 	if ( file_exists( "assets/img/carousel/" . $post['image_filename'] ) ) {
+		 		unlink( "assets/img/carousel/" . $post['image_filename'] );
+		 	}
+
+		} //<-- To update image file name
 
 		// unset array element image_filename
 		unset( $post['image_filename'] );
@@ -73,6 +74,12 @@ class Carousel extends CI_Controller {
 
 		$this->Model_member->add( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil ditambahkan.");
+		redirect(base_url() . "admin/carousel");
+	}
+	public function delete($id_carousel)
+	{
+		$this->Model_member->add( $post );
+		$this->session->set_flashdata("msg", "success#Data berhasil dihapus.");
 		redirect(base_url() . "admin/carousel");
 	}
 
