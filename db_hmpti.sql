@@ -21,15 +21,15 @@ CREATE TABLE IF NOT EXISTS `h_carousel` (
   `image` varchar(100) DEFAULT '',
   `posisi` varchar(50) DEFAULT '',
   PRIMARY KEY (`id_carousel`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table db_hmpti.h_carousel: ~3 rows (approximately)
 DELETE FROM `h_carousel`;
 /*!40000 ALTER TABLE `h_carousel` DISABLE KEYS */;
 INSERT INTO `h_carousel` (`id_carousel`, `include_logo`, `judul`, `paragraf`, `image`, `posisi`) VALUES
-	(2, 1, 'Petrol', 'Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.', '3.jpg?1613579395', 'middle'),
-	(3, 1, 'Time Out', 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'x.jpg', 'middle'),
-	(4, 0, 'Imlek', '', 'imlek.jpg', 'middle');
+	(11, 1, 'Lungman Petrol', 'Arknight, saya gak main. Cuman sekedar tahu aja.', '1613749647.jpg', 'middle'),
+	(12, 0, 'Tentacle Aliens', 'Aquarium', '1613749696.jpg', 'start'),
+	(13, 1, 'Jokowi &amp; Putin', 'Kerja sama pembangunan tambang minyak di Tuban, Jawa Timur dengan menggandeng perusahaan petrol asal Russia.', '1613795130.JPG', 'start');
 /*!40000 ALTER TABLE `h_carousel` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_detail_organisasi
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `h_detail_organisasi` (
 DELETE FROM `h_detail_organisasi`;
 /*!40000 ALTER TABLE `h_detail_organisasi` DISABLE KEYS */;
 INSERT INTO `h_detail_organisasi` (`id`, `tentang_kami`, `visi`, `misi`, `navbar_bg`, `navbar_text`, `image`) VALUES
-	(1, 'HMP TI adalah satu organisasi yang Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Visi HMP TI adalah Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Mengemban misi yaitu Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', '#1F840E', '#F1F1F1', 'logo.png?1613450304');
+	(1, 'HMP TI adalah satu organisasi yang Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Visi HMP TI adalah Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Mengemban misi yaitu Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', '#2A2A2A', '#EFE9E9', 'logo.png?1613450304');
 /*!40000 ALTER TABLE `h_detail_organisasi` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_divisi
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `h_divisi` (
   PRIMARY KEY (`id_divisi`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table db_hmpti.h_divisi: ~6 rows (approximately)
+-- Dumping data for table db_hmpti.h_divisi: ~7 rows (approximately)
 DELETE FROM `h_divisi`;
 /*!40000 ALTER TABLE `h_divisi` DISABLE KEYS */;
 INSERT INTO `h_divisi` (`id_divisi`, `nama_divisi`, `deskripsi`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `h_divisi` (`id_divisi`, `nama_divisi`, `deskripsi`) VALUES
 	(3, 'Bendahara', 'Bendahara Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.'),
 	(4, 'Bendahara 1', 'Divisi Riset dan Informasi adalah divisi yang mengurusi '),
 	(5, 'Divisi Media dan Informasi', 'Divisi 2 Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.'),
-	(7, 'Divisi Riset dan Informasi', 'Kisetsu o chott hippari dashite mitanda. Kisetsu o chott hippari dashite mitanda. Kisetsu o chott hippari dashite mitanda. '),
+	(7, 'Divisi Riset dan Informasi', 'Kisetsu o chott hippari dashite mitanda. Kisetsu o chott hippari dashite mitanda. Kisetsu o chott hippari dashite mitanda.'),
 	(8, 'Divisi Minat Bakat', 'X x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x');
 /*!40000 ALTER TABLE `h_divisi` ENABLE KEYS */;
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `h_jabatan` (
 DELETE FROM `h_jabatan`;
 /*!40000 ALTER TABLE `h_jabatan` DISABLE KEYS */;
 INSERT INTO `h_jabatan` (`id_jabatan`, `nama_jabatan`, `id_divisi`) VALUES
-	(1, 'Ketua', 1),
+	(1, 'Ketua TEST', 1),
 	(2, 'Wakil Ketua', 1),
 	(3, 'Sekretaris 1', 2),
 	(4, 'Bendahara 1', 3),

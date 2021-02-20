@@ -97,7 +97,7 @@
 <span class="d-none" id="subtitle"><?php echo $subtitle ?></span>
 <body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed bg-body">
 
-<div class="loader" style="opacity: 1">
+<div class="loader" style="opacity: 1; position: fixed;">
   <div class="bar1"></div>
   <div class="bar2"></div>
   <div class="bar3"></div>
