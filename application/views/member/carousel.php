@@ -35,7 +35,7 @@
 	  		              <td>
 	  		              	<div class="btn-group">
   		                      <button onclick="edit_prepare(<?php echo $val['id_carousel'] ?>)" type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pencil-alt"></i></button>
-  		                      <button onclick="delete_anggota(<?php echo $val['id_carousel'] ?>)" type="button" class="btn btn-danger" title="Hapus"><i class="fas fa-trash"></i></button>
+  		                      <button onclick="delete_carousel(<?php echo $val['id_carousel'] ?>)" type="button" class="btn btn-danger" title="Hapus"><i class="fas fa-trash"></i></button>
   		                  </div>
 	  		              </td>
 	  		            </tr>
@@ -141,7 +141,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Tambah Jabatan</h4>
+        <h4 class="modal-title">Tambah Carousel</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -150,58 +150,49 @@
         
       	<div class="container">
       		    <!-- form start -->
-              <form action="<?php echo base_url() ?>admin/carousel/add" method="post" role="form" id="addForm" novalidate="novalidate" enctype="multipart/form-data">
-
-                <div class="form-group">
-                  <label for="add_nama">NIM Mahasiswa</label>
-                  <input type="text" name="nim" class="form-control" id="add_nim" placeholder="Nomor Induk Mahasiswa ...">
-                </div>
-                <div class="form-group">
-                  <label for="add_email">Email</label>
-                  <input type="text" name="email" class="form-control" id="add_email" placeholder="Email ...">
-                </div>
-                <div class="form-group">
-                  <label for="add_nama">Nama</label>
-                  <input type="text" name="nama" class="form-control" id="add_nama" placeholder="Nama anggota ...">
-                </div>
-                <div class="form-group">
-                  <label for="add_id_jabatan">Jabatan</label>
-                  <select class="form-control" name="id_jabatan" id="add_id_jabatan">
-                      <option value="">::Pilih jabatan::</option>
-                    <?php foreach ($jabatan as $key => $val): ?>
-                      <option id="<?php echo $val['id_jabatan'] ?>" value="<?php echo $val['id_jabatan'] ?>"><?php echo $val['nama_jabatan'] ?> (<?php echo $this->Model_divisi->id_to_divisi($val['id_divisi']) ?>)</option>
-                    <?php endforeach ?>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Kontak (opsional)</label>
-                  <p><i>Pisahkan kontak dengan koma (,). Contoh <strong>Email: hmpti@gmail.com, Whatsapp: 08XXXXXXXX</strong></i>
-                  <textarea class="form-control" name="kontak" id="add_kontak" rows="4" placeholder="Kontak ..."></textarea></p>
-
-                </div>
-                <div class="form-group">
-                  <label>Deskripsi</label>
-                  <textarea class="form-control" name="deskripsi" id="add_deskripsi" rows="7" placeholder="Deskripsi ..."></textarea>
-
-                </div>
-                <label>Image (opsional)</label>
-                <div class="form-group">
-                  <img width="240" height="240" src="" id="add_preview">
-                  <p class="text-danger">Disarankan ukuran 500px x 500px</p>
-                  <p>
-                    <div class="custom-file">
-                      <input name="image" type="file" class="form-control" id="add_image">
+                  <form action="<?php echo base_url() ?>admin/carousel/add" method="post" role="form" id="addForm" novalidate="novalidate" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label>Image</label><br>
+                      <img height="240" src="" id="add_preview">
+                      <p class="text-danger">Disarankan ukuran 1400px x 500px
+                        <br>Max size 800kb</p>
+                      <p>
+                        <div class="custom-file">
+                          <input name="image" type="file" class="form-control" id="add_image">
+                        </div>
+                      </p>
                     </div>
-                  </p>
-                </div>
-                <!-- <div class="form-group mb-0">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="a" class="custom-control-input required" id="a">
-                    <label class="custom-control-label" for="a">I agree to the <a href="#">terms of service</a>.</label>
-                  </div>
-                </div> -->
-                
-              </form>
+                    <div class="form-group">
+                      <label for="add_include_logo">Ikutkan Logo</label>
+                      <select class="form-control" name="include_logo" id="add_include_logo">
+                        <option id="Ya" value="1">Ya</option>
+                        <option id="Tidak" value="0">Tidak</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="add_judul">Judul (opsional)</label>
+                      <input type="text" name="judul" class="form-control" id="add_judul" placeholder="Judul ...">
+                    </div>
+                    <div class="form-group">
+                      <label for="add_paragraf">Paragraf (opsional)</label>
+                      <textarea class="form-control" name="paragraf" id="add_paragraf" rows="7" placeholder="Paragraf ..."></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Posisi</label>
+                      <select class="form-control" name="posisi" id="add_posisi">
+                        <option id="start" value="start">start</option>
+                        <option id="middle" value="middle">middle</option>
+                        <option id="end" value="end">end</option>
+                      </select>
+                    </div>
+                    <!-- <div class="form-group mb-0">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="a" class="custom-control-input required" id="a">
+                        <label class="custom-control-label" for="a">I agree to the <a href="#">terms of service</a>.</label>
+                      </div>
+                    </div> -->
+                    
+                  </form>
       	</div>
 
       </div>

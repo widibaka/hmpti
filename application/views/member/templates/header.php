@@ -7,21 +7,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">  
   <title>Admin Panel<?php echo (!empty($subtitle)) ? " - " . $subtitle : "" ?></title>
-  <link rel="icon" type="image/png" href="<?= base_url('assets/adminlte/') ?>logo.png" />
+  <link rel="icon" type="image/png" href="<?= base_url('assets/img/') . $this->website['image'] ?>" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="description" content="Himpunan mahasiswa Teknik Informatika Universitas Duta Bangsa Surakarta">
   <meta name="author" content="HMP TI">
   <meta name="language" content="id" />
   <meta name="geo.country" content="id" />
   <meta http-equiv="content-language" content="In-Id" />
   <meta name="geo.placename" content="Indonesia" />
 
-  <meta property="og:type" content="software" />
-  <meta property="og:title" content="" />
-  <meta property="og:description" content="HMP TI">
+  <meta property="og:type" content="organization" />
+  <meta property="og:title" content="HMP TI" />
+  <meta property="og:description" content="Himpunan mahasiswa Teknik Informatika Universitas Duta Bangsa Surakarta">
   <meta property="og:url" content="<?= base_url() ?>" />
-  <meta property="og:site_name" content="Koreksoft" />
+  <meta property="og:site_name" content="HMP TI" />
 
   <!-- ICON -->
   <link rel="shortcut icon" href="<?= base_url() ?>assets/img/<?php echo $this->website['image'] ?>"/>
@@ -95,7 +95,17 @@
 </head>
 <span class="d-none" id="title"><?php echo $title ?></span>
 <span class="d-none" id="subtitle"><?php echo $subtitle ?></span>
-<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed bg-body" style="opacity: 0.94; background-color: #282c31;">
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed bg-body">
+
+<div class="loader" style="opacity: 1">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+  <div class="bar4"></div>
+  <div class="bar5"></div>
+  <div class="bar6"></div>
+</div>
+
 <!-- Site wrapper -->
-<div class="wrapper bg-transparent"
+<div class="wrapper bg-transparent" style="opacity: 0">
 

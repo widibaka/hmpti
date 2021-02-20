@@ -38,14 +38,14 @@ class Carousel extends CI_Controller {
 		$this->form_validation->run();
 		$post = $this->input->post(NULL, true);
 
-		$filename_without_ext = explode(".", $post['image_filename'])[0];
-		$upload = $this->do_upload($filename_without_ext);
+		$last_filename = $post['image_filename'];
+		$upload = $this->do_upload( time() );
 		if ( !empty($upload) ) {
 		 	$post['image'] = $upload;
 
 		 	// delete previous image
-		 	if ( file_exists( "assets/img/carousel/" . $post['image_filename'] ) ) {
-		 		unlink( "assets/img/carousel/" . $post['image_filename'] );
+		 	if ( file_exists( "assets/img/carousel/" . $last_filename ) ) {
+		 		unlink( "assets/img/carousel/" . $last_filename );
 		 	}
 
 		} //<-- To update image file name
@@ -67,30 +67,37 @@ class Carousel extends CI_Controller {
 		$post = $this->input->post(NULL, true);
 		
 
-		$upload = $this->do_upload($post['nim']);
+		$upload = $this->do_upload( time() );
 		if ( !empty($upload) ) {
 		 	$post['image'] = $upload;
 		} //<-- To update image file name
 
-		$this->Model_member->add( $post );
+		$this->Model_carousel->add( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil ditambahkan.");
 		redirect(base_url() . "admin/carousel");
 	}
 	public function delete($id_carousel)
 	{
-		$this->Model_member->add( $post );
+		$filename = $this->Model_carousel->get_single($id_carousel)->row_array()['image'];
+
+		// delete previous image
+		if ( file_exists( "assets/img/carousel/" . $filename ) ) {
+			unlink( "assets/img/carousel/" . $filename );
+		}
+
+		$this->Model_carousel->delete( $id_carousel );
 		$this->session->set_flashdata("msg", "success#Data berhasil dihapus.");
 		redirect(base_url() . "admin/carousel");
 	}
 
-	public function do_upload($nim)
+	public function do_upload($name)
 	{
         $config['upload_path']          = './assets/img/carousel';
         $config['allowed_types']        = 'gif|jpg|jpeg|png';
         $config['max_size']             = 800;
         $config['max_width']            = 1600;
         $config['max_height']           = 800;
-        $config['file_name']           = $nim;
+        $config['file_name']           = $name;
         $config['overwrite']           = true;
 
         $this->load->library('upload', $config);
@@ -104,8 +111,7 @@ class Carousel extends CI_Controller {
             }
         }
         else{
-        	$nama_file = $this->upload->data('file_name') . "?" . time();
-        	return $nama_file;
+        	return $this->upload->data('file_name');
         }
 	}
 

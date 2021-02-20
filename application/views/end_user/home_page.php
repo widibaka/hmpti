@@ -7,7 +7,7 @@
         <?php endforeach ?>
         </ol>
 
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="z-index: 0">
         <?php foreach ($carousel as $key => $car): ?>
           <div class="carousel-item <?php echo ($key === 0) ? 'active' : ''; ?>" style="background: url('<?php echo base_url() ?>assets/img/carousel/<?php echo $car['image'] ?>'); background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #000000;">
 

@@ -53,8 +53,21 @@
   // preview image before upload
 
   //Delete divisi
-  function delete_divisi(id_jabatan) {
-    alert(id_jabatan);
+  function delete_carousel(id) {
+    Swal.fire({
+      title: 'Yakin ingin menghapus carousel ini?',
+      text: "Tindakan ini tidak akan dapat dikembalikan!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus saja!'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = "<?php echo base_url() ?>admin/carousel/delete/"+id;
+      }
+    });
+    
   }
 
   $(function () {

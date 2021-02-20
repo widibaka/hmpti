@@ -45,7 +45,15 @@
                       </td>
                       <td>
                         <span id="image-<?php echo $val['nim'] ?>">
-                          <img width="140" height="140" src="<?php echo base_url() ?>assets/img/members/<?php echo $val['image'] ?>">
+                          <img width="140" height="140" src="<?php 
+                              $filedir = 'assets/img/members/' . explode("?", $val['image'])[0];
+                              if( file_exists( $filedir ) == true && strpos($val['image'], ".") != false ){
+                                echo base_url() . 'assets/img/members/' . $val['image'];
+                              }
+                              else{
+                                echo base_url() . 'assets/img/no_image.jpg';
+                              }
+                          ?>">
                         </span>
                       </td>
 	  		              <td>

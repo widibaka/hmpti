@@ -8,6 +8,11 @@ class Model_carousel extends CI_model {
 	{
 		return $this->db->get($this->table);
 	}
+	public function get_single($id_carousel)
+	{
+		$this->db->where('id_carousel', $id_carousel);
+		return $this->db->get($this->table);
+	}
 	public function edit($post)
 	{
 		$this->db->where("id_carousel", $post['id_carousel']);
@@ -16,5 +21,10 @@ class Model_carousel extends CI_model {
 	public function add($post)
 	{
 		$this->db->insert($this->table, $post);
+	}
+	public function delete($id_carousel)
+	{
+		$this->db->where("id_carousel", $id_carousel);
+		$this->db->delete($this->table);
 	}
 }

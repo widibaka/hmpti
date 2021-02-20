@@ -14,7 +14,7 @@
     <meta property="og:url" content="<?= base_url() ?>" />
     <meta property="og:site_name" content="HMP TI UDB" />
 
-    <title>HMP TI UDB - Home Page</title>
+    <title>HMP TI UDB <?php echo "- " . $this->title ?></title>
 
     <link rel="canonical" href="<?php echo base_url() ?>">
 
@@ -26,7 +26,7 @@
     <!-- Fontawesome -->
     <link href="<?php echo base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
     <!-- Custom css -->
-    <link href="<?php echo base_url() ?>assets/widibaka.css?v1" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/widibaka.css?v2" rel="stylesheet">
 
     <style type="text/css">
       .custom_navbar{
@@ -61,8 +61,18 @@
       background-size: auto 60%;
       background-repeat: no-repeat;
   ">
+
+  <div class="loader" style="opacity: 1; position: fixed;">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+    <div class="bar4"></div>
+    <div class="bar5"></div>
+    <div class="bar6"></div>
+  </div>
+
     <header>
-      <nav class="navbar navbar-expand-md fixed-top custom_navbar">
+      <nav class="navbar navbar-expand-md fixed-top custom_navbar" style="z-index: 3;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img width="45" src="<?php echo base_url() ?>assets/img/<?php echo $this->website['image'] ?>">
