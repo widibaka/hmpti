@@ -16,4 +16,9 @@ class Model_event extends CI_model {
 		$this->db->where( "jadwal <", time() );
 		return $this->db->get($this->table);
 	}
+	public function get_single($id_event)
+	{
+		$this->db->where( "id_event", $id_event );
+		return $this->db->get($this->table);
+	}
 }

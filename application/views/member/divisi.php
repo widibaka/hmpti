@@ -21,7 +21,7 @@
               </thead>
               <tbody>
 	              <?php foreach ($main_data as $key => $val): ?>
-	  	              	<tr>
+	  	              <tr>
 	  		              <td><?php echo $key+1 ?></td>
 	  		              <td id="nama_divisi-<?php echo $val['id_divisi'] ?>"><?php echo $val['nama_divisi'] ?></td>
 	  		              <td id="deskripsi-<?php echo $val['id_divisi'] ?>"><?php echo $val['deskripsi'] ?></td>

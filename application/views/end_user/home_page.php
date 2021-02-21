@@ -58,16 +58,23 @@
                       background-repeat: no-repeat;
                       background-position: center;
               ">
-                <img src="<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>" style="opacity: 0;">
+                <img src="<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>" width="100%">
               </div>
 
               <h2 class="mt-2 mx-2"><?php echo $event['judul'] ?></h2>
               <p><?php echo date( "d M Y, H:m", $event['jadwal'] ) . " WIB" ?></p>
               <p>Countdown: <?php echo " 0 menit" ?></p>
-              <p><?php echo substr($event['deskripsi'], 0, 140) ?>...</p>
-              <p><a class="btn btn-secondary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal">View details &raquo;</a></p>
+              <p><?php echo substr( strip_tags($event['deskripsi']) , 0, 140) ?>...</p>
+              <p><a class="btn btn-secondary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">View details &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
           <?php endforeach ?>
+          <?php if ( empty(count($events)) ): ?>
+            <div class="text-center text-muted">
+              <p>
+                <i>Belum ada jadwal event terbaru.</i>
+              </p>  
+            </div>
+          <?php endif ?>
           
           <div class="col-12">
             <p class="text-center">
@@ -95,38 +102,40 @@
                       background-repeat: no-repeat;
                       background-position: center;
               ">
-                <img src="<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>" style="opacity: 0;">
+                <img src="<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>" width="100%">
               </div>
 
               <h2 class="mt-2 mx-2"><?php echo $event['judul'] ?></h2>
               <p><?php echo date( "d M Y, H:m", $event['jadwal'] ) . " WIB" ?></p>
-              <p>Event sudah selesai</p>
-              <p><?php echo substr($event['deskripsi'], 0, 140) ?>...</p>
-              <p><a class="btn btn-secondary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal">View details &raquo;</a></p>
+              <p>Countdown: <?php echo " 0 menit" ?></p>
+              <p><?php echo substr( strip_tags($event['deskripsi']) , 0, 140) ?>...</p>
+              <p><a class="btn btn-secondary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">View details &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
           <?php endforeach ?>
           <div class="col-12">
             <p class="text-center">
-              <a class="btn btn-outline-secondary" href="#" role="button">Load more</a>
+              <a class="btn btn-outline-secondary" href="#" role="button">See more</a>
             </p>
           </div> <!-- /load more -->
         </div><!-- /.row -->
       </div><!-- /.container -->
 
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Detail event</h5>
+              <h5 class="modal-title"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <p>Keterangan rinci berada di sini.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-body d-flex justify-content-center" id="detail_event">
+              <!-- the content goes here -->
+              <div class="col-12" style="
+                background-image: url('<?php echo base_url() ?>assets/img/loader.gif');
+                background-repeat: no-repeat;
+                background-position: center;
+                min-height: 50px;
+              ">
             </div>
           </div>
         </div>

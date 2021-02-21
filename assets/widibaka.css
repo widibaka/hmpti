@@ -130,12 +130,12 @@ a .link_ke_profil:hover{
     z-index: 100;
   }
   body:before {
-    top: 50%;
+    top: 51%;
     -webkit-transform: translateY(-100%);
             transform: translateY(-100%);
   }
   body:after {
-    bottom: 50%;
+    bottom: 51%;
     -webkit-transform: translateY(100%);
             transform: translateY(100%);
   }

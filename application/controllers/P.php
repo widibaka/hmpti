@@ -33,6 +33,7 @@ class P extends CI_Controller {
 		$this->load->view('end_user/templates/header', $data);
 		$this->load->view('end_user/home_page', $data);
 		$this->load->view('end_user/templates/footer', $data);
+		$this->load->view('end_user/home_page_js', $data);
 	}
 	public function divisi($id_divisi)
 	{
@@ -67,5 +68,19 @@ class P extends CI_Controller {
 		$this->load->view('end_user/templates/header', $data);
 		$this->load->view('end_user/visi_misi', $data);
 		$this->load->view('end_user/templates/footer', $data);
+	}
+
+
+
+	/*
+	* AJAX's thing or whatever goes down there
+	*/
+
+	public function ajax_detail_event($id_event)
+	{
+		$data = $this->Model_event->get_single($id_event)->row_array();
+		$data['status'] = "Dibuka";
+		$data['pendaftar'] = "100";
+		$this->load->view( "end_user/home_page_detail_event", $data );
 	}
 }

@@ -52,7 +52,7 @@
   });
   // preview image before upload
 
-  //Delete divisi
+  //Delete
   function delete_carousel(id) {
     Swal.fire({
       title: 'Yakin ingin menghapus carousel ini?',

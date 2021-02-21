@@ -17,6 +17,8 @@ class Dashboard extends CI_Controller {
 		$this->load->model("Model_proker");
 		$this->load->model("Model_event");
 
+		$this->x->harus_login($this->session);
+
 		$this->all_divisi = $this->Model_divisi->get()->result_array();
 		$this->website = $this->Model_detail_organisasi->get()->row_array();
 	}

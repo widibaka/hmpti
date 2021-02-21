@@ -33,14 +33,12 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/dist/css/adminlte.min.css">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/plugins/sweetalert2/sweetalert2.css">
-  <!-- Toastr -->
-  <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/plugins/toastr/toastr.min.css">
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Custom css -->
-  <link href="<?php echo base_url() ?>assets/widibaka.css?v1" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/widibaka.css?v3" rel="stylesheet">
 
   <style type="text/css">
     @-webkit-keyframes glow {

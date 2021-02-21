@@ -49,8 +49,6 @@
 <script src="<?= base_url() ?>assets/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- SweetAlert2 -->
 <script src="<?= base_url() ?>assets/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
-<!-- Toastr -->
-<script src="<?= base_url() ?>assets/adminlte/plugins/toastr/toastr.min.js"></script>
 <!-- bootstrap color picker -->
 <script src="<?= base_url() ?>assets/adminlte/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- TweenMax For Transition -->
@@ -75,6 +73,24 @@
       }
     });
   }
+
+  $("#logout_btn").click(function (e) {
+    e.preventDefault();
+    Swal.fire({
+      title: 'Yakin ingin logout?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Tidak'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = "<?php echo base_url() ?>logout";
+      }
+    });
+
+  });
 
   $(document).ready(function () {
 
@@ -110,6 +126,7 @@
         .to($('.loader'), 0.2, {opacity: 0}, '-=0.2');
         setTimeout(function() {
           $(".wrapper").animate({opacity: 1}); //show the main content
+          $('.loader').hide();
         }, 1000);
       }
 
@@ -121,6 +138,7 @@
 
       function transition_onleave() {
         $(".wrapper").hide();
+        $('.loader').show();
         var tl = new TimelineMax();
         
         tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '50%' }, ease: Power2.easeOut}, 'close')

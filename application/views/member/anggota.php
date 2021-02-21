@@ -13,6 +13,7 @@
               <thead>
               <tr>
                 <th>No.</th>
+                <th>NIM</th>
                 <th>Email</th>
                 <th>Nama</th>
                 <th>Jabatan</th>
@@ -27,7 +28,8 @@
 	              <?php foreach ($main_data as $key => $val): ?>
 	  	              	<tr>
 	  		              <td><?php echo $key+1 ?></td>
-	  		              <td id="nama-<?php echo $val['nim'] ?>"><?php echo $val['nama'] ?></td>
+	  		              <td id="nim-<?php echo $val['nim'] ?>"><?php echo $val['nim'] ?></td>
+                      <td id="nama-<?php echo $val['nim'] ?>"><?php echo $val['nama'] ?></td>
                       <td id="email-<?php echo $val['nim'] ?>"><?php echo $val['email'] ?></td>
 	  		              <td>
                         <i class="d-none" id="id_jabatan-<?php echo $val['nim'] ?>"><?php echo $val['id_jabatan'] ?></i>
@@ -59,7 +61,7 @@
 	  		              <td>
 	  		              	<div class="btn-group">
   		                      <button onclick="edit_prepare(<?php echo $val['nim'] ?>)" type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pencil-alt"></i></button>
-  		                      <button onclick="delete_anggota(<?php echo $val['nim'] ?>)" type="button" class="btn btn-danger" title="Nonaktifkan"><i class="fas fa-power-off"></i></button>
+  		                      <button onclick="delete_row(<?php echo $val['nim'] ?>)" type="button" class="btn btn-danger" title="Nonaktifkan"><i class="fas fa-power-off"></i></button>
   		                  </div>
 	  		              </td>
 	  		            </tr>
@@ -68,6 +70,7 @@
               <tfoot>
               <tr>
                 <th>No.</th>
+                <th>NIM</th>
                 <th>Email</th>
                 <th>Nama</th>
                 <th>Jabatan</th>

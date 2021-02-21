@@ -36,6 +36,7 @@
     // LOADER STARTS
       function transition_onleave() {
         $(".wrapper").hide();
+        $('.loader').show();
         var tl = new TimelineMax();
         
         tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '50%' }, ease: Power2.easeOut}, 'close')
@@ -52,6 +53,7 @@
         .to($('.loader'), 0.2, {opacity: 0}, '-=0.2');
         setTimeout(function() {
           $(".wrapper").animate({opacity: 1}); //show the main content
+          $('.loader').hide();
         }, 1000);
       }
 

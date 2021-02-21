@@ -15,6 +15,8 @@ class Anggota extends CI_Controller {
 		$this->load->model("Model_member");
 		$this->all_divisi = $this->Model_divisi->get()->result_array();
 		$this->website = $this->Model_detail_organisasi->get()->row_array();
+
+		$this->x->harus_login($this->session);
 	}
 	public function index()
 	{
@@ -67,6 +69,12 @@ class Anggota extends CI_Controller {
 
 		$this->Model_member->add( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil ditambahkan.");
+		redirect(base_url() . "admin/anggota");
+	}
+
+	public function nonaktifkan($nim='')
+	{
+		$this->Model_member->nonaktifkan($nim);
 		redirect(base_url() . "admin/anggota");
 	}
 

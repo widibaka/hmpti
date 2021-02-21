@@ -17,7 +17,10 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label>Upload Gambar:</label><br>
-                    <img width="240" height="240" src="<?php echo base_url() ?>assets/img/<?php echo $main_data['image'] ?>" id="edit_preview">
+                    <img width="240" height="240" src="<?php echo base_url() ?>assets/img/<?php echo $main_data['image'] ?>" id="edit_preview" style="
+                        background-image: url('<?php echo base_url() ?>assets/img/pattern.JPG');
+                        background-repeat: repeat;
+                    ">
                     <p class="text-danger">Disarankan ukuran 500px x 500px</p>
                     <p>
                       <div class="custom-file">

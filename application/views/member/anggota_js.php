@@ -52,9 +52,21 @@
   });
   // preview image before upload
 
-  //Delete divisi
-  function delete_divisi(id_jabatan) {
-    alert(id_jabatan);
+  
+  //Delete
+  function delete_row(id) {
+    Swal.fire({
+      title: 'Yakin ingin menonaktifkan member ini?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = "<?php echo base_url() ?>admin/anggota/nonaktifkan/"+id;
+      }
+    });
   }
 
   $(function () {

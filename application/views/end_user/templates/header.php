@@ -26,7 +26,7 @@
     <!-- Fontawesome -->
     <link href="<?php echo base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
     <!-- Custom css -->
-    <link href="<?php echo base_url() ?>assets/widibaka.css?v2" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/widibaka.css?v3" rel="stylesheet">
 
     <style type="text/css">
       .custom_navbar{
@@ -109,7 +109,13 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url() ?>login">Login</a>
+                <a class="nav-link" href="<?php echo base_url() ?>login">
+                  <?php if ( empty( $this->session->userdata('name') ) ): ?>
+                    Login
+                  <?php else: ?>
+                    <span data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Buka kembali dashboard"><?php echo $this->session->userdata('name') ?></span>
+                  <?php endif ?>
+                </a>
               </li>
               <!-- <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
