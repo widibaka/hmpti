@@ -14,8 +14,8 @@
               <tr>
                 <th>No.</th>
                 <th>NIM</th>
-                <th>Email</th>
                 <th>Nama</th>
+                <th>Email</th>
                 <th>Jabatan</th>
                 <th>Divisi</th>
                 <th>Kontak</th>
@@ -71,8 +71,8 @@
               <tr>
                 <th>No.</th>
                 <th>NIM</th>
-                <th>Email</th>
                 <th>Nama</th>
+                <th>Email</th>
                 <th>Jabatan</th>
                 <th>Divisi</th>
                 <th>Kontak</th>

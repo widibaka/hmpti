@@ -27,4 +27,24 @@ class Model_divisi extends CI_model {
 	{
 		$this->db->insert($this->table, $post);
 	}
+
+
+	// Check sebelum delete
+	public function check_divisi($id_divisi)
+	{
+		$this->db->where('id_divisi', $id_divisi);
+		return $this->db->get( 'h_jabatan' )->num_rows();
+	}
+	public function delete($id_divisi)
+	{
+		$a = $this->check_divisi($id_divisi);
+		if ( $a == 0 ) { // <-- num rows of jabatan that has THIS id_divisi
+			$this->db->where('id_divisi', $id_divisi);
+			$this->db->delete($this->table);
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }

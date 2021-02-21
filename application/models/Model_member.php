@@ -23,11 +23,11 @@ class Model_member extends CI_model {
 		$this->db->order_by("nim", "ASC");
 		return $this->db->get();
 	}
-	public function get_all_sampah()
+	public function get_nonaktif()
 	{
 		$this->db->where('aktif', 0); // ambil yang nonaktif aja
 
-		$this->db->order_by("nim", "ASC");
+		$this->db->order_by("nim", "DESC");
 		return $this->db->get($this->table);
 	}
 	public function get_by_nim($nim)

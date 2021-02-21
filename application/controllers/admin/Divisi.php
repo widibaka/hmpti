@@ -59,5 +59,16 @@ class Divisi extends CI_Controller {
 		$this->session->set_flashdata("msg", "success#Data berhasil ditambahkan.");
 		redirect(base_url() . "admin/divisi");
 	}
+	public function delete($id_divisi)
+	{
+		$delete = $this->Model_divisi->delete( $id_divisi );
+		if ( $delete == true ) {
+			$this->session->set_flashdata("msg", "success#Data berhasil dihapus.");
+		}
+		else{
+			$this->session->set_flashdata("msg", "error#Data gagal dihapus, mungkin data masih dipakai.");
+		}
+		redirect(base_url() . "admin/divisi");
+	}
 
 }

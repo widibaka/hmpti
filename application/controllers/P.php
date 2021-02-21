@@ -69,6 +69,14 @@ class P extends CI_Controller {
 		$this->load->view('end_user/visi_misi', $data);
 		$this->load->view('end_user/templates/footer', $data);
 	}
+	public function anggota_nonaktif()
+	{
+		$this->title = 'Anggota Nonaktif';
+		$data['anggota_nonaktif'] = $this->Model_member->get_nonaktif()->result_array();
+		$this->load->view('end_user/templates/header', $data);
+		$this->load->view('end_user/nonaktif', $data);
+		$this->load->view('end_user/templates/footer', $data);
+	}
 
 
 

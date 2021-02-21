@@ -88,6 +88,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url() ?>p/struktur_organisasi">Struktur Organisasi</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url() ?>p/anggota_nonaktif">Anggota Nonaktif</a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Divisi
@@ -104,7 +107,6 @@
                   Tentang Kami
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li></li>
                   <li><a class="dropdown-item" href="<?php echo base_url() ?>p/visi_misi">Visi & Misi</a></li>
                 </ul>
               </li>
@@ -131,3 +133,4 @@
     </header>
 
     <main class="bg-transparent">
+      <div style="min-height: 80vh;">

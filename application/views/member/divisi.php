@@ -28,7 +28,7 @@
 	  		              <td>
 	  		              	<div class="btn-group">
   		                      <button onclick="edit_prepare(<?php echo $val['id_divisi'] ?>)" type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pencil-alt"></i></button>
-  		                      <button onclick="delete_divisi(<?php echo $val['id_divisi'] ?>)" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+  		                      <button onclick="delete_row(<?php echo $val['id_divisi'] ?>)" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
   		                    </div>
 	  		              </td>
 	  		            </tr>

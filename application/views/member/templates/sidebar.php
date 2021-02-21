@@ -46,6 +46,15 @@
                 </a>
               </li> <!-- sidebar_item -->
 
+              <li class="nav-item has-treeview" >
+                <a href="<?php echo base_url() ?>admin/event" class="nav-link do_transition">
+                  <i class="nav-icon fa fa-calendar-alt"></i>
+                  <p>
+                    <span>Event</span>
+                  </p>
+                </a>
+              </li> <!-- sidebar_item -->
+
               <!-- Proker Starts -->
                 <li class="nav-item has-treeview">
                   <a href="#" class="nav-link">

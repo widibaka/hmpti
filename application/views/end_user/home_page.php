@@ -131,11 +131,12 @@
             <div class="modal-body d-flex justify-content-center" id="detail_event">
               <!-- the content goes here -->
               <div class="col-12" style="
-                background-image: url('<?php echo base_url() ?>assets/img/loader.gif');
-                background-repeat: no-repeat;
-                background-position: center;
-                min-height: 50px;
-              ">
+                  background-image: url('<?php echo base_url() ?>assets/img/loader.gif');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  min-height: 50px;
+                ">
+              </div>
             </div>
           </div>
         </div>

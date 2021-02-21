@@ -1,5 +1,5 @@
 
-
+      </div>
       <!-- FOOTER -->
       <footer class="container">
         <a href="#" class="to_top"><i class="fa fa-arrow-circle-up"></i></a>

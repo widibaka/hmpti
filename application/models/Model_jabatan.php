@@ -31,5 +31,23 @@ class Model_jabatan extends CI_model {
 		{
 			$this->db->insert($this->table, $post);
 		}
+		// Check sebelum delete
+		public function check_jabatan($id_jabatan)
+		{
+			$this->db->where('id_jabatan', $id_jabatan);
+			return $this->db->get( 'h_member' )->num_rows();
+		}
+		public function delete($id_jabatan)
+		{
+			$a = $this->check_jabatan($id_jabatan);
+			if ( $a == 0 ) { // <-- num rows of jabatan that has THIS id_jabatan
+				$this->db->where('id_jabatan', $id_jabatan);
+				$this->db->delete($this->table);
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
 	# for admin end
 }

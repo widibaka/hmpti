@@ -59,5 +59,16 @@ class Jabatan extends CI_Controller {
 		$this->session->set_flashdata("msg", "success#Data berhasil ditambahkan.");
 		redirect(base_url() . "admin/jabatan");
 	}
+	public function delete($id_jabatan)
+	{
+		$delete = $this->Model_jabatan->delete( $id_jabatan );
+		if ( $delete == true ) {
+			$this->session->set_flashdata("msg", "success#Data berhasil dihapus.");
+		}
+		else{
+			$this->session->set_flashdata("msg", "error#Data gagal dihapus, mungkin data masih dipakai.");
+		}
+		redirect(base_url() . "admin/jabatan");
+	}
 
 }

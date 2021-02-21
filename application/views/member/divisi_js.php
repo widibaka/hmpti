@@ -19,9 +19,21 @@
   }
 
 
-  //Delete divisi
-  function delete_divisi(id_divisi) {
-    alert(id_divisi);
+  //Delete
+  function delete_row(id) {
+    Swal.fire({
+      title: 'Yakin ingin menghapus divisi ini?',
+      text: "Tindakan ini tidak akan dapat dikembalikan!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus saja!'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = "<?php echo base_url() ?>admin/divisi/delete/"+id;
+      }
+    });
   }
 
   $(function () {
