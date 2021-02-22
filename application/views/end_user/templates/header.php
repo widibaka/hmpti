@@ -85,12 +85,19 @@
               <li class="nav-item active">
                 <a class="nav-link" aria-current="page" href="<?php echo base_url() ?>">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url() ?>p/struktur_organisasi">Struktur Organisasi</a>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Organisasi
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="<?php echo base_url() ?>p/struktur_organisasi">Struktur Organisasi</a></li>
+                  <li><a class="dropdown-item" href="<?php echo base_url() ?>p/visi_misi">Visi & Misi</a></li>
+                  <li class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="<?php echo base_url() ?>p/anggota_nonaktif">Anggota Nonaktif</a></li>
+                </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url() ?>p/anggota_nonaktif">Anggota Nonaktif</a>
-              </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Divisi
@@ -102,14 +109,7 @@
                   <!-- <li><hr class="dropdown-divider"></li> -->
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Tentang Kami
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="<?php echo base_url() ?>p/visi_misi">Visi & Misi</a></li>
-                </ul>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url() ?>login">
                   <?php if ( empty( $this->session->userdata('name') ) ): ?>

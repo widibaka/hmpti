@@ -18,6 +18,7 @@ class P extends CI_Controller {
 		$this->load->model("Model_jabatan");
 		$this->load->model("Model_proker");
 		$this->load->model("Model_event");
+		$this->load->model("Model_panitia");
 
 		$this->all_divisi = $this->Model_divisi->get()->result_array();
 		$this->website = $this->Model_detail_organisasi->get()->row_array();
@@ -87,7 +88,12 @@ class P extends CI_Controller {
 	public function ajax_detail_event($id_event)
 	{
 		$data = $this->Model_event->get_single($id_event)->row_array();
-		$data['status'] = "Dibuka";
+		$data['panitia'] = $this->Model_panitia->get_by_id_event($id_event)->result_array();
+		if ( $data['jadwal'] - time() > 0 ) {
+			$data['status'] = true;
+		}else{
+			$data['status'] = false;
+		}
 		$data['pendaftar'] = "100";
 		$this->load->view( "end_user/home_page_detail_event", $data );
 	}

@@ -32,6 +32,8 @@ footer{
   border-right: 1px solid #eee;
   background-color: #ffffff;
   transition: box-shadow 300ms ease;
+  width: 400px;
+  margin: 5px;
 }
 
 .event:hover{
@@ -191,3 +193,18 @@ a .link_ke_profil:hover{
             animation-delay: -0.3s;
   }
 /*LOADER ENDS*/
+
+
+
+/* GLOW BUTTON STARTS */
+  @keyframes blinking {
+    0% { opacity: 0; }
+    40% { opacity: .8; }
+    60% { opacity: .8; }
+    100% { opacity: 0; }
+  }
+
+  .blinking {
+    animation: blinking 500ms infinite;
+  }
+/* GLOW BUTTON ENDS */

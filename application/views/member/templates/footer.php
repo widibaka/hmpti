@@ -57,6 +57,7 @@
 
 <script type="text/javascript">
   function submit_form(form_id) {
+    transition_onleave();
     $(form_id).submit();
   }
 
@@ -92,6 +93,31 @@
 
   });
 
+  // FOR LOADER S
+    function transition_onload() {
+
+      var tl = new TimelineMax();
+      
+      tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '0%' }, ease: Power2.easeOut}, '+=1.5', 'open')
+      .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '0%' }, ease: Power2.easeOut}, '-=0.2', 'open')
+      .to($('.loader'), 0.2, {opacity: 0}, '-=0.2');
+      setTimeout(function() {
+        $(".wrapper").animate({opacity: 1}); //show the main content
+        $('.loader').hide();
+      }, 1000);
+    }
+
+    function transition_onleave() {
+      $(".wrapper").hide();
+      $('.loader').show();
+      var tl = new TimelineMax();
+      
+      tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '50%' }, ease: Power2.easeOut}, 'close')
+      .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '50%' }, ease: Power2.easeOut}, 'close')
+      .to($('.loader'), 0, {opacity: 1})
+    }
+  // FOR LOADER E
+
   $(document).ready(function () {
 
     sidebar_highlight();
@@ -117,34 +143,11 @@
     // LOADER STARTS
       setTimeout(transition_onload, 0);
 
-      function transition_onload() {
-
-        var tl = new TimelineMax();
-        
-        tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '0%' }, ease: Power2.easeOut}, '+=1.5', 'open')
-        .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '0%' }, ease: Power2.easeOut}, '-=0.2', 'open')
-        .to($('.loader'), 0.2, {opacity: 0}, '-=0.2');
-        setTimeout(function() {
-          $(".wrapper").animate({opacity: 1}); //show the main content
-          $('.loader').hide();
-        }, 1000);
-      }
-
-      $(".sidebar a.do_transition").click(function(e) {
+      $("a.do_transition").click(function(e) {
         e.preventDefault();
         transition_onleave();
         window.location.href = $(this).attr("href");
       });
-
-      function transition_onleave() {
-        $(".wrapper").hide();
-        $('.loader').show();
-        var tl = new TimelineMax();
-        
-        tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '50%' }, ease: Power2.easeOut}, 'close')
-        .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '50%' }, ease: Power2.easeOut}, 'close')
-        .to($('.loader'), 0, {opacity: 1})
-      }
     // LOADER ENDS
 
   })
