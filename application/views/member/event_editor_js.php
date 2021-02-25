@@ -10,6 +10,8 @@
 <script src="<?= base_url() ?>assets/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
 <script src="<?= base_url() ?>assets/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- Select2 -->
+<script src="<?= base_url() ?>assets/adminlte/plugins/select2/js/select2.full.min.js"></script>
 
 <script type="text/javascript">
 
@@ -71,50 +73,57 @@ $(document).ready(function () {
       
   });
 
+  //Initialize Select2 Elements
+  $('.select2bs4').select2({
+    theme: 'bootstrap4'
+  })
+
   $('#editForm').validate({
     rules: {
-      nim: {
+      judul: {
         required: true,
-        number: true,
         minlength: 8
       },
-      nama: {
-        required: true,
-        minlength: 1
-      },
-      email: {
-        required: true,
-        email: true
-      },
-      id_jabatan: {
+      jadwal: {
         required: true,
       },
       deskripsi: {
         required: true,
         minlength: 50
       },
+      <?php if ( empty($main_data['id_event']) ): ?>
+        
+        thumbnail: {
+          required: true,
+        },
+        poster: {
+          required: true,
+        },
+
+      <?php endif ?>
     },
     messages: {
-      nim: {
-        required: "Mohon isi NIM mahasiswa",
-        number: "Mohon isi hanya dengan angka",
+      judul: {
+        required: "Mohon isi judul event",
         minlength: "Minimal harus 8 digit",
       },
-      nama: {
-        required: "Mohon isi nama individu ini",
-        minlength: "Minimal harus 1 karakter",
-      },
-      email: {
-        required: "Mohon isi email",
-        email: "Mohon isi format email dengan betul",
-      },
-      id_jabatan: {
-        required: "Mohon pilih jabatan",
+      jadwal: {
+        required: "Mohon isi jadwal pelaksanaan event",
       },
       deskripsi: {
-        required: "Mohon isi deskripsi individu ini",
+        required: "Mohon isi deskripsi",
         minlength: "Minimal harus 50 karakter",
       },
+      <?php if ( empty($main_data['id_event']) ): ?>
+        
+        thumbnail: {
+          required: "Harus ada thumbnail",
+        },
+        poster: {
+          required: "Harus ada poster",
+        },
+
+      <?php endif ?>
     },
     errorElement: 'span',
     errorPlacement: function (error, element) {

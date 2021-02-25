@@ -23,6 +23,14 @@ class Model_member extends CI_model {
 		$this->db->order_by("nim", "ASC");
 		return $this->db->get();
 	}
+	public function get_all()
+	{
+		$this->db->where('aktif', 1); // cuma ambil yang aktif
+		
+		$this->db->from($this->table);
+		$this->db->order_by("nim", "ASC");
+		return $this->db->get();
+	}
 	public function get_nonaktif()
 	{
 		$this->db->where('aktif', 0); // ambil yang nonaktif aja

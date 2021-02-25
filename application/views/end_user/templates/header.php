@@ -25,6 +25,8 @@
     <link href="<?php echo base_url() ?>assets/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
     <!-- Fontawesome -->
     <link href="<?php echo base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/adminlte/plugins/sweetalert2/sweetalert2.css">
     <!-- Custom css -->
     <link href="<?php echo base_url() ?>assets/widibaka.css?v3" rel="stylesheet">
 
@@ -58,7 +60,7 @@
       background-image: url('<?php echo base_url() ?>assets/img/bg0.png');
       /*background-attachment: fixed;*/
       background-position: left bottom;
-      background-size: auto 60%;
+      background-size: 20% auto;
       background-repeat: no-repeat;
   ">
 
@@ -109,16 +111,36 @@
                   <!-- <li><hr class="dropdown-divider"></li> -->
                 </ul>
               </li>
-              
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url() ?>login">
-                  <?php if ( empty( $this->session->userdata('name') ) ): ?>
-                    Login
-                  <?php else: ?>
-                    <span data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Buka kembali dashboard"><?php echo $this->session->userdata('name') ?></span>
-                  <?php endif ?>
-                </a>
+              <li class="nav-item active">
+                <a class="nav-link" href="<?php echo base_url() ?>p/credits">Credits</a>
               </li>
+              
+              
+              <?php if ( !empty( $this->session->userdata('guest') ) ): ?>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php echo $this->session->userdata('name') ?>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="<?php echo base_url() ?>logout">Logout</a></li>
+                  </ul>
+                </li>
+              <?php elseif ( empty( $this->session->userdata('name') ) ): ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>login">
+                      Login
+                  </a>
+                </li>
+              <?php else: ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url() ?>login">
+                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Buka kembali dashboard"><?php echo $this->session->userdata('name') ?></span>
+                  </a>
+                </li>
+              <?php endif ?>
+              
+
+              
               <!-- <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li> -->

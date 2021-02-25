@@ -9,19 +9,13 @@ class Model_panitia extends CI_model {
 		$this->db->where("id_event", $id_event);
 		return $this->db->get($this->table);
 	}
-	// public function edit($post)
-	// {
-	// 	$this->db->where('id_proker', $post['id_proker']);
-	// 	$this->db->update($this->table, $post);
-	// }
-	// public function add($post, $id_divisi)
-	// {
-	// 	$post['id_divisi'] = $id_divisi;
-	// 	$this->db->insert($this->table, $post);
-	// }
-	// public function delete($id_proker)
-	// {
-	// 	$this->db->where('id_proker', $id_proker);
-	// 	$this->db->delete($this->table);
-	// }
+	public function add($post)
+	{
+		$this->db->insert($this->table, $post);
+	}
+	public function delete($id_panitia)
+	{
+		$this->db->where('id_panitia', $id_panitia);
+		$this->db->delete($this->table);
+	}
 }

@@ -17,6 +17,9 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
+		if ( isset($_GET['balik']) ) { //<-- simpen dulu di session
+			$_SESSION['balik'] = $_GET['balik'];
+		}
 		if ( !empty($this->session->userdata('email')) ) {
 			$this->session->set_flashdata("msg", "none#Selamat datang kembali.");
 			redirect( base_url() . "admin/dashboard" );
@@ -81,20 +84,39 @@ class Login extends CI_Controller {
 
         if ( !empty($pay_load) ) {
         	$check_email = $this->Model_member->check_member($pay_load["email"]);
-        	if ( $check_email == false )
+        	if ( $check_email == false ) //<-- kalau bukan anggota organisasi
         	{
-        		$this->session->set_flashdata('msg', 'error#Maaf '. $pay_load['name'] .', email kamu tidak terdaftar! Hubungi pihak terkait untuk mendaftar.');
-            	redirect( base_url() . $this->uri->uri_string() );
+        		$this->guest_login($pay_load);
         	}
         	else
         	{
         		$this->session->set_flashdata('msg', 'success#Selamat datang, '. $pay_load['name'] .'.');
         		$this->session->set_userdata($pay_load);
         		$this->Model_member->set_member_log($pay_load['email']);
-        		redirect( base_url() . 'admin/dashboard' );
+        		if ( isset($_SESSION['balik']) ) { // <-- balik ke halaman sebleum login
+        			redirect( base64_decode($_SESSION['balik']) );
+        		}
+        		else{
+        			redirect( base_url() . 'admin/dashboard' );
+        		}
+        		
         	}
         }
 
 		$this->load->view('member/login', $data);
+	}
+
+	public function guest_login($pay_load)
+	{
+		$pay_load['guest'] = 1; //<-- set guest sebagai penanda
+
+		$this->session->set_userdata($pay_load);
+		$this->session->set_flashdata('msg', 'success#Selamat datang, '. $pay_load['name'] .'. Anda kini dapat mendaftar event memakai akun ini.');
+		if ( isset($_SESSION['balik']) ) {
+			redirect( base64_decode($_SESSION['balik']) );
+		}
+		else{
+			redirect( base_url() );
+		}
 	}
 }

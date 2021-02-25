@@ -3,7 +3,7 @@
       <!-- FOOTER -->
       <footer class="container">
         <a href="#" class="to_top"><i class="fa fa-arrow-circle-up"></i></a>
-        <p>Himpunan Mahasiswa TI Universitas Duta Bangsa 2021 <?php 
+        <p>HMP Teknik Informatika Universitas Duta Bangsa 2021 <?php 
           if ( date("Y") > "2021" ) {
             echo "- ".date("Y");
           }
@@ -21,6 +21,8 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/plugins/CSSRulePlugin.min.js'></script>
     <!-- Tooltip -->
     <!-- <script src="assets/bootstrap5/tooltip.js"></script> -->
+    <!-- SweetAlert2 -->
+    <script src="<?= base_url() ?>assets/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
 
     <script type="text/javascript">
       var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -65,6 +67,25 @@
             transition_onleave();
             window.location.href = $(this).attr("href");
           });
+
+          // showing alert
+          <?php $alert = $this->session->flashdata("msg") ?>
+          <?php if ( !empty($alert) ): ?>
+            <?php $alert = explode("#", $alert) ?>
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 5000
+            });
+            setTimeout(function() {
+              Toast.fire({
+                icon: "<?php echo $alert[0] ?>",
+                title: "<?php echo $alert[1] ?>"
+              });
+            }, 1000);
+          <?php endif ?>
+          
     // LOADER ENDS
       });
 

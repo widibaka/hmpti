@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Model_event extends CI_model {
+class Model_member_login_log extends CI_model {
 
-	public $table = "h_events";
+	public $table = "h_member_login_log";
 
 // Start DATATABLE SERVER-SIDED
     
-    var $column_order = array(NULL, 'judul','jadwal',NULL,NULL,'publish','author','last_update','limit_pendaftar'); //field yang ada di table
-    var $column_search = array('judul','jadwal','publish','author','last_update','limit_pendaftar'); //field yang diizin untuk pencarian 
-    var $order = array('jadwal' => 'desc'); // default order ... Diurutkan berdasarkan waktu terbaru
+    var $column_order = array('id','email', 'time'); //field yang ada di table
+    var $column_search = array('id','email'); //field yang diizin untuk pencarian 
+    var $order = array('id' => 'desc'); // default order ... Diurutkan berdasarkan waktu terbaru
     
     private function _get_datatables_query()
     {
@@ -75,48 +75,4 @@ class Model_event extends CI_model {
     }
 
 // End DATATABLE SERVER-SIDED
-
-
-
-	public function get_all()
-	{
-		$this->db->order_by( "jadwal", "DESC" );
-		return $this->db->get($this->table);
-	}
-	public function get_upcoming()
-	{
-		$this->db->where( "publish", "1" );
-		$this->db->order_by( "jadwal", "DESC" );
-		$this->db->where( "jadwal >", time() );
-		return $this->db->get($this->table);
-	}
-	public function get_lama()
-	{
-		$this->db->where( "publish", "1" );
-		$this->db->limit(20);
-		$this->db->order_by( "jadwal", "DESC" );
-		$this->db->where( "jadwal <", time() );
-		return $this->db->get($this->table);
-	}
-	public function get_single($id_event)
-	{
-		$this->db->where( "id_event", $id_event );
-        $this->db->limit(1);
-		return $this->db->get($this->table);
-	}
-	public function edit($post)
-	{
-		$this->db->where('id_event', $post['id_event']);
-        $this->db->limit(1);
-		$this->db->update($this->table, $post);
-	}
-	public function add($post)
-	{
-		$this->db->insert($this->table, $post);
-	}
-	// public function delete($id_proker)
-	// {
-	// 	$this->db->where('id_proker', $id_proker);
-	// 	$this->db->delete($this->table);
-	// }
 }

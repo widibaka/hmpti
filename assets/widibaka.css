@@ -196,15 +196,30 @@ a .link_ke_profil:hover{
 
 
 
-/* GLOW BUTTON STARTS */
+/* BLINKING STARTS */
   @keyframes blinking {
     0% { opacity: 0; }
-    40% { opacity: .8; }
-    60% { opacity: .8; }
+    40% { opacity: 1; }
+    60% { opacity: 1; }
     100% { opacity: 0; }
   }
 
   .blinking {
-    animation: blinking 500ms infinite;
+    animation: blinking 1000ms infinite;
   }
-/* GLOW BUTTON ENDS */
+/* BLINKING ENDS */
+
+
+/* GLOWING STARTS */
+
+  @keyframes glowing {
+    0% { box-shadow: 0 0 -10px #eb4034; }
+    40% { box-shadow: 0 0 20px #eb4034; }
+    60% { box-shadow: 0 0 20px #eb4034; }
+    100% { box-shadow: 0 0 -10px #eb4034; }
+  }
+
+  .glow {
+    animation: glowing 500ms infinite;
+  }
+/* GLOWING ENDS */

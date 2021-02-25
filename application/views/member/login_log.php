@@ -9,19 +9,12 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="example2" class="table table-bordered table-hover">
+            <table id="example2" class="table table-bordered table-hover table-striped">
               <thead>
               <tr>
-                <th>Thumbnail</th>
-                <th>Judul</th>
-                <th>Jadwal</th>
-                <th>Poster</th>
-                <th>Deskripsi</th>
-                <th>Publish</th>
-                <th>Author</th>
-                <th>Update Terakhir</th>
-                <th>Limit Pendaftar</th>
-                <th>Control</th>
+                <th>No.</th>
+                <th>Email</th>
+                <th>Time</th>
               </tr>
               </thead>
               <tbody>
@@ -29,16 +22,9 @@
               </tbody>
               <tfoot>
               <tr>
-                <th>Thumbnail</th>
-                <th>Judul</th>
-                <th>Jadwal</th>
-                <th>Poster</th>
-                <th>Deskripsi</th>
-                <th>Publish</th>
-                <th>Author</th>
-                <th>Update Terakhir</th>
-                <th>Limit Pendaftar</th>
-                <th>Control</th>
+                <th>No.</th>
+                <th>Email</th>
+                <th>Time</th>
               </tr>
               </tfoot>
             </table>

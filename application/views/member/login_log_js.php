@@ -29,7 +29,7 @@
             "order": [], 
              
             "ajax": {
-                "url": "<?php echo base_url( 'admin/event/get_data/' )?>",
+                "url": "<?php echo base_url( 'admin/login_log/get_data/' )?>",
                 "type": "POST"
             },
             // "columnDefs": [

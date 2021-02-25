@@ -54,10 +54,12 @@
 <!-- TweenMax For Transition -->
 <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/plugins/CSSRulePlugin.min.js'></script>
+<!-- SweetAlert2 -->
+<script src="<?= base_url() ?>assets/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
 
 <script type="text/javascript">
   function submit_form(form_id) {
-    transition_onleave();
+    // transition_onleave(); <-- function ini berbahaya. Menghilangkan validate
     $(form_id).submit();
   }
 

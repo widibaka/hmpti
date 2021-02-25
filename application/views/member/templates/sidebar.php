@@ -138,6 +138,15 @@
               <li class="nav-header">USER</li>
 
               <li class="nav-item has-treeview" >
+                <a href="<?php echo base_url() ?>admin/login_log" class="nav-link do_transition">
+                  <i class="nav-icon fas fa-clock"></i>
+                  <p>
+                    <span>Login log</span>
+                  </p>
+                </a>
+              </li> <!-- sidebar_item -->
+
+              <li class="nav-item has-treeview" >
                 <a href="#" class="nav-link" id="logout_btn">
                   <i class="nav-icon fa fa-sign-out-alt"></i>
                   <p>

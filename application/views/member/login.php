@@ -27,12 +27,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?php echo base_url() ?>"><b>HMP</b>TI</a> UDB
+    <a href="<?php echo base_url() ?>"><b>HMP</b>TI UDB</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Login anggota HMPTI</p>
+      <p class="login-box-msg">Login ke sistem HMPTI</p>
 
       <div class="social-auth-links text-center mb-3">
         <a href="<?php echo $auth_url ?>" class="btn btn-block btn-info">
@@ -41,7 +41,7 @@
       </div>
       <!-- /.social-auth-links -->
       <p class="mb-0">
-        <i>Login sistem tanpa ribet menggunakan akun email <a href="#">@fikom.udb.ac.id</a></i>
+        <i>Login sistem tanpa ribet menggunakan akun gmail</i>
       </p>
 
     </div>

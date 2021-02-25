@@ -21,15 +21,30 @@
       }
   ?>
   <div class="col-12">
-    <?php if ( $status == true ): ?>
+    <?php 
+      $email = $this->session->userdata('email');
+      $sudah_daftar = $this->Model_pendaftar->check_exists( $email, $id_event )->num_rows();
+    ?>
+    <?php if ( $status == true && $sudah_daftar > 0 ): ?>
+      <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-secondary mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini (sudah terdaftar)</a>
+    <?php elseif ( $status == true ): ?>
       <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-success mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini</a>
     <?php endif ?>
+    <br>
     <p id="event_jadwal">Pelaksanaan: <strong><?php echo date( "d M Y, H:m", $jadwal ) . " WIB" ?></strong></p>
     <p id="event_status">Status pendaftaran: <strong><?php echo $spendaf ?></strong></p>
     <p id="event_status">Jumlah pendaftar: <strong class="text-success"><?php echo $pendaftar ?></strong></p>
+    <p id="event_status">Batas jumlah pendaftar:  <?php if ( $limit_pendaftar != 0 ): ?>
+                                                    <strong class="text-danger"><?php echo $limit_pendaftar ?></strong>
+                                                    <?php else: ?>
+                                                    Tidak dibatasi
+                                                  <?php endif ?></p>
     <p id="event_deskripsi"><?php echo $deskripsi ?></p>
     <p id="event_last_update"><i>Update terakhir: <?php echo date( "d M Y, H:m", $last_update ) . " WIB" ?>. Oleh <?php echo $author ?>.</i></p>
-    <?php if ( $status == true ): ?>
+    
+    <?php if ( $status == true && $sudah_daftar > 0 ): ?>
+      <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-secondary mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini (sudah terdaftar)</a>
+    <?php elseif ( $status == true ): ?>
       <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-success mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini</a>
     <?php endif ?>
 
@@ -41,7 +56,7 @@
           $member = $this->Model_member->check_member( $val['email'] );
       ?>
       <?php echo $key+1 . ". " ?>
-      <a href="<?php echo base_url() . 'p/profil/' . $member['nim'] ?>"><?php 
+      <a style="text-decoration: none;" href="<?php echo base_url() . 'p/profil/' . $member['nim'] ?>"><?php 
           echo $member['nama'];
       ?></a> 
       <?php if ( !empty($val['peran']) ): ?>
@@ -50,7 +65,8 @@
       <br>
     <?php endforeach ?>
   </div>
-  <div class="col-12 float-right mt-4">
+  
+  <div class="col-12 float-right mt-4 modal-footer" style="border-top: 1px solid #ddd">
     <a class="text-muted btn" data-bs-dismiss="modal" aria-label="Close">Tutup</a>
   </div>
 </div>
