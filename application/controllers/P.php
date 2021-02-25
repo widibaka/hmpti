@@ -39,6 +39,19 @@ class P extends CI_Controller {
 		$this->load->view('end_user/templates/footer', $data);
 		$this->load->view('end_user/home_page_js', $data);
 	}
+
+	public function search()
+	{
+		$q = $this->input->get('q', true);
+		$this->title = 'Search';
+		$data['events'] = $this->Model_event->search($q)->result_array();
+		$data['members'] = $this->Model_member->search($q)->result_array();
+		// echo "<pre>"; var_dump( $data['events'] ); die();
+		$this->load->view('end_user/templates/header', $data);
+		$this->load->view('end_user/search', $data);
+		$this->load->view('end_user/templates/footer', $data);
+		$this->load->view('end_user/search_js', $data);
+	}
 	public function divisi($id_divisi)
 	{
 		$data = $this->Model_divisi->get_tunggal($id_divisi)->row_array();

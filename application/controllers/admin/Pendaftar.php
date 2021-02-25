@@ -121,7 +121,7 @@ class Pendaftar extends CI_Controller {
 
 
 
-		        $row[] = substr($field->saran, 0, 40).'...';
+		        $row[] = substr($field->saran, 0, 30).'...' . ' <a href="javascrip:void(0)" data-toggle="modal" data-target="#modal-default" onclick="saran_more(\''. htmlentities($field->saran) .'\')">read more</a>';
 
 		        	$color = '';
 		        	if ( $field->status == 'Unset' ) {

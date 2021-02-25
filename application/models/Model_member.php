@@ -74,4 +74,19 @@ class Model_member extends CI_model {
 		$this->db->where("nim", $nim);
 		$this->db->update($this->table, $data);
 	}
+	public function search($wildcard)
+	{
+		//dipecah dulu
+		$wildcard = explode(' ', $wildcard);
+
+		$this->db->select( "nim, nama" );
+
+		$this->db->limit( 100 );
+
+		$this->db->order_by( "nim", "DESC" );
+		foreach ($wildcard as $key => $val) {
+		    $this->db->like( "nama", $val );
+		}
+		return $this->db->get($this->table);
+	}
 }

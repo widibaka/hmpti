@@ -78,11 +78,27 @@ class Model_event extends CI_model {
 
 
 
-	public function get_all()
-	{
-		$this->db->order_by( "jadwal", "DESC" );
-		return $this->db->get($this->table);
-	}
+    public function get_all()
+    {
+        $this->db->order_by( "jadwal", "DESC" );
+        return $this->db->get($this->table);
+    }
+
+    public function search($wildcard)
+    {
+        //dipecah dulu
+        $wildcard = explode(' ', $wildcard);
+
+        $this->db->select( "id_event, thumbnail, judul" );
+
+        $this->db->limit( 100 );
+
+        $this->db->order_by( "jadwal", "DESC" );
+        foreach ($wildcard as $key => $val) {
+            $this->db->like( "judul", $val );
+        }
+        return $this->db->get($this->table);
+    }
 	public function get_upcoming()
 	{
 		$this->db->where( "publish", "1" );

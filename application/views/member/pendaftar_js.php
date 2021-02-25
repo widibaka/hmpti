@@ -5,6 +5,10 @@
 <script src="<?= base_url() ?>assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- page script -->
 <script>
+
+  function saran_more(saran) {
+    $("#saran_full").html(saran);
+  }
   
   function show_error(errorThrown) {
     Swal.fire({

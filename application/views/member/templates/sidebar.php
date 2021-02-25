@@ -3,7 +3,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-sidebar-navbar">
       <!-- Brand Logo -->
       <a href="#" class="brand-link bg-transparent">
-        <img src="<?= base_url() ?>assets/img/logo.png?v2"
+        <img src="<?= base_url() ?>assets/img/<?php echo $this->website['image'] ?>"
              alt="Koreksoft Logo"
              class="brand-image">
         <span class="brand-text font-weight-light">HMP TI</span>

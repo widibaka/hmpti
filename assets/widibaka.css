@@ -40,6 +40,19 @@ footer{
   box-shadow: 0 0 15px #ccc;
 }
 
+.event-list{
+  border-right: 1px solid #eee;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px #ccc;
+  transition: box-shadow 300ms ease;
+  width: 100%;
+  margin: 5px;
+}
+
+.event-list:hover{
+  box-shadow: 0 0 15px #999;
+}
+
 .to_top{
   font-size: 30pt; 
   position: fixed; 

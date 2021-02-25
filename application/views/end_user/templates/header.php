@@ -145,8 +145,8 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li> -->
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Cari event/orang ..." aria-label="Search">
+            <form action="<?php echo base_url() ?>p/search" class="d-flex">
+              <input class="form-control me-2" type="search" name="q" placeholder="Cari event/orang ..." aria-label="Search">
               <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
             </form>
           </div>
