@@ -31,13 +31,14 @@ footer{
 .event{
   border-right: 1px solid #eee;
   background-color: #ffffff;
+  box-shadow: 0 0 15px #ccc;
   transition: box-shadow 300ms ease;
   width: 400px;
   margin: 5px;
 }
 
 .event:hover{
-  box-shadow: 0 0 15px #ccc;
+  box-shadow: 0 0 15px #999;
 }
 
 .event-list{
@@ -50,7 +51,7 @@ footer{
 }
 
 .event-list:hover{
-  box-shadow: 0 0 15px #999;
+  box-shadow: 0 0 20px #ccc;
 }
 
 .to_top{

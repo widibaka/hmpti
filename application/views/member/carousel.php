@@ -84,8 +84,8 @@
             <div class="form-group">
               <label>Image</label><br>
               <img height="240" src="" id="edit_preview">
-              <p class="text-danger">Disarankan ukuran 1400px x 500px
-                <br>Max size 800kb</p>
+              <p class="text-danger">Disarankan ukuran 1400px x 600px
+                <br>Max size 2mb</p>
               <p>
                 <div class="custom-file">
                   <input name="image" type="file" class="form-control" id="edit_image">
@@ -154,8 +154,8 @@
                     <div class="form-group">
                       <label>Image</label><br>
                       <img height="240" src="" id="add_preview">
-                      <p class="text-danger">Disarankan ukuran 1400px x 500px
-                        <br>Max size 800kb</p>
+                      <p class="text-danger">Disarankan ukuran 1400px x 600px
+                        <br>Max size 2mb</p>
                       <p>
                         <div class="custom-file">
                           <input name="image" type="file" class="form-control" id="add_image">

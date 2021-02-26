@@ -199,18 +199,41 @@ class Event extends CI_Controller {
 	{
 		$returns = array();
 		foreach ($data as $key => $val) {
-			$returns[ $val['element_name'] ] = $this->do_upload($val['element_name'], $val['filename'], $val['id_event']);
+			$upl = $this->do_upload($val['element_name'], $val['filename'], $val['id_event']);
+			// if ( $key > 0 ) {
+			// 	echo "<pre>"; var_dump( $upl ); die();
+			// }
+			// mengecilkan ukuran foto
+			$this->load->model('ResizeImage');
+			$this->ResizeImage->dir( $upl['full_path'] );
+
+
+
+			if ( $val['element_name'] == 'poster' ) {
+				$this->ResizeImage->resizeTo(800, 800, 'maxwidth');
+			}elseif( $val['element_name'] == 'thumbnail' ){
+				$this->ResizeImage->resizeTo(375, 200, 'exact');
+			}
+			
+
+
+			$this->ResizeImage->saveImage('assets/img/events/' . $upl['file_name']);
+
+			$this->load->helper('file');
+			unlink($upl['full_path']); // delete temporary file
+
+			$returns[ $val['element_name'] ] = $upl['file_name'] . "?" . time();
 		}
 		return $returns;
 	}
 
 	public function do_upload($element_name, $new_name, $id_event)
 	{
-        $config['upload_path']          = './assets/img/events/';
+        $config['upload_path']          = './assets/img/events/tmp/';
         $config['allowed_types']        = 'jpg|jpeg|png';
-        $config['max_size']             = 700;
-        $config['max_width']            = 1000;
-        $config['max_height']           = 1000;
+        $config['max_size']             = 2100;
+        $config['max_width']            = 3300;
+        $config['max_height']           = 3300;
         // $config['file_name']           = $new_name; 
         $config['overwrite']           = true;
 
@@ -227,11 +250,16 @@ class Event extends CI_Controller {
         else{
         	//renaming
         	rename(
-        		"assets/img/events/" . $this->upload->data('file_name'), 
-        		"assets/img/events/" . $new_name . '.jpg' // Bodo amat, pokoknya ganti jadi jpg semua!
+        		"assets/img/events/tmp/" . $this->upload->data('file_name'), 
+        		"assets/img/events/tmp/" . $new_name . '.jpg' // Bodo amat, pokoknya ganti jadi jpg semua!
         	);
+
+        	$returns = [
+        		'full_path' => 'assets/img/events/tmp/'.$new_name . '.jpg',
+        		'file_name' =>  $new_name . '.jpg',
+        	];
+        	return $returns;
         }
-        return $new_name . '.jpg' . "?" . time();
 	}
 
 	// DATATABLES

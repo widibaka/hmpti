@@ -32,13 +32,13 @@
               <p>
                 <?php if ( $pendaftar->num_rows() > 0 ): // check, kalau terdaftar, boleh kasih ulasan ?>
                   <?php if ( $pendaftar->row_array()['status']=='Unset' && !empty($pendaftar->row_array()['bintang']) ): ?>
-                      <a class="btn btn-success" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Sdg Diproses...</a>
+                      <a class="btn btn-warning" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Sdg Diproses...</a>
                     <?php elseif( $pendaftar->row_array()['status']=='Unset' ): ?>
                       <a class="btn btn-success <?php echo 'glow' ?>" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review</a>
                     <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
-                      <a class="btn btn-success <?php echo 'disabled' ?>" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Valid</a>
+                      <a class="btn btn-success" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Valid</a>
                     <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
-                      <a class="btn btn-danger <?php echo 'disabled' ?>" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Invalid</a>
+                      <a class="btn btn-danger" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Invalid</a>
                   <?php endif ?>
                 <?php endif ?>
 

@@ -327,7 +327,7 @@ class P extends CI_Controller {
 		}else{
 			$data['status'] = false;
 		}
-		$data['pendaftar'] = $this->Model_pendaftar->pendaftar_event($id_event)->num_rows();;
+		$data['jum_pendaftar'] = $this->Model_pendaftar->pendaftar_event($id_event)->num_rows();;
 		$this->load->view( "end_user/home_page_detail_event", $data );
 	}
 }

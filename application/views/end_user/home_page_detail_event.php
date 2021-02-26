@@ -30,10 +30,27 @@
     <?php elseif ( $status == true ): ?>
       <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-success mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini</a>
     <?php endif ?>
+
+    <?php if ( $status != true ): ?>
+      <br>
+      <?php $pendaftar = $this->Model_pendaftar->check_exists( $email, $id_event ); //gak mau ribet wkwkwk ?>
+      <?php if ( $pendaftar->num_rows() > 0 ): // check, kalau terdaftar, boleh kasih ulasan ?>
+        <?php if ( $pendaftar->row_array()['status']=='Unset' && !empty($pendaftar->row_array()['bintang']) ): ?>
+            <a class="btn btn-warning" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Sdg Diproses...</a>
+          <?php elseif( $pendaftar->row_array()['status']=='Unset' ): ?>
+            <a class="btn btn-success <?php echo 'glow' ?>" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review</a>
+          <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
+            <a class="btn btn-success" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Valid</a>
+          <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
+            <a class="btn btn-danger" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Invalid</a>
+        <?php endif ?>
+      <?php endif ?>
+    <?php endif ?>
+
     <br>
     <p id="event_jadwal">Pelaksanaan: <strong><?php echo date( "d M Y, H:m", $jadwal ) . " WIB" ?></strong></p>
     <p id="event_status">Status pendaftaran: <strong><?php echo $spendaf ?></strong></p>
-    <p id="event_status">Jumlah pendaftar: <strong class="text-success"><?php echo $pendaftar ?></strong></p>
+    <p id="event_status">Jumlah pendaftar: <strong class="text-success"><?php echo $jum_pendaftar ?></strong></p>
     <p id="event_status">Batas jumlah pendaftar:  <?php if ( $limit_pendaftar != 0 ): ?>
                                                     <strong class="text-danger"><?php echo $limit_pendaftar ?></strong>
                                                     <?php else: ?>

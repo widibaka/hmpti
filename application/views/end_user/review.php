@@ -57,7 +57,23 @@
 			    		</div>
 
 			    	</div>
-			    	<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+
+
+			    	<?php 
+			    	$email = $this->session->userdata('email');
+			    	$pendaftar = $this->Model_pendaftar->check_exists( $email, $id_event ); //gak mau ribet wkwkwk ?>
+			    	<?php if ( $pendaftar->num_rows() > 0 ): // check, kalau terdaftar, boleh kasih ulasan ?>
+			    	    <?php if( $pendaftar->row_array()['status']=='Unset' ): ?>
+			    	      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+			    	    <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
+			    	      Review Valid dan Dikunci
+			    	    <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
+			    	      Review Invalid dan Dikunci
+			    	  <?php endif ?>
+			    	<?php endif ?>
+
+
+			    	
 		    		<a href="<?php echo base_url() ?>" class="btn btn-danger btn-lg">Kembali ke Home</a>
 			    </form>
 

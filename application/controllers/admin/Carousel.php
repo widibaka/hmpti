@@ -94,11 +94,11 @@ class Carousel extends CI_Controller {
 
 	public function do_upload($name)
 	{
-        $config['upload_path']          = './assets/img/carousel';
-        $config['allowed_types']        = 'gif|jpg|jpeg|png';
-        $config['max_size']             = 800;
-        $config['max_width']            = 1600;
-        $config['max_height']           = 800;
+        $config['upload_path']          = './assets/img/carousel/tmp/';
+        $config['allowed_types']        = 'jpg|jpeg|png';
+        $config['max_size']             = 2100;
+        $config['max_width']            = 3300;
+        $config['max_height']           = 3300;
         $config['file_name']           = $name;
         $config['overwrite']           = true;
 
@@ -113,6 +113,15 @@ class Carousel extends CI_Controller {
             }
         }
         else{
+        	// mengecilkan ukuran foto
+        	$this->load->model('ResizeImage');
+        	$this->ResizeImage->dir( 'assets/img/carousel/tmp/' . $this->upload->data('file_name') );
+        	$this->ResizeImage->resizeTo(1400, 1400, 'maxwidth');
+        	$this->ResizeImage->saveImage('assets/img/carousel/' . $this->upload->data('file_name'));
+
+        	$this->load->helper('file');
+        	unlink( 'assets/img/carousel/tmp/' . $this->upload->data('file_name') ); // delete temporary file
+
         	return $this->upload->data('file_name');
         }
 	}

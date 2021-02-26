@@ -29,11 +29,5 @@
               </p>  
             </div>
           <?php endif ?>
-          
-          <div class="col-12 mt-4">
-            <p class="text-center">
-              <a class="btn btn-outline-secondary" href="#" role="button">See more</a>
-            </p>
-          </div> <!-- /load more -->
         </div><!-- /.row -->
       </div><!-- /.container -->
