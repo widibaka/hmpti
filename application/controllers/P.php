@@ -108,6 +108,7 @@ class P extends CI_Controller {
 				[
 					'Yulidar Ivan Maulana Putra',
 					'Risma Adisty Nilasari',
+					'Yahya Aliya Rohim',
 				],
 			],
 			// 1 => 
