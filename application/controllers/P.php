@@ -103,10 +103,11 @@ class P extends CI_Controller {
 			[
 				'judul' => 'Project Website HMP TI',
 				'tahun' => '2021',
-				'leader' => "Widi Dwi Nurcahyo",
+				'leader' => "Widi Dwi Nurcahyo (KorekSoft)",
 				'members' => 
 				[
-					'Widi Dwi Nurcahyo (KorekSoft)',
+					'Yulidar Ivan Maulana Putra',
+					'Risma Adisty Nilasari',
 				],
 			],
 			// 1 => 
@@ -243,17 +244,26 @@ class P extends CI_Controller {
 		}
 			
 
-		$this->title = 'Mendaftar Event';
+		$this->title = 'Ulas Event';
 
 		$email = $this->session->userdata('email');
 		$data['get_pendaftar'] = $this->Model_pendaftar->check_exists( $email, $id_event );
 
 		$data['id_event'] = $id_event;
 		$data['event'] = $this->Model_event->get_single($id_event)->row_array();
-		$this->load->view('end_user/templates/header', $data);
-		$this->load->view('end_user/review', $data);
-		$this->load->view('end_user/templates/footer', $data);
-		$this->load->view('end_user/review_js', $data);
+
+		if ( $data['event']['jadwal'] - time() > 0 ) { // Kalau event nya belum terlewat/selesai
+			// mental ke home page
+			$this->session->set_flashdata("msg", "error#Maaf, event belum selesai, belum saatnya untuk mengulas.");
+			redirect( base_url() );	
+		}else{
+			$this->load->view('end_user/templates/header', $data);
+			$this->load->view('end_user/review', $data);
+			$this->load->view('end_user/templates/footer', $data);
+			$this->load->view('end_user/review_js', $data);
+		}
+
+		
 	}
 	public function upload_multiple($data)
 	{

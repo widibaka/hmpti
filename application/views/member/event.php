@@ -22,6 +22,7 @@
                 <th>Update Terakhir</th>
                 <th>Limit Pendaftar</th>
                 <th>Control</th>
+                <th>Link Absensi/Presensi</th>
               </tr>
               </thead>
               <tbody>
@@ -39,6 +40,7 @@
                 <th>Update Terakhir</th>
                 <th>Limit Pendaftar</th>
                 <th>Control</th>
+                <th>Link Absensi/Presensi</th>
               </tr>
               </tfoot>
             </table>

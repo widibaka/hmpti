@@ -97,6 +97,8 @@ class Model_event extends CI_model {
         foreach ($wildcard as $key => $val) {
             $this->db->like( "judul", $val );
         }
+
+        $this->db->where( 'publish', 1 );
         return $this->db->get($this->table);
     }
 	public function get_upcoming()

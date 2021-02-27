@@ -305,6 +305,7 @@ class Event extends CI_Controller {
 		  		                      <a href="'.base_url().'admin/pendaftar/index/'.$field->id_event.'" type="button" class="btn btn-warning"><i class="fas fa-user-alt"></i> ('. $this->Model_pendaftar->pendaftar_event( $field->id_event )->num_rows() .')</a>
 		  		                </div>';
 		        $row[] = $ctrl;
+		        $row[] = base_url() . 'p/review/' . $field->id_event;
 
 		
 		        $data[] = $row;
