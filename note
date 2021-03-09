@@ -1,0 +1,58 @@
+UNTUK PROJECT INI, SAYA MINTA 
+- SUB DOMAIN UDB UNTUK HMPTI
+- SSL (Ini wajib, karena login google harus pakai SSL)
+- FTP ACCOUNT & PASSWORD
+- DATABASE HOSTNAME, USER, DAN PASSWORD
+
+
+
+Di tiap event ada event organizer nya siapa aja
+
+Create dan Edit event buat halaman baru, jangan modal box
+
+event pakai datatables serverside
+
+limit pendaftar
+daftar ke event, kalo belum login, suruh login dulu.
+setelah login, balik lagi ke halaman home.
+
+Buat login guest. Session guest if isset, mental ke halaman depan
+
+LOG Login
+
+Hasil pendaftar
+Hasil pendaftaran & Export to excel
+
+Pendaftar, 
+bukti kehadiran , pembayaran:: shrink image file :: filename bukti-id_event-id_pendaftar
+dan ulasan::baru bisa diulas kalau sudah selesai 
+
+Tambah status pendaftar, valid atau invalid:: export hasil yang valid
+
+Lengkapi VALIDASI
+
+Saran read more
+
+Pencarian
+
+Size image :
+Carousel max 1400 width
+Poster max 700 width
+Thumbnail stretch 375 x 200 width
+
+
+
+
+TUKU SUSU KUCING!
+
+
+
+Ada yang tanya, kalau anggota HMP jadi peserta boleh enggak? Boleh. Tidak dilarang, dan sistemnya juga enggak ngelarang.
+
+
+==========================================
+Keaktifan menjadi panitia event
+
+Subscribe hmpti agar dapat notifikasi melalui email kalau ada event - develop cron job
+
+CRUD sosmed HMPTI
