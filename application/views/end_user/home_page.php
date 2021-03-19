@@ -1,4 +1,8 @@
-
+<style type="text/css">
+  .carousel-caption{
+    color: #292929;
+  }
+</style>
       <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         
         <ol class="carousel-indicators">
@@ -15,7 +19,7 @@
               <div class="carousel-caption text-<?php echo $car['posisi'] ?>">
                 <?php if ( $car['include_logo'] == 1 ): ?>
                   <p>
-                    <img width="145" src="assets/img/<?php echo $this->website['image'] ?>">
+                    <img width="180" src="assets/img/<?php echo $this->website['image'] ?>">
                   </p>
                 <?php endif ?>
                 <h1><?php echo $car['judul'] ?></h1>
