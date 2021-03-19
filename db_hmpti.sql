@@ -21,11 +21,13 @@ CREATE TABLE IF NOT EXISTS `h_carousel` (
   `image` varchar(100) DEFAULT '',
   `posisi` varchar(50) DEFAULT '',
   PRIMARY KEY (`id_carousel`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_hmpti.h_carousel: ~0 rows (approximately)
+-- Dumping data for table db_hmpti.h_carousel: ~1 rows (approximately)
 DELETE FROM `h_carousel`;
 /*!40000 ALTER TABLE `h_carousel` DISABLE KEYS */;
+INSERT INTO `h_carousel` (`id_carousel`, `include_logo`, `judul`, `paragraf`, `image`, `posisi`) VALUES
+	(18, 1, 'HMPTI', 'Himpunan Mahasiswa Prodi Teknik Informatika Universitas Duta Bangsa Surakarta', '1616041720.png', 'middle');
 /*!40000 ALTER TABLE `h_carousel` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_detail_organisasi
@@ -45,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `h_detail_organisasi` (
 DELETE FROM `h_detail_organisasi`;
 /*!40000 ALTER TABLE `h_detail_organisasi` DISABLE KEYS */;
 INSERT INTO `h_detail_organisasi` (`id`, `tentang_kami`, `visi`, `misi`, `navbar_bg`, `navbar_text`, `image`) VALUES
-	(1, 'HMP TI adalah satu organisasi yang Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Visi HMP TI adalah Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Mengemban misi yaitu Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', '#333333', '#EDEDED', 'logo.png?1614386160');
+	(1, 'HMP TI adalah satu organisasi yang Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Visi HMP TI adalah Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', 'Mengemban misi yaitu Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.', '#7F2EB9', '#F1F1F1', 'logo.png?1614386160');
 /*!40000 ALTER TABLE `h_detail_organisasi` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_divisi
@@ -133,13 +135,11 @@ CREATE TABLE IF NOT EXISTS `h_member_login_log` (
   `email` varchar(255) NOT NULL DEFAULT '0',
   `time` int(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_hmpti.h_member_login_log: ~1 rows (approximately)
+-- Dumping data for table db_hmpti.h_member_login_log: ~0 rows (approximately)
 DELETE FROM `h_member_login_log`;
 /*!40000 ALTER TABLE `h_member_login_log` DISABLE KEYS */;
-INSERT INTO `h_member_login_log` (`id`, `email`, `time`) VALUES
-	(28, 'widi_dwi@fikom.udb.ac.id', 1614385460);
 /*!40000 ALTER TABLE `h_member_login_log` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_panitia
@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `h_pendaftar` (
   `saran` varchar(500) DEFAULT '',
   `status` char(16) DEFAULT 'Unset',
   PRIMARY KEY (`id_pendaftar`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table db_hmpti.h_pendaftar: ~0 rows (approximately)
 DELETE FROM `h_pendaftar`;

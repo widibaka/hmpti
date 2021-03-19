@@ -109,6 +109,7 @@ class P extends CI_Controller {
 					'Yulidar Ivan Maulana Putra',
 					'Risma Adisty Nilasari',
 					'Yahya Aliya Rohim',
+					'Rekan-rekan Divisi Media Informasi',
 				],
 			],
 			// 1 => 

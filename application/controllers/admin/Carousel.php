@@ -97,7 +97,7 @@ class Carousel extends CI_Controller {
         $config['upload_path']          = './assets/img/carousel/tmp/';
         $config['allowed_types']        = 'jpg|jpeg|png';
         $config['max_size']             = 2100;
-        $config['max_width']            = 3300;
+        $config['max_width']            = 8300;
         $config['max_height']           = 3300;
         $config['file_name']           = $name;
         $config['overwrite']           = true;
