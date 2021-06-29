@@ -24,11 +24,12 @@
 		        <?php foreach ($kontak as $key => $k): ?>
 		        	<p class="lead"><?php echo $k ?></p>
 		        <?php endforeach ?>
+		        <p class="lead">Kelas: <?php echo $kelas ?></p>
 		        <p class="lead"><?php echo $deskripsi ?></p>
 		      </div>
 		      <div class="col-md-5">
 		      	<div class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-3 overflow-hidden" style="
-		      			width: 500px; 
+		      			width: 500px;
 		      			height: 500px; 
 		      			background: url('<?php echo base_url() . "assets/img/members/" . $image ?>');
 		      			background-size: cover;

@@ -12,7 +12,7 @@ class Model_member extends CI_model {
 	public function get_all_and_join()
 	{
 		$this->db->select(
-			'h_member.nim, h_member.nama, h_member.email, h_member.id_jabatan, h_member.kontak, h_member.deskripsi, h_member.image, h_divisi.id_divisi, h_divisi.nama_divisi, h_jabatan.id_jabatan, h_jabatan.nama_jabatan'
+			'h_member.nim, h_member.nama, h_member.kelas, h_member.email, h_member.id_jabatan, h_member.kontak, h_member.deskripsi, h_member.image, h_divisi.id_divisi, h_divisi.nama_divisi, h_jabatan.id_jabatan, h_jabatan.nama_jabatan'
 		);
 
 		$this->db->where('aktif', 1); // cuma ambil yang aktif
@@ -57,10 +57,10 @@ class Model_member extends CI_model {
 		$this->db->where('email', $email);
 		return $this->db->get($this->table)->row_array();
 	}
-	public function set_member_log($email)
+	public function set_member_log($name)
 	{
 		$data = [
-			'email' => $email,
+			'nama' => $name,
 			'time' => time(),
 		];
 		$this->db->insert('h_member_login_log', $data);

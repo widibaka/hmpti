@@ -13,7 +13,7 @@
               <thead>
               <tr>
                 <th>No.</th>
-                <th>Email</th>
+                <th>Nama</th>
                 <th>Time</th>
               </tr>
               </thead>
@@ -23,7 +23,7 @@
               <tfoot>
               <tr>
                 <th>No.</th>
-                <th>Email</th>
+                <th>Nama</th>
                 <th>Time</th>
               </tr>
               </tfoot>

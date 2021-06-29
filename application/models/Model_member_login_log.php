@@ -7,8 +7,8 @@ class Model_member_login_log extends CI_model {
 
 // Start DATATABLE SERVER-SIDED
     
-    var $column_order = array('id','email', 'time'); //field yang ada di table
-    var $column_search = array('id','email'); //field yang diizin untuk pencarian 
+    var $column_order = array('id','nama', 'time'); //field yang ada di table
+    var $column_search = array('id','nama'); //field yang diizin untuk pencarian 
     var $order = array('id' => 'desc'); // default order ... Diurutkan berdasarkan waktu terbaru
     
     private function _get_datatables_query()

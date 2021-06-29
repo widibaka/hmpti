@@ -44,7 +44,7 @@ class Login_log extends CI_Controller {
 		      
 		        $row = array();
 	            $row[] = $field->id;
-		        $row[] = $field->email;
+		        $row[] = $field->nama;
 		        $row[] = date( "d M Y, H:m", $field->time );
 
 		

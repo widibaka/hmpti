@@ -36,6 +36,7 @@ class P extends CI_Controller {
 		$this->load->view('end_user/home_page', $data);
 		$this->load->view('end_user/home_page_upcoming', $data);
 		$this->load->view('end_user/home_page_history', $data);
+		$this->load->view('end_user/home_page_divisi', $data);
 		$this->load->view('end_user/templates/footer', $data);
 		$this->load->view('end_user/home_page_js', $data);
 	}

@@ -12,6 +12,7 @@
   function edit_prepare(nim) {
     let nama = $("#nama-"+nim).html();
     let email = $("#email-"+nim).html();
+    let kelas = $("#kelas-"+nim).html();
     let id_jabatan = $("#id_jabatan-"+nim).html();
     let kontak = $("#kontak-"+nim).html();
     let deskripsi = $("#deskripsi-"+nim).html();
@@ -20,6 +21,7 @@
     $("#edit_nim").val(nim);
     $("#edit_nama").val(nama);
     $("#edit_email").val(email);
+    $("#edit_kelas").val(kelas);
     $("#edit_preview").attr("src", image);
     $("#edit_kontak").val(kontak);
     $("#edit_deskripsi").val(deskripsi);

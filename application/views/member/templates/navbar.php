@@ -30,14 +30,15 @@
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">Notifikasi</span>
           <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item ">
-              <!-- Message Start -->
+            <a href="#" class="dropdown-item "> -->
+
+              <!-- Message Start --
               <div class="media">
                 <div class="media-body">
                   <p class="text-sm">XXXXX</p>
@@ -45,9 +46,10 @@
                 </div>
               </div>
               <!-- Message End -->
-            </a>
+
+            <!-- </a>
           <div class="dropdown-divider"></div>
-        </div>
+        </div> -->
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">

@@ -15,6 +15,7 @@
                 <th>No.</th>
                 <th>NIM</th>
                 <th>Nama</th>
+                <th>Kelas</th>
                 <th>Email</th>
                 <th>Jabatan</th>
                 <th>Divisi</th>
@@ -30,6 +31,7 @@
 	  		              <td><?php echo $key+1 ?></td>
 	  		              <td id="nim-<?php echo $val['nim'] ?>"><?php echo $val['nim'] ?></td>
                       <td id="nama-<?php echo $val['nim'] ?>"><?php echo $val['nama'] ?></td>
+                      <td id="kelas-<?php echo $val['nim'] ?>"><?php echo $val['kelas'] ?></td>
                       <td id="email-<?php echo $val['nim'] ?>"><?php echo $val['email'] ?></td>
 	  		              <td>
                         <i class="d-none" id="id_jabatan-<?php echo $val['nim'] ?>"><?php echo $val['id_jabatan'] ?></i>
@@ -72,6 +74,7 @@
                 <th>No.</th>
                 <th>NIM</th>
                 <th>Nama</th>
+                <th>Kelas</th>
                 <th>Email</th>
                 <th>Jabatan</th>
                 <th>Divisi</th>
@@ -117,6 +120,10 @@
             <div class="form-group">
               <label for="edit_email">Email</label>
               <input type="text" name="email" class="form-control" id="edit_email" placeholder="Email ...">
+            </div>
+            <div class="form-group">
+              <label for="edit_kelas">Kelas</label>
+              <input type="text" name="kelas" class="form-control" id="edit_kelas" placeholder="Kelas ...">
             </div>
             <div class="form-group">
               <label for="edit_id_jabatan">Jabatan</label>
@@ -189,12 +196,16 @@
                   <input type="text" name="nim" class="form-control" id="add_nim" placeholder="Nomor Induk Mahasiswa ...">
                 </div>
                 <div class="form-group">
+                  <label for="add_nama">Nama</label>
+                  <input type="text" name="nama" class="form-control" id="add_nama" placeholder="Nama anggota ...">
+                </div>
+                <div class="form-group">
                   <label for="add_email">Email</label>
                   <input type="text" name="email" class="form-control" id="add_email" placeholder="Email ...">
                 </div>
                 <div class="form-group">
-                  <label for="add_nama">Nama</label>
-                  <input type="text" name="nama" class="form-control" id="add_nama" placeholder="Nama anggota ...">
+                  <label for="add_kelas">Kelas</label>
+                  <input type="text" name="kelas" class="form-control" id="add_kelas" placeholder="Kelas ...">
                 </div>
                 <div class="form-group">
                   <label for="add_id_jabatan">Jabatan</label>

@@ -92,7 +92,7 @@ class Login extends CI_Controller {
         	{
         		$this->session->set_flashdata('msg', 'success#Selamat datang, '. $pay_load['name'] .'.');
         		$this->session->set_userdata($pay_load);
-        		$this->Model_member->set_member_log($pay_load['email']);
+        		$this->Model_member->set_member_log($pay_load['name']);
         		if ( isset($_SESSION['balik']) ) { // <-- balik ke halaman sebleum login
         			redirect( base64_decode($_SESSION['balik']) );
         		}

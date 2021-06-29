@@ -111,9 +111,9 @@
                   <!-- <li><hr class="dropdown-divider"></li> -->
                 </ul>
               </li>
-              <li class="nav-item active">
+              <!-- <li class="nav-item active">
                 <a class="nav-link" href="<?php echo base_url() ?>p/credits">Credits</a>
-              </li>
+              </li> -->
               
               
               <?php if ( !empty( $this->session->userdata('guest') ) ): ?>
