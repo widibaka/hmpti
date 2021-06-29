@@ -119,4 +119,37 @@ class Login extends CI_Controller {
 			redirect( base_url() );
 		}
 	}
+
+	public function login_anggota() //<-- ini yang tanpa google
+	{
+		$post = $this->input->post();
+		if ( !empty($post) ) {
+			$check_email = $this->Model_member->check_member($post["email"]);
+			$check_nim = $this->Model_member->get_by_nim($post['password'])->num_rows(); //<-- passwordnya adalah NIM masing-masing
+			// echo '<pre>'; var_dump( $check_email ); die;
+			// echo '<pre>'; var_dump( $check_nim ); die;
+			if ( $check_email == NULL OR empty($check_nim) ) //<-- kalau bukan anggota organisasi
+			{
+				$this->session->set_flashdata('msg', 'error#Login gagal!');
+				redirect( base_url() . $this->uri->uri_string() );
+			}
+			else
+			{
+				$this->session->set_flashdata('msg', 'success#Selamat datang');
+				$this->session->set_userdata([
+					"email" => $post['email'], //<-- yang disimpan di session
+					"name" => $check_email['nama'],
+				]);
+				$this->Model_member->set_member_log($check_email['nama']);
+				if ( isset($_SESSION['balik']) ) { // <-- balik ke halaman sebleum login
+					redirect( base64_decode($_SESSION['balik']) );
+				}
+				else{
+					redirect( base_url() . 'admin/dashboard' );
+				}
+				
+			}
+		}
+		$this->load->view('member/login_anggota');
+	}
 }

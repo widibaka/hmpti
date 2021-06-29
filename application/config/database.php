@@ -77,13 +77,13 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	
-	'username' => 'u367944650_18a3',
-	'password' => 'passwordku',
-	'database' => 'u367944650_18a3',
+	// 'username' => 'u367944650_18a3',
+	// 'password' => 'passwordku',
+	// 'database' => 'u367944650_18a3',
 
-	// 'username' => 'root',
-	// 'password' => '',
-	// 'database' => 'db_hmpti',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'db_hmpti',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

@@ -32,16 +32,28 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Login ke sistem HMPTI untuk dapat mendaftar ke event kami</p>
+      <p class="login-box-msg">Login anggota HMPTI</p>
+
+      <form class="form-group" action="" method="post">
+        <input class="form-control mb-2" type="text" name="email" placeholder="Email">
+        <input class="form-control mb-2" type="password" name="password" placeholder="Password">
+        <button class="btn btn-primary" type="submit">Login</button>
+      </form>
+<!-- 
+      <p class="login-box-msg">Atau</p>
 
       <div class="social-auth-links text-center mb-3">
         <a href="<?php echo $auth_url ?>" class="btn btn-block btn-danger">
           <i class="fab fa-google mr-2"></i> Login dengan Google
         </a>
-      </div>
+      </div> -->
       <!-- /.social-auth-links -->
       <p class="mb-0">
-        <i>Login sistem menggunakan akun gmail <br>Atau <br> <a href="<?php echo base_url() . 'login/login_anggota' ?>">login sebagai anggota HMPTI</a></i>
+        <i>Silakan gunakan akun email dari kampus</i>
+      </p>
+      <!-- /.social-auth-links -->
+      <p class="mb-0">
+        <i>Atau kembali ke <a href="<?php echo base_url() . 'login' ?>">login sebagai peserta</a></i>
       </p>
 
     </div>
