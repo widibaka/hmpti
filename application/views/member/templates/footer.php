@@ -148,7 +148,10 @@
       $("a.do_transition").click(function(e) {
         e.preventDefault();
         transition_onleave();
-        window.location.href = $(this).attr("href");
+        this_element = $(this);
+        setInterval(function () {
+          window.location.href = this_element.attr("href");
+        }, 500);
       });
     // LOADER ENDS
 
