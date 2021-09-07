@@ -11,7 +11,53 @@
           <div class="card-body bg-gray-2">
             <form method="post" action="<?php echo base_url() ?>admin/organisasi/edit" id="form"  enctype="multipart/form-data">
 
+              <!-- Card 2 -->
+              <div class="card bg-white">
+                <div class="card-header">Detail Organisasi</div>
+                <div class="card-body">
+                  
+                    <div class="form-group">
+                      <label class="mt-2">Nama Organisasi:</label>
+
+                      <div class="input-group my-colorpicker2">
+                        <input type="text" class="form-control" name="nama_organisasi" value="<?php echo $main_data['nama_organisasi'] ?>">
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <div class="form-group">
+                      <label class="mt-2">Keterangan Organisasi:</label>
+
+                      <div class="input-group my-colorpicker2">
+                        <textarea class="form-control" name="tentang_kami" rows="5"><?php echo $main_data['tentang_kami'] ?></textarea>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <div class="form-group">
+                      <label class="mt-2">Visi:</label>
+
+                      <div class="input-group my-colorpicker2">
+                        <textarea class="form-control" name="visi" rows="5"><?php echo $main_data['visi'] ?></textarea>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <div class="form-group">
+                      <label class="mt-2">Misi:</label>
+
+                      <div class="input-group my-colorpicker2">
+                        <textarea class="form-control" name="misi" rows="5"><?php echo $main_data['misi'] ?></textarea>
+                      </div>
+                      <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                  </form>
+                </div>
+              </div>
               <!-- Card 0 -->
+
+
               <div class="card bg-white">
                 <div class="card-header">Logo</div>
                 <div class="card-body">
@@ -65,42 +111,6 @@
                     <!-- /.input group -->
                   </div>
                   <!-- /.form group -->
-                </div>
-              </div>
-
-              <!-- Card 2 -->
-              <div class="card bg-white">
-                <div class="card-header">Detail Organisasi</div>
-                <div class="card-body">
-                  
-                    <div class="form-group">
-                      <label class="mt-2">Tentang Organisasi:</label>
-
-                      <div class="input-group my-colorpicker2">
-                        <textarea class="form-control" name="tentang_kami" rows="5"><?php echo $main_data['tentang_kami'] ?></textarea>
-                      </div>
-                      <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
-                    <div class="form-group">
-                      <label class="mt-2">Visi:</label>
-
-                      <div class="input-group my-colorpicker2">
-                        <textarea class="form-control" name="visi" rows="5"><?php echo $main_data['visi'] ?></textarea>
-                      </div>
-                      <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
-                    <div class="form-group">
-                      <label class="mt-2">Misi:</label>
-
-                      <div class="input-group my-colorpicker2">
-                        <textarea class="form-control" name="misi" rows="5"><?php echo $main_data['misi'] ?></textarea>
-                      </div>
-                      <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
-                  </form>
                 </div>
               </div>
 

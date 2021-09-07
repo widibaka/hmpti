@@ -55,7 +55,7 @@ $(document).ready(function () {
         required: "Mohon beri kami bintang",
       },
       saran: {
-        required: "Mohon beri kami saran ataupun ulasan",
+        required: "Mohon beri kami saran ataupun ulasan agar kami menjadi lebih baik",
       },
     },
     errorElement: 'span',

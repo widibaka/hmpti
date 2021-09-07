@@ -5,7 +5,7 @@
 <body> 
 	<?php
 	header("Content-type: application/vnd-ms-excel");
-	header("Content-Disposition: attachment; filename=[HMPTI] Data ". $event['judul'] ." - ". $status .".xls");
+	header("Content-Disposition: attachment; filename=[Export] Data ". $event['judul'] ." - ". $status .".xls");
 	?>
  
 	<table border="1">
@@ -13,19 +13,20 @@
 	        <th>No.</th>
 	        <th>Email</th>
 	        <th>Nama</th>
-	        <th>HP</th>
 	        <th>Kehadiran</th>
 	        <th>Pembayaran</th>
 	        <th>Bintang</th>
 	        <th>Saran</th>
 	        <th>Status</th>
+					<?php foreach (json_decode($main_data[0]['data_tambahan'], true) as $key => $val): ?>
+						<th><?php echo $key ?></th>
+					<?php endforeach; ?>
 		</tr>
 		<?php foreach ($main_data as $key => $val): ?>
 			<tr>
 				<td><?php echo $key+1 ?></td>
 				<td><?php echo $val['email'] ?></td>
 				<td><?php echo $val['nama'] ?></td>
-				<td><?php echo $val['hp'] ?></td>
 
 				<?php if ( empty($val['kehadiran']) ): ?>
 					<td style="background-color: red"><?php echo $val['kehadiran'] ?></td>
@@ -48,6 +49,9 @@
 				<?php elseif ( $val['status'] == 'Invalid' ): ?>
 					<td style="background-color: red"><?php echo $val['status'] ?></td>
 				<?php endif ?>
+				<?php foreach (json_decode($main_data[0]['data_tambahan'], true) as $key => $val): ?>
+					<td><?php echo $val ?></td>
+				<?php endforeach; ?>
 				
 			</tr>
 		<?php endforeach ?>

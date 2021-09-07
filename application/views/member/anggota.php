@@ -48,17 +48,18 @@
                         <?php echo substr($val['deskripsi'], 0, 60) ?>...
                       </td>
                       <td>
-                        <span id="image-<?php echo $val['nim'] ?>">
-                          <img width="140" height="140" src="<?php 
-                              $filedir = 'assets/img/members/' . explode("?", $val['image'])[0];
-                              if( file_exists( $filedir ) == true && strpos($val['image'], ".") != false ){
-                                echo base_url() . 'assets/img/members/' . $val['image'];
-                              }
-                              else{
-                                echo base_url() . 'assets/img/no_image.jpg';
-                              }
-                          ?>">
-                        </span>
+                        <?php 
+                            $filedir = 'assets/img/members/' . explode("?", $val['image'])[0];
+                            if( file_exists( $filedir ) == true && strpos($val['image'], ".") != false ){
+                              $photo = base_url() . 'assets/img/members/' . $val['image'];
+                            }
+                            else{
+                              $photo = base_url() . 'assets/img/no_image.jpg';
+                            }
+                        ?>
+                        <a data-fancybox="gallery" href="<?php echo $photo ?>" id="image-<?php echo $val['nim'] ?>">
+                          <img width="140" height="140" src="<?php echo $photo ?>">
+                        </a>
                       </td>
 	  		              <td>
 	  		              	<div class="btn-group">
@@ -135,7 +136,7 @@
             </div>
             <div class="form-group">
               <label>Kontak (opsional)</label>
-              <p><i>Pisahkan kontak dengan koma (,). Contoh <strong>Email: hmpti@gmail.com, Whatsapp: 08XXXXXXXX</strong></i>
+              <p><i>Pisahkan kontak dengan koma (,). Contoh <strong>Email: ormawa@gmail.com, Whatsapp: 08XXXXXXXX</strong></i>
               <textarea class="form-control" name="kontak" id="edit_kontak" rows="4" placeholder="Kontak ..."></textarea></p>
 
             </div>
@@ -218,7 +219,7 @@
                 </div>
                 <div class="form-group">
                   <label>Kontak (opsional)</label>
-                  <p><i>Pisahkan kontak dengan koma (,). Contoh <strong>Email: hmpti@gmail.com, Whatsapp: 08XXXXXXXX</strong></i>
+                  <p><i>Pisahkan kontak dengan koma (,). Contoh <strong>Email: ormawa@gmail.com, Whatsapp: 08XXXXXXXX</strong></i>
                   <textarea class="form-control" name="kontak" id="add_kontak" rows="4" placeholder="Kontak ..."></textarea></p>
 
                 </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HMP TI - Login Anggota</title>
+  <title>Login Anggota</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,12 +27,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?php echo base_url() ?>"><b>HMP</b>TI UDB</a>
+    <a href="<?php echo base_url() ?>">Home</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Login ke sistem HMPTI untuk dapat mendaftar ke event kami</p>
+      <p class="login-box-msg">Login ke sistem untuk dapat mendaftar ke event kami</p>
 
       <div class="social-auth-links text-center mb-3">
         <a href="<?php echo $auth_url ?>" class="btn btn-block btn-danger">
@@ -41,7 +41,7 @@
       </div>
       <!-- /.social-auth-links -->
       <p class="mb-0">
-        <i>Login sistem menggunakan akun gmail <br>Atau <br> <a href="<?php echo base_url() . 'login/login_anggota' ?>">login sebagai anggota HMPTI</a></i>
+        <i>Login sistem menggunakan akun gmail <br>Atau <br> <a href="<?php echo base_url() . 'login/login_anggota' ?>">login sebagai anggota ormawa</a></i>
       </p>
 
     </div>

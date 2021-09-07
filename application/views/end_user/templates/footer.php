@@ -3,10 +3,8 @@
       <!-- FOOTER -->
       <footer class="container">
         <a href="#" class="to_top"><i class="fa fa-arrow-circle-up"></i></a>
-        <p>HMP Teknik Informatika Universitas Duta Bangsa 2021 <?php 
-          if ( date("Y") > "2021" ) {
-            echo "- ".date("Y");
-          }
+        <p><?= $this->website['nama_organisasi']; ?> <?php 
+          echo date("Y");
         ?></p>
         <!-- .widibaka was here -->
       </footer>

@@ -83,6 +83,13 @@ class Model_event extends CI_model {
         $this->db->order_by( "jadwal", "DESC" );
         return $this->db->get($this->table);
     }
+    public function get_10_event_terakhir()
+    {
+        $this->db->select( "id_event, judul" );
+        $this->db->order_by( "jadwal", "DESC" );
+        $this->db->limit( 10 );
+        return $this->db->get($this->table);
+    }
 
     public function search($wildcard)
     {

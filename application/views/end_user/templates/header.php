@@ -9,12 +9,12 @@
     <meta property="og:image" content="<?= base_url('assets/img/') . $this->website['image']; ?>" />
 
     <meta property="og:type" content="organization" />
-    <meta property="og:title" content="HMP TI UDB" />
-    <meta property="og:description" content="Himpunan Mahasiswa TI Universitas Duta Bangsa">
+    <meta property="og:title" content="<?= $this->website['nama_organisasi']; ?>" />
+    <meta property="og:description" content="<?= $this->website['tentang_kami']; ?>">
     <meta property="og:url" content="<?= base_url() ?>" />
-    <meta property="og:site_name" content="HMP TI UDB" />
+    <meta property="og:site_name" content="<?= $this->website['nama_organisasi']; ?>" />
 
-    <title>HMP TI UDB <?php echo "- " . $this->title ?></title>
+    <title><?= $this->website['nama_organisasi']; ?> <?php echo "- " . $this->title ?></title>
 
     <link rel="canonical" href="<?php echo base_url() ?>">
 

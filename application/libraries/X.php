@@ -14,4 +14,5 @@ class X {
 			redirect( base_url() );
 		}
 	}
+	
 }

@@ -20,6 +20,7 @@ class P extends CI_Controller {
 		$this->load->model("Model_event");
 		$this->load->model("Model_panitia");
 		$this->load->model("Model_pendaftar");
+		$this->load->model("Model_sertifikat");
 
 		$this->all_divisi = $this->Model_divisi->get()->result_array();
 		$this->website = $this->Model_detail_organisasi->get()->row_array();
@@ -151,7 +152,6 @@ class P extends CI_Controller {
 		// kalau user setuju, maka daftarkan
 		if ( !empty($_POST['konfirmasi']) && $_POST['konfirmasi'] == 'yes' ) {
 
-
 			// cek apakah sudah penuh kuotanya
 			if ( $e['limit_pendaftar'] != 0  ) { // <-- hanya ketika ada kuota peserta saja
 				$jum_pendaftar = $this->Model_pendaftar->pendaftar_event($id_event)->num_rows();
@@ -161,7 +161,19 @@ class P extends CI_Controller {
 				}
 			}
 
-			$stat_daftar = $this->Model_pendaftar->add( $this->session->userdata('email'), $this->input->post('nama', true), $id_event );
+			// menentukan data tambahan nya mana saja. semua data post, kecuali nama
+			$data_tambahan = $this->input->post();
+			unset($data_tambahan['nama']);
+			unset($data_tambahan['konfirmasi']);
+			$data_tambahan = json_encode($data_tambahan); // dibikin jadi string
+
+			// lalu semua data yang diperlukan dimasukin ke database
+			$stat_daftar = $this->Model_pendaftar->add(
+					$this->session->userdata('email'), 
+					$this->input->post('nama', true), 
+					$id_event,
+					$data_tambahan
+			);
 			if ( $stat_daftar == 'sudah daftar' ) {
 				$isi_msg = [
 					"warning#Daftar berkali-kali juga boleh. Tapi cuma dihitung satu.",
@@ -323,6 +335,15 @@ class P extends CI_Controller {
         	];
         	return $returns;
         }
+	}
+
+	public function download_sertifikat($id_event)
+	{
+		$this->load->library('F_pdf');
+		$data['pendaftar'] = $this->Model_pendaftar->check_exists( $this->session->userdata('email'), $id_event )->row_array();
+		$data['event'] = $this->Model_event->get_single($id_event)->row_array();
+		$data['sertifikat'] = $this->Model_sertifikat->get_data_sertifikat($id_event)->row_array();
+		$this->load->view('end_user/download_sertifikat', $data);
 	}
 
 

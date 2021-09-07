@@ -80,10 +80,11 @@ class Model_member extends CI_model {
 		$wildcard = explode(' ', $wildcard);
 
 		$this->db->select( "nim, nama" );
+		$this->db->where( "aktif", 1 );
 
 		$this->db->limit( 100 );
 
-		$this->db->order_by( "nim", "DESC" );
+		$this->db->order_by( "nama", "ASC" );
 		foreach ($wildcard as $key => $val) {
 		    $this->db->like( "nama", $val );
 		}

@@ -26,12 +26,32 @@
 			    		?>
 			    		<input required="" class="form-control" <?php echo $disabled ?> name="nama" placeholder="Nama asli ..." value="<?php 
 			    			echo ( $get_pendaftar->num_rows() > 0 ) ? $get_pendaftar->row_array()['nama'] : $this->session->userdata('name') ?>">
+			    		<p>Mohon beritahu kami nama asli Anda yang sebenar-benarnya <br>	agar kami dapat mencetak sertifikat untuk Anda di akhir event.</p>
 
-			    		<strong>Nomor HP / Whatsapp (opsional):</strong>
-			    		<input <?php echo $disabled ?> type="text" class="form-control" name="hp" placeholder="No. HP ..."  value="<?php 
-			    			echo ( !empty($get_pendaftar->row_array()['hp']) ) ? $get_pendaftar->row_array()['hp'] : '' ?>">
 
-			    		<label class="h6">Mohon beritahu kami nama asli Anda yang sebenar-benarnya agar kami dapat mencetak sertifikat untuk Anda di akhir event. <br><span class="text-danger">(Hati-hati! Hanya dapat diinputkan sekali di setiap event)</span></label>
+
+
+
+							<?php 
+							  // ini gunanya biar bisa dipanggil di bawah sana nanti
+								if ( !empty($get_pendaftar->row_array()['data_tambahan']) ) {
+									$data_tambahan = json_decode($get_pendaftar->row_array()['data_tambahan'], true);
+									$data_tambahan_baru = [];
+									foreach ($data_tambahan as $key => $value) {
+										$data_tambahan_baru[str_replace('_', '', $key)] = $value;
+									}
+								}
+									
+							?>
+
+			    		<?php foreach( array_filter(explode( ',', $event['data_tambahan']) )as $key => $val): ?>
+								<?php echo str_replace(' ', '', $val) ?>
+								<strong><?php echo $val ?>:</strong>
+			    			<input type="text" class="form-control mb-3" <?php echo $disabled ?> name="<?php echo $val ?>" placeholder="" required value="<?php 
+			    			echo ( !empty( $data_tambahan_baru[ str_replace(' ', '', $val) ] ) ) ? $data_tambahan_baru[ str_replace(' ', '', $val) ] : '' ?>">
+			    		<?php endforeach ?>
+
+							<label><span class="text-danger fw-700">(Hati-hati! Form ini hanya dapat diisi satu kali)</span></label>
 			    	</div>
 			    	<button type="submit" class="btn btn-primary btn-lg">Setuju & Submit</button>
 		    		<a href="<?php echo base_url() ?>" class="btn btn-danger btn-lg">Kembali ke Home</a>

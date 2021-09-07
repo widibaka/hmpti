@@ -56,8 +56,25 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/plugins/CSSRulePlugin.min.js'></script>
 <!-- SweetAlert2 -->
 <script src="<?= base_url() ?>assets/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Fancybox -->
+<script src="<?= base_url() ?>assets/plugin_baru/fancybox/dist/jquery.fancybox.min.js"></script>
 
 <script type="text/javascript">
+  // Fancybox Options
+  $('[data-fancybox="gallery"]').fancybox({
+    buttons: [
+        "zoom",
+        //"share",
+        // "slideShow",
+        // "fullScreen",
+        // "download",
+        // "thumbs",
+        "close"
+    ],
+    animationEffect: "fade",
+  });
+
+
   function submit_form(form_id) {
     // transition_onleave(); <-- function ini berbahaya. Menghilangkan validate
     $(form_id).submit();

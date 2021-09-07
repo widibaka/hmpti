@@ -47,6 +47,15 @@ class Event extends CI_Controller {
 			$data['subtitle'] = "Add Event";
 		}
 
+		if ( !empty($data['main_data']['sertifikat']) ) {
+			$this->load->model('Model_sertifikat');
+			$data['sertifikat'] = $this->Model_sertifikat->get_data_sertifikat( $id_event )->row_array();
+      // posisi x dan y dikali 4, enam adalah hasil proyeksi yang saya hitung tadi pake kalkulator
+      $data['sertifikat']['posisi_x'] *= 4;
+      $data['sertifikat']['posisi_y'] *= 4;
+    }
+    $data['id_event'] = $id_event;
+
 		$data['members'] = $this->Model_member->get_all()->result_array();
 		$data['panitia'] = $this->Model_panitia->get_by_id_event($id_event)->result_array();
 		$this->load->view('member/templates/header', $data);
@@ -111,9 +120,10 @@ class Event extends CI_Controller {
 		$post['last_update'] = time();
 
 
+
 		$this->Model_event->edit( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil diubah.");
-		redirect(base_url() . "admin/event/");
+		redirect(base_url() . "admin/event/editor/" . $post['id_event']);
 	}
 	public function add()
 	{
@@ -171,8 +181,8 @@ class Event extends CI_Controller {
 
 
 		$this->Model_event->add( $post );
-		$this->session->set_flashdata("msg", "success#Data berhasil ditambah.");
-		redirect(base_url() . "admin/event/");
+		$this->session->set_flashdata("msg", "success#Data berhasil ditambah. Silakan lengkapi data lanjutan, atau abaikan saja.");
+		redirect(base_url() . "admin/event/editor/" . $post['id_event'] . '#section_sertifikat');
 	}
 
 	public function add_panitia()
@@ -251,16 +261,92 @@ class Event extends CI_Controller {
         	//renaming
         	rename(
         		"assets/img/events/tmp/" . $this->upload->data('file_name'), 
-        		"assets/img/events/tmp/" . $new_name . '.jpg' // Bodo amat, pokoknya ganti jadi jpg semua!
+        		"assets/img/events/tmp/" . $new_name . $this->upload->data('file_ext')
         	);
 
         	$returns = [
-        		'full_path' => 'assets/img/events/tmp/'.$new_name . '.jpg',
-        		'file_name' =>  $new_name . '.jpg',
+        		'full_path' => 'assets/img/events/tmp/'.$new_name . $this->upload->data('file_ext'),
+        		'file_name' =>  $new_name . $this->upload->data('file_ext'),
         	];
         	return $returns;
         }
 	}
+
+	public function upload_sertifikat($id_event = null)
+	{
+		if (isset($_FILES['image_sertifikat'])) { 
+      // upload gambar
+      $gambar = $this->do_upload('image_sertifikat', 'sertifikat-'.$id_event, $id_event); // (input_name, path, filename_untuk_rename ) ;; outputnya status dan data
+
+      $refresher = '?' . time(); // $refresher ini tugasnya untuk membuat link baru, jadi browser enggak buka gambar hasil cached
+
+
+      if ( !empty($gambar['full_path']) ) { // kalau berhasil upload, simpan data ke db
+        
+        /*
+        *
+        * START sertifikat akan di-resize exact 2248 x 1590
+        *
+        */
+        
+        // mengecilkan ukuran foto
+        $path_berkas = $gambar['full_path']; // menentukan tempat berkas sertifikat
+
+        $this->load->model('ResizeImage');
+        $this->ResizeImage->dir( $path_berkas );
+        $this->ResizeImage->resizeTo(2248, 1590, 'exact');
+        $this->ResizeImage->saveImage('assets/img/events/' . $gambar['file_name']);
+
+        // update data tinggi dan lebar
+        $gambar['image_width'] = 2248;
+        $gambar['image_height'] = 1590;
+
+        /*
+        *
+        * END resize exact 2248 x 1590
+        *
+        */
+
+				// hapus temporary file
+				unlink($gambar['full_path']);
+
+				// update ke tabel h_event
+				$data = [
+					'id_event' => $id_event,
+					'sertifikat' => $gambar['file_name'] . $refresher
+				];
+				$this->Model_event->edit($data);
+        
+				// Update tabel sertifikat
+				$this->load->model('Model_sertifikat');
+        $masukin_ke_db = $this->Model_sertifikat->set_data_sertifikat(0, 0, $id_event, $gambar['image_height'], $gambar['image_width']);
+        if ($masukin_ke_db != false) {
+          $this->session->set_flashdata('msg', 'success#Upload sertifikat berhasil. Silakan tentukan koordinat untuk meletakkan nama peserta.');
+          redirect( base_url() . 'admin/event/editor/' . $id_event . '#section_sertifikat' ); // kembali ke editor
+        } else {
+          $this->session->set_flashdata('msg', 'success#Upload sertifikat gagal. Mohon coba lagi');
+          redirect( base_url() . 'admin/event/editor/' . $id_event . '#section_sertifikat' ); // kembali ke editor
+        }
+      } else {
+        $this->session->set_flashdata('msg', 'danger#Upload gambar gagal. Silakan coba lagi. ' . $gambar['error']); // tampilkan errornya juga
+        redirect( base_url() . 'admin/event/editor/' . $id_event . '#section_sertifikat' ); // kembali ke editor
+      }
+    }
+	}
+
+	public function sertifikat_set_koordinat($id_event)
+  {
+    if (!empty($this->input->post('posisi_x'))) { // saat submit
+      $x = $this->input->post('posisi_x') /4 ; // dibagi empat. ini berdasarkan hasil proyeksi
+      $y = $this->input->post('posisi_y') /4 ;
+
+			$this->load->model('Model_sertifikat');
+      $this->Model_sertifikat->set_data_sertifikat($x, $y, $id_event, 0, 0); // ubah posisi x dan y
+      $this->session->set_flashdata('msg','success#Koordinat berhasil disimpan.');
+      redirect( base_url( 'admin/event/editor/' . $id_event . '#section_sertifikat' ) ); // refresh halaman
+    }
+
+  }
 
 	// DATATABLES
 		public function get_data(  )
@@ -292,17 +378,17 @@ class Event extends CI_Controller {
 		        $row[] = '<a href="'.base_url() . 'assets/img/events/'.$field->poster.'">'.$field->poster.'</a>';
 		        $row[] = substr( strip_tags($field->deskripsi) , 0, 100) . '...';
 		        		if ($field->publish == 0) {
-		        			$b = '<span class="btn bg-danger">OFF</span>';
+		        			$b = '<span class="btn bg-danger disabled">OFF</span>';
 		        		}else{
-		        			$b = '<span class="btn bg-success">ON</span>';
+		        			$b = '<span class="btn bg-success disabled">ON</span>';
 		        		}
 		        $row[] = $b;
 		        $row[] = $field->author;
 		        $row[] = date( "d M Y, H:m", $field->last_update );
 		        $row[] = $field->limit_pendaftar;
 		        		$ctrl = '<div class="btn-group">
-		  		                      <a href="'.base_url().'admin/event/editor/'.$field->id_event.'" type="button" title="Sunting" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
-		  		                      <a href="'.base_url().'admin/pendaftar/index/'.$field->id_event.'" type="button" class="btn btn-warning"><i class="fas fa-user-alt"></i> ('. $this->Model_pendaftar->pendaftar_event( $field->id_event )->num_rows() .')</a>
+		  		                      <a href="'.base_url().'admin/event/editor/'.$field->id_event.'" type="button" title="Sunting" class="btn btn-info"><i class="fas fa-pencil-alt"></i> Edit</a>
+		  		                      <a href="'.base_url().'admin/pendaftar/index/'.$field->id_event.'" type="button" class="btn btn-warning"><i class="fas fa-user-alt"></i> Pendaftar ('. $this->Model_pendaftar->pendaftar_event( $field->id_event )->num_rows() .')</a>
 		  		                </div>';
 		        $row[] = $ctrl;
 		        $row[] = base_url() . 'p/review/' . $field->id_event;

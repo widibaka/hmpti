@@ -237,3 +237,11 @@ a .link_ke_profil:hover{
     animation: glowing 500ms infinite;
   }
 /* GLOWING ENDS */
+
+
+.hover-shadow {
+  transition: all ease 200ms;
+}
+.hover-shadow:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

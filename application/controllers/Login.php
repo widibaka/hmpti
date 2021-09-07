@@ -34,18 +34,18 @@ class Login extends CI_Controller {
 		    require("assets/google_api/vendor/autoload.php");
 		    //Step 1: Enter you google account credentials
 
-			$jwt = new \Firebase\JWT\JWT;
-			$jwt::$leeway = 5*60; // adjust this value
+				$jwt = new \Firebase\JWT\JWT;
+				$jwt::$leeway = 5*60; // adjust this value
 
-			// we explicitly pass jwt object whose leeway is set to 60
-			$g_client = new \Google_Client(['jwt' => $jwt]);
+				// we explicitly pass jwt object whose leeway is set to 60
+				$g_client = new \Google_Client(['jwt' => $jwt]);
 
 
-			$g_client->setClientId("91581392252-74f54bcmp6jfaj5vs5u3tt4knnuo0err.apps.googleusercontent.com");
-	 		$g_client->setClientSecret("5HRKlfbfMmYVu1Fv3204jNyh");
-	 		$g_client->setRedirectUri( base_url('login') );
-	 		$g_client->addScope("email");
-	 		$g_client->addScope("profile");
+				$g_client->setClientId("91581392252-74f54bcmp6jfaj5vs5u3tt4knnuo0err.apps.googleusercontent.com");
+				$g_client->setClientSecret("5HRKlfbfMmYVu1Fv3204jNyh");
+				$g_client->setRedirectUri( base_url('login') );
+				$g_client->addScope("email");
+				$g_client->addScope("profile");
 
 
 		    //Step 2 : Create the url
@@ -78,9 +78,9 @@ class Login extends CI_Controller {
 		      $pay_load = null;
 		    }
 
-	    //**
-	    // /.Login with Google
-	    //**
+		//**
+		// /.Login with Google
+		//**
 
         if ( !empty($pay_load) ) {
         	$check_email = $this->Model_member->check_member($pay_load["email"]);

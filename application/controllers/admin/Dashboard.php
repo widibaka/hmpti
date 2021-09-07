@@ -16,6 +16,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model("Model_jabatan");
 		$this->load->model("Model_proker");
 		$this->load->model("Model_event");
+		$this->load->model("Model_pendaftar");
 
 		$this->x->harus_login($this->session);
 
@@ -28,9 +29,11 @@ class Dashboard extends CI_Controller {
 		$data['subtitle'] = "";
 
 		// $data['carousel'] = $this->Model_carousel->get()->result_array();
-		// $data['events'] = $this->Model_event->get_upcoming()->result_array();
-		// $data['events_lama'] = $this->Model_event->get_lama()->result_array();
-		
+		$data['events'] = $this->Model_event->get_10_event_terakhir()->result_array();
+		foreach ($data['events'] as $key => $val) {
+			$data['events'][$key]['jumlah_pendaftar'] = $this->Model_pendaftar->jumlah_pendaftar_event($val['id_event']);
+		}
+
 		$this->load->view('member/templates/header', $data);
 		$this->load->view('member/templates/sidebar', $data);
 		$this->load->view('member/templates/navbar', $data);

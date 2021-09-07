@@ -1,8 +1,3 @@
-      <style type="text/css">
-        .hover-shadow: hover{
-          box-shadow: 0 5px 10px grey;
-        }
-      </style>
 
       <div class="container marketing">
 
@@ -14,8 +9,8 @@
           <div class="row d-flex justify-content-center">
             <?php foreach ($this->all_divisi as $key => $divisi): ?>
             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-              <a class="hover-shadow" href="<?php echo base_url() ?>p/divisi/<?php echo $divisi['id_divisi'] ?>" style="text-decoration: none; color: #5a5a5a;">
-                <div class="card mb-4">
+              <a class="" href="<?php echo base_url() ?>p/divisi/<?php echo $divisi['id_divisi'] ?>" style="text-decoration: none; color: #5a5a5a;">
+                <div class="card hover-shadow mb-4">
                   <div class="card-body">
                     <h2><?php echo $divisi['nama_divisi'] ?></h2>
                   </div>

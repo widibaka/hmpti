@@ -6,6 +6,16 @@
 <!-- page script -->
 <script>
 
+  function show_data_tambahan(id_pendaftar) {
+    $.ajax({
+      url: "<?php echo base_url() ?>admin/pendaftar/get_data_tambahan/"+id_pendaftar,
+      success: function(data){
+        $('#modal_konten_data_tambahan').html(data);
+        $('#modal_data_tambahan').modal('show');
+      }
+    })
+  }
+
   function saran_more(saran) {
     $("#saran_full").html(saran);
   }

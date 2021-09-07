@@ -10,18 +10,6 @@
   <link rel="icon" type="image/png" href="<?= base_url('assets/img/') . $this->website['image'] ?>" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=no">
-  <meta name="description" content="Himpunan mahasiswa Teknik Informatika Universitas Duta Bangsa Surakarta">
-  <meta name="author" content="HMP TI">
-  <meta name="language" content="id" />
-  <meta name="geo.country" content="id" />
-  <meta http-equiv="content-language" content="In-Id" />
-  <meta name="geo.placename" content="Indonesia" />
-
-  <meta property="og:type" content="organization" />
-  <meta property="og:title" content="HMP TI" />
-  <meta property="og:description" content="Himpunan mahasiswa Teknik Informatika Universitas Duta Bangsa Surakarta">
-  <meta property="og:url" content="<?= base_url() ?>" />
-  <meta property="og:site_name" content="HMP TI" />
 
   <!-- ICON -->
   <link rel="shortcut icon" href="<?= base_url() ?>assets/img/<?php echo $this->website['image'] ?>"/>
@@ -38,9 +26,19 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Custom css -->
-  <link href="<?php echo base_url() ?>assets/widibaka.css?v3" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/widibaka.css?v4" rel="stylesheet">
+  <!-- Custom css -->
+  <link href="<?= base_url() ?>assets/plugin_baru/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet">
 
   <style type="text/css">
+    /* Tombol next dan previous milik fancybox dihilangkan aja */
+    button[data-fancybox-prev] {
+      display: none;
+    }
+    button[data-fancybox-next] {
+      display: none;
+    }
+    
     @-webkit-keyframes glow {
         to {
         border-left: 5px solid #456dff;

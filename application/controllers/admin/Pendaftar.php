@@ -77,6 +77,20 @@ class Pendaftar extends CI_Controller {
 		}
 	}
 
+	public function get_data_tambahan($id_pendaftar)
+	{
+		$data = $this->Model_pendaftar->get_by_id($id_pendaftar)->row_array()['data_tambahan'];
+		$data = json_decode($data, true);
+
+		$to_be_printed = "<div>";
+		foreach ($data as $key => $value) {
+			$key2 = str_replace( '_', ' ', $key );
+			$to_be_printed .= "<p><strong>{$key2}</strong> : {$value}</p>";
+		}
+		$to_be_printed .= "</div>";
+		echo $to_be_printed;
+	}
+
 
 	// DATATABLES
 		public function get_data( $id_event )
@@ -92,15 +106,13 @@ class Pendaftar extends CI_Controller {
 		        $row = array();
 	            $row[] = $field->email;
 		        $row[] = $field->nama;
-		        $row[] = $field->hp;
-
 
 		        	if ( empty($field->kehadiran) ) {
 		        		$url_kehadiran = base_url().'assets/img/no_image.jpg';
 		        	}else{
 		        		$url_kehadiran = base_url().'assets/img/pendaftar/'.$field->kehadiran;
 		        	}
-		        $row[] = '<img src="'.$url_kehadiran.'" height="90">';
+		        $row[] = '<a data-fancybox="gallery" href="'. $url_kehadiran .'"><img src="'.$url_kehadiran.'" height="90"></a>';
 
 
 
@@ -109,7 +121,7 @@ class Pendaftar extends CI_Controller {
 		        	}else{
 		        		$url_pembayaran = base_url().'assets/img/pendaftar/'.$field->pembayaran;
 		        	}
-		        $row[] = '<img src="'.$url_pembayaran.'" height="90">';
+		        $row[] = '<a data-fancybox="gallery" href="'. $url_pembayaran .'"><img src="'.$url_pembayaran.'" height="90"></a>';
 
 
 
@@ -144,6 +156,7 @@ class Pendaftar extends CI_Controller {
 				            </div>
 				            ';
 		        $row[] = $btn.$drop_items;
+		        $row[] = '<button type="button" class="btn btn-primary" onclick="show_data_tambahan(' . $field->id_pendaftar . ')">Data Tambahan</button>';
 
 
 		

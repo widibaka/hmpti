@@ -45,12 +45,12 @@
                 <tr>
                   <th>Email</th>
                   <th>Nama</th>
-                  <th>HP</th>
                   <th>Kehadiran</th>
                   <th>Pembayaran</th>
                   <th>Bintang</th>
                   <th>Saran</th>
                   <th>Status</th>
+                  <th>Data Tambahan</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -60,12 +60,12 @@
                 <tr>
                   <th>Email</th>
                   <th>Nama</th>
-                  <th>HP</th>
                   <th>Kehadiran</th>
                   <th>Pembayaran</th>
                   <th>Bintang</th>
                   <th>Saran</th>
                   <th>Status</th>
+                  <th>Data Tambahan</th>
                 </tr>
                 </tfoot>
               </table>
@@ -100,6 +100,24 @@
 </div>
 <!-- /.modal -->
 
-<div class="col-12 text-right">
-	<a href="<?php echo base_url() ?>admin/event/editor" role="button" class="btn btn-lg btn-info rounded-circle"><i class="fas fa-plus"></i></a>
+<div class="modal fade" id="modal_data_tambahan">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal_konten_data_tambahan">
+        
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>
+<!-- /.modal -->

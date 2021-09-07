@@ -6,7 +6,7 @@
         <img src="<?= base_url() ?>assets/img/<?php echo $this->website['image'] ?>"
              alt="Koreksoft Logo"
              class="brand-image">
-        <span class="brand-text font-weight-light">HMP TI</span>
+        <span class="brand-text font-weight-light"><?php echo $this->website['nama_organisasi'] ?></span>
       </a>
 
       

@@ -32,17 +32,20 @@
               <p>
                 <?php if ( $pendaftar->num_rows() > 0 ): // check, kalau terdaftar, boleh kasih ulasan ?>
                   <?php if ( $pendaftar->row_array()['status']=='Unset' && !empty($pendaftar->row_array()['bintang']) ): ?>
-                      <a class="btn btn-warning" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Sdg Diproses...</a>
+                      <a class="btn btn-warning mb-2" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Sdg Diproses...</a>
                     <?php elseif( $pendaftar->row_array()['status']=='Unset' ): ?>
-                      <a class="btn btn-success <?php echo 'glow' ?>" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review</a>
+                      <!-- <a class="btn btn-success <?php echo 'glow' ?>" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review</a> -->
                     <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
-                      <a class="btn btn-success" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Valid</a>
+                      <a class="btn btn-success mb-2" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Valid</a>
+                      <?php if ( !empty($event['sertifikat']) ) : ?>
+                        <a class="btn btn-primary mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $event['id_event'] ?>" role="button">Download Sertifikat</a>
+                      <?php endif; ?>
                     <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
-                      <a class="btn btn-danger" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Invalid</a>
+                      <a class="btn btn-danger mb-2" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Invalid</a>
                   <?php endif ?>
                 <?php endif ?>
 
-                <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">View details &raquo;</a>
+                <a class="btn btn-secondary mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">View details &raquo;</a>
               </p>
             </div><!-- /.event -->
           <?php endforeach ?>

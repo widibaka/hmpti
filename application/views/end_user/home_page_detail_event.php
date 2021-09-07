@@ -26,7 +26,7 @@
       $sudah_daftar = $this->Model_pendaftar->check_exists( $email, $id_event )->num_rows();
     ?>
     <?php if ( $status == true && $sudah_daftar > 0 ): ?>
-      <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-secondary mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini (sudah terdaftar)</a>
+      <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-secondary mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini (Anda sudah terdaftar)</a>
     <?php elseif ( $status == true ): ?>
       <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-success mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini</a>
     <?php endif ?>
@@ -36,13 +36,16 @@
       <?php $pendaftar = $this->Model_pendaftar->check_exists( $email, $id_event ); //gak mau ribet wkwkwk ?>
       <?php if ( $pendaftar->num_rows() > 0 ): // check, kalau terdaftar, boleh kasih ulasan ?>
         <?php if ( $pendaftar->row_array()['status']=='Unset' && !empty($pendaftar->row_array()['bintang']) ): ?>
-            <a class="btn btn-warning" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Sdg Diproses...</a>
+            <a class="btn btn-warning mb-2" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Sdg Diproses...</a>
           <?php elseif( $pendaftar->row_array()['status']=='Unset' ): ?>
-            <a class="btn btn-success <?php echo 'glow' ?>" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review</a>
+            <!-- <a class="btn btn-success <?php echo 'glow' ?>" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review</a> -->
           <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
-            <a class="btn btn-success" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Valid</a>
+            <a class="btn btn-success mb-2" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Valid</a>
+            <?php if ( !empty($sertifikat) ) : ?>
+              <a class="btn btn-primary mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $id_event ?>" role="button">Download Sertifikat</a>
+            <?php endif; ?>
           <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
-            <a class="btn btn-danger" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Invalid</a>
+            <a class="btn btn-danger mb-2" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Invalid</a>
         <?php endif ?>
       <?php endif ?>
     <?php endif ?>
@@ -60,7 +63,7 @@
     <p id="event_last_update"><i>Update terakhir: <?php echo date( "d M Y, H:m", $last_update ) . " WIB" ?>. Oleh <?php echo $author ?>.</i></p>
     
     <?php if ( $status == true && $sudah_daftar > 0 ): ?>
-      <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-secondary mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini (sudah terdaftar)</a>
+      <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-secondary mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini (Anda sudah terdaftar)</a>
     <?php elseif ( $status == true ): ?>
       <a href="<?php echo base_url() ?>p/daftar_event/<?php echo $id_event ?>" role="button" class="btn btn-success mt-3 mb-2 btn-lg col-12"><i class="fa fa-arrow-right"></i> Daftar ke event ini</a>
     <?php endif ?>

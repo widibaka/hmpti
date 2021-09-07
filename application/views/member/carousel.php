@@ -28,8 +28,10 @@
 	  		              <td id="include_logo-<?php echo $val['id_carousel'] ?>"><?php echo ($val['include_logo']==1)? "Ya" : "Tidak"; ?></td>
                       <td id="judul-<?php echo $val['id_carousel'] ?>"><?php echo $val['judul'] ?></td>
 	  		              <td id="paragraf-<?php echo $val['id_carousel'] ?>"><?php echo $val['paragraf'] ?></td>
-                      <td id="image-<?php echo $val['id_carousel'] ?>" filename="<?php echo $val['image'] ?>"> 
-                        <img width="140" src="<?php echo base_url() ?>assets/img/carousel/<?php echo $val['image'] ?>">
+                      <td id="image-<?php echo $val['id_carousel'] ?>" filename="<?php echo $val['image'] ?>">
+                        <a data-fancybox="gallery" href="<?php echo base_url() ?>assets/img/carousel/<?php echo $val['image'] ?>">
+                          <img width="140" src="<?php echo base_url() ?>assets/img/carousel/<?php echo $val['image'] ?>">
+                        </a>
                       </td>
                       <td id="posisi-<?php echo $val['id_carousel'] ?>"><?php echo $val['posisi'] ?></td>
 	  		              <td>

@@ -7,8 +7,8 @@ class Model_pendaftar extends CI_model {
 
 // Start DATATABLE SERVER-SIDED
     
-    var $column_order = array('email','nama', 'hp', null, null, 'bintang', 'saran', 'status'); //field yang ada di table
-    var $column_search = array('email','nama', 'hp', 'status'); //field yang diizin untuk pencarian 
+    var $column_order = array('email','nama', null, null, 'bintang', 'saran', 'status'); //field yang ada di table
+    var $column_search = array('email','nama', 'status'); //field yang diizin untuk pencarian 
     var $order = array('id_pendaftar' => 'asc'); // default order
     
     private function _get_datatables_query()
@@ -99,6 +99,13 @@ class Model_pendaftar extends CI_model {
         return $this->db->get($this->table);
     }
 
+	public function get_by_id($id_pendaftar)
+	{
+		$this->db->where('id_pendaftar', $id_pendaftar);
+        $this->db->limit(1);
+		return $this->db->get($this->table);
+	}
+
 	public function check_exists($email, $id_event)
 	{
 		$this->db->where('email', $email);
@@ -111,12 +118,18 @@ class Model_pendaftar extends CI_model {
 		$this->db->where('id_event', $id_event);
 		return $this->db->get($this->table);
 	}
-	public function add($email, $name, $id_event)
+	public function jumlah_pendaftar_event($id_event)
+	{
+		$this->db->where('id_event', $id_event);
+		return $this->db->get($this->table)->num_rows();
+	}
+	public function add($email, $name, $id_event, $data_tambahan='')
 	{
 		$data = [
 			'email' => $email,
 			'nama' => $name,
 			'id_event' => $id_event,
+			'data_tambahan' => $data_tambahan,
 		];
 		if ( $this->check_exists($email, $id_event)->num_rows() == 0 ) {
 			$this->db->insert($this->table, $data);

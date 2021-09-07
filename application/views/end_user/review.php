@@ -7,43 +7,50 @@
 
 		    <div class="row featurette text-left">
 		      <div class="col-md-12">
-		        <p class="lead">Sebelum memberi ulasan, Anda (<?php echo $this->session->userdata('name') ?>) diharuskan untuk mengunggah bukti keikutsertaan Anda berupa screenshot/foto.</p>
+		        <p class="lead">Silakan beri kami ulasan ataupun saran untuk event ini, agar kami menjadi lebih baik</p>
 		      </div>
 		    </div>
 		    <div class="col-12 mb-5">
 			    <form action="" method="post" id="reviewForm" enctype="multipart/form-data">
 			    	<div class="form-group mb-3">
-			    		<div class="form-group mb-3">
-			    			<?php 
-			    				
-			    				if ( $get_pendaftar->num_rows() > 0 ) {
-			    					$disabled = 'disabled';
-			    				}else{
-			    					$disabled = '';
-			    				}
-			    			?>
-			    			<strong>1. Bukti kehadiran:</strong><br>
-			    			<img class="mb-2" height="180" src="<?php 
-			    				echo ( !empty($get_pendaftar->row_array()['kehadiran']) ) ? base_url('assets/img/pendaftar/') . $get_pendaftar->row_array()['kehadiran'] : base_url('assets/img/no_image.jpg') ?>" id="preview_kehadiran">
-			    			<p>
-		    					<input name="indikator_kehadiran" type="hidden" class="form-control" id="indikator_kehadiran">
-		    					<input name="kehadiran" type="file" class="form-control" id="kehadiran">
-		    				</p>
 
-			    		</div>
+							
+							<?php if( $event['wajib_bukti_kehadiran'] == 1 ) : ?>
+								<div class="form-group mb-3">
+									<?php 
+										
+										if ( $get_pendaftar->num_rows() > 0 ) {
+											$disabled = 'disabled';
+										}else{
+											$disabled = '';
+										}
+									?>
+									<strong>Bukti kehadiran:</strong><br>
+									<img class="mb-2" height="180" src="<?php 
+										echo ( !empty($get_pendaftar->row_array()['kehadiran']) ) ? base_url('assets/img/pendaftar/') . $get_pendaftar->row_array()['kehadiran'] : base_url('assets/img/no_image.jpg') ?>" id="preview_kehadiran">
+									<p>
+										<input name="indikator_kehadiran" type="hidden" class="form-control" id="indikator_kehadiran">
+										<input name="kehadiran" type="file" class="form-control" id="kehadiran" accept="image/png, image/gif, image/jpeg, image/jpg" />
+									</p>
+									<p>Sebelum memberi ulasan, Anda (<?php echo $this->session->userdata('name') ?>) diharuskan untuk mengunggah bukti keikutsertaan Anda berupa screenshot/foto.</p>
+
+								</div>
+							<?php endif; ?>
+
+							<?php if( $event['apakah_berbayar'] == 1 ) : ?>
+								<div class="form-group mb-3">
+									<strong>Bukti pembayaran </strong>(Hanya untuk event berbayar, abaikan jika gratis)<strong>:</strong><br>
+									<img class="mb-2" height="180" src="<?php 
+										echo ( !empty($get_pendaftar->row_array()['pembayaran']) ) ? base_url('assets/img/pendaftar/') . $get_pendaftar->row_array()['pembayaran'] : base_url('assets/img/no_image.jpg') ?>" id="preview_pembayaran">
+									<p>
+										<input name="indikator_pembayaran" type="hidden" class="form-control" id="indikator_pembayaran">
+										<input name="pembayaran" type="file" class="form-control" id="pembayaran" accept="image/png, image/gif, image/jpeg, image/jpg" />
+									</p>
+								</div>
+							<?php endif; ?>
 
 			    		<div class="form-group mb-3">
-			    			<strong>2. Bukti pembayaran </strong>(Hanya untuk event berbayar, abaikan jika gratis)<strong>:</strong><br>
-			    			<img class="mb-2" height="180" src="<?php 
-			    				echo ( !empty($get_pendaftar->row_array()['pembayaran']) ) ? base_url('assets/img/pendaftar/') . $get_pendaftar->row_array()['pembayaran'] : base_url('assets/img/no_image.jpg') ?>" id="preview_pembayaran">
-		    				<p>
-		    					<input name="indikator_pembayaran" type="hidden" class="form-control" id="indikator_pembayaran">
-		    					<input name="pembayaran" type="file" class="form-control" id="pembayaran">
-		    				</p>
-			    		</div>
-
-			    		<div class="form-group mb-3">
-			    			<strong>3. Rating & Ulasan:</strong><br>
+			    			<strong>Rating & Ulasan:</strong><br>
 			    			<p>Silakan beri kami rating dan ulasan maupun saran untuk event ini sehingga kami dapat menjadi lebih baik.</p>
 			    			<div class="my-4">
 			    				<div class="form-group">
@@ -66,9 +73,9 @@
 			    	    <?php if( $pendaftar->row_array()['status']=='Unset' ): ?>
 			    	      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
 			    	    <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
-			    	      Review Valid dan Dikunci
+			    	      Review Valid dan Dikunci <br><br>
 			    	    <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
-			    	      Review Invalid dan Dikunci
+			    	      Review Invalid dan Dikunci <br><br>
 			    	  <?php endif ?>
 			    	<?php endif ?>
 
