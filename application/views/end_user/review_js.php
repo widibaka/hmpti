@@ -22,10 +22,6 @@ $("#kehadiran").change(function() {
   $("#indikator_kehadiran").val(1);
   readURL(this, "#preview_kehadiran");
 });
-$("#pembayaran").change(function() {
-  $("#indikator_pembayaran").val(1);
-  readURL(this, "#preview_pembayaran");
-});
 // preview image before upload
 
 

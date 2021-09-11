@@ -37,18 +37,6 @@
 								</div>
 							<?php endif; ?>
 
-							<?php if( $event['apakah_berbayar'] == 1 ) : ?>
-								<div class="form-group mb-3">
-									<strong>Bukti pembayaran </strong>(Hanya untuk event berbayar, abaikan jika gratis)<strong>:</strong><br>
-									<img class="mb-2" height="180" src="<?php 
-										echo ( !empty($get_pendaftar->row_array()['pembayaran']) ) ? base_url('assets/img/pendaftar/') . $get_pendaftar->row_array()['pembayaran'] : base_url('assets/img/no_image.jpg') ?>" id="preview_pembayaran">
-									<p>
-										<input name="indikator_pembayaran" type="hidden" class="form-control" id="indikator_pembayaran">
-										<input name="pembayaran" type="file" class="form-control" id="pembayaran" accept="image/png, image/gif, image/jpeg, image/jpg" />
-									</p>
-								</div>
-							<?php endif; ?>
-
 			    		<div class="form-group mb-3">
 			    			<strong>Rating & Ulasan:</strong><br>
 			    			<p>Silakan beri kami rating dan ulasan maupun saran untuk event ini sehingga kami dapat menjadi lebih baik.</p>
@@ -73,9 +61,9 @@
 			    	    <?php if( $pendaftar->row_array()['status']=='Unset' ): ?>
 			    	      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
 			    	    <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
-			    	      Review Valid dan Dikunci <br><br>
+			    	      Review ini dinyatakan Valid dan telah dikunci oleh panitia. <br><br>
 			    	    <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
-			    	      Review Invalid dan Dikunci <br><br>
+			    	      Maaf, review ini dinyatakan Invalid (tidak sah) oleh panitia karena melanggar ketentuan event <br><br>
 			    	  <?php endif ?>
 			    	<?php endif ?>
 

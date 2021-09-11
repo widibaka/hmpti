@@ -165,23 +165,52 @@ class P extends CI_Controller {
 			$data_tambahan = $this->input->post();
 			unset($data_tambahan['nama']);
 			unset($data_tambahan['konfirmasi']);
+			unset($data_tambahan['pembayaran']);
+			unset($data_tambahan['indikator_pembayaran']);
 			$data_tambahan = json_encode($data_tambahan); // dibikin jadi string
 
+			
+			$to_upload = [];
+			if ( !empty($_POST['indikator_pembayaran']) ) { // <-- ketika ada upload pembayaran
+				array_push($to_upload, 
+					[
+					'element_name' => 'pembayaran',
+					'filename' => 'pembayaran-'. crc32($this->input->post('nama', true)) .'-'.$id_event,
+					]
+				);
+			}
+
+
+			$upload = $this->upload_multiple( $to_upload );
+			foreach ($upload as $key => $val) {
+				if ( !empty($val) ) {
+					$_POST[ $key ] = $val; //<-- To update image file name
+				}
+			}
+			unset($_POST['indikator_pembayaran']);
+
+
 			// lalu semua data yang diperlukan dimasukin ke database
-			$stat_daftar = $this->Model_pendaftar->add(
-					$this->session->userdata('email'), 
-					$this->input->post('nama', true), 
-					$id_event,
-					$data_tambahan
-			);
+			$post_to_db = [
+				'email' => $this->session->userdata('email'), 
+				'nama' =>	$this->input->post('nama', true), 
+				'id_event' =>	$id_event,
+				'data_tambahan' =>	$data_tambahan,
+				'pembayaran' => $upload['pembayaran']
+			];
+			$stat_daftar = $this->Model_pendaftar->add( $post_to_db );
+
+
 			if ( $stat_daftar == 'sudah daftar' ) {
 				$isi_msg = [
+					"warning#Daftar berkali-kali juga boleh. Tapi cuma dihitung satu.",
 					"warning#Daftar berkali-kali juga boleh. Tapi cuma dihitung satu.",
 					"question#Sudah terdaftar. Anda mau daftar berapa kali sis?",
 					"warning#Cukup satu aja, kamu. Iyaa kamuu...",
 					"warning#Tarek sis! Semongko...",
+					"warning#Tarek sis! Semongko...",
 				];
-				$this->session->set_flashdata("msg", $isi_msg[rand(0,3)]);
+				$this->session->set_flashdata("msg", $isi_msg[rand(-1,4)]);
 			}else{ //<-- kalau sudah daftar, dan baru sekali
 				$this->session->set_flashdata("msg", "success#Selamat, ". $this->session->userdata('email') ." telah terdaftar di event ini.");
 			}
@@ -194,6 +223,7 @@ class P extends CI_Controller {
 		$this->load->view('end_user/templates/header', $data);
 		$this->load->view('end_user/daftar_event', $data);
 		$this->load->view('end_user/templates/footer', $data);
+		$this->load->view('end_user/daftar_event_js', $data);
 	}
 
 	public function review($id_event='')
@@ -230,14 +260,6 @@ class P extends CI_Controller {
 					]
 				);
 			}
-			if ( !empty($post['indikator_pembayaran']) ) { // <-- ketika ada upload pembayaran
-				array_push($to_upload, 
-					[
-					'element_name' => 'pembayaran',
-					'filename' => 'pembayaran-'.$pendaftar->row_array()['id_pendaftar'].'-'.$id_event,
-					]
-				);
-			}
 
 			$upload = $this->upload_multiple( $to_upload );
 			foreach ($upload as $key => $val) {
@@ -248,8 +270,6 @@ class P extends CI_Controller {
 
 			//clean up
 			unset($post['indikator_kehadiran']);
-			unset($post['indikator_pembayaran']);
-
 
 			$this->Model_pendaftar->update_review($post, $pendaftar->row_array()['id_pendaftar']);
 

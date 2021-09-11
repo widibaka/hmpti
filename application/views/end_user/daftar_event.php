@@ -11,7 +11,7 @@
 		      </div>
 		    </div>
 		    <div class="col-12 mb-5">
-			    <form action="" method="post">
+			    <form action="" method="post" enctype="multipart/form-data">
 			    	<div class="form-group mb-3">
 			    		<input type="hidden" name="konfirmasi" value="yes">
 			    		<strong>Nama asli:</strong>
@@ -24,10 +24,27 @@
 			    				$disabled = '';
 			    			}
 			    		?>
-			    		<input required="" class="form-control" <?php echo $disabled ?> name="nama" placeholder="Nama asli ..." value="<?php 
+			    		<input required="" class="form-control mb-3" <?php echo $disabled ?> name="nama" placeholder="Nama asli ..." value="<?php 
 			    			echo ( $get_pendaftar->num_rows() > 0 ) ? $get_pendaftar->row_array()['nama'] : $this->session->userdata('name') ?>">
-			    		<p>Mohon beritahu kami nama asli Anda yang sebenar-benarnya <br>	agar kami dapat mencetak sertifikat untuk Anda di akhir event.</p>
+			    		
+							<?php if ( !empty($event['sertifikat']) ): ?>
+								<p>Mohon beritahu kami nama asli Anda yang sebenar-benarnya <br>	agar kami dapat mencetak sertifikat untuk Anda di akhir event.</p>
+							<?php endif ?>
 
+
+
+
+							<?php if( $event['apakah_berbayar'] == 1 ) : ?>
+								<div class="form-group mb-3">
+									<strong>Bukti pembayaran :</strong><br>
+									<img class="mb-2" height="180" src="<?php 
+										echo ( !empty($get_pendaftar->row_array()['pembayaran']) ) ? base_url('assets/img/pendaftar/') . $get_pendaftar->row_array()['pembayaran'] : base_url('assets/img/no_image.jpg') ?>" id="preview_pembayaran">
+									<p>
+										<input name="indikator_pembayaran" type="hidden" class="form-control" id="indikator_pembayaran">
+										<input name="pembayaran" type="file" class="form-control" id="pembayaran" accept="image/png, image/gif, image/jpeg, image/jpg" />
+									</p>
+								</div>
+							<?php endif; ?>
 
 
 
@@ -45,7 +62,6 @@
 							?>
 
 			    		<?php foreach( array_filter(explode( ',', $event['data_tambahan']) )as $key => $val): ?>
-								<?php echo str_replace(' ', '', $val) ?>
 								<strong><?php echo $val ?>:</strong>
 			    			<input type="text" class="form-control mb-3" <?php echo $disabled ?> name="<?php echo $val ?>" placeholder="" required value="<?php 
 			    			echo ( !empty( $data_tambahan_baru[ str_replace(' ', '', $val) ] ) ) ? $data_tambahan_baru[ str_replace(' ', '', $val) ] : '' ?>">

@@ -123,15 +123,9 @@ class Model_pendaftar extends CI_model {
 		$this->db->where('id_event', $id_event);
 		return $this->db->get($this->table)->num_rows();
 	}
-	public function add($email, $name, $id_event, $data_tambahan='')
+	public function add($data)
 	{
-		$data = [
-			'email' => $email,
-			'nama' => $name,
-			'id_event' => $id_event,
-			'data_tambahan' => $data_tambahan,
-		];
-		if ( $this->check_exists($email, $id_event)->num_rows() == 0 ) {
+		if ( $this->check_exists($data['email'], $data['id_event'])->num_rows() == 0 ) {
 			$this->db->insert($this->table, $data);
 		}else{
 			return 'sudah daftar';

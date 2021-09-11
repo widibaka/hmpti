@@ -114,7 +114,7 @@
             <option value="1" <?php echo ($main_data['apakah_berbayar']==1) ? 'selected' : '' ?>>Ya</option>
             <option value="0" <?php echo ($main_data['apakah_berbayar']==0) ? 'selected' : '' ?>>Tidak</option>
           </select>
-          <p>Jika Anda memilih Ya, maka halaman presensi akan meminta peserta mengunggah bukti pembayaran.</p>
+          <p>Jika Anda memilih Ya, maka nantinya halaman pendaftaran akan meminta peserta untuk mengunggah bukti pembayaran.</p>
         </div>
         <div class="form-group">
           <label for="edit_data_tambahan">
