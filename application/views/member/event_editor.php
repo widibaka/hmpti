@@ -38,7 +38,7 @@
         <div class="form-group">
           <label>Thumbnail</label>
           <div class="form-group">
-            <img style="width: 375px;" src="<?php echo (!empty($main_data['thumbnail'])) ?  base_url() . "assets/img/events/" . $main_data['thumbnail']  :  base_url() . "assets/img/no_image.jpg" ?>" id="edit_preview_thumbnail">
+            <img style="width: 375px; max-width:100%;" src="<?php echo (!empty($main_data['thumbnail'])) ?  base_url() . "assets/img/events/" . $main_data['thumbnail']  :  base_url() . "assets/img/no_image.jpg" ?>" id="edit_preview_thumbnail">
             <p class="text-danger">Disarankan ukuran 375px x 200px</p>
             <p>
               <div class="custom-file">
@@ -51,7 +51,7 @@
         <div class="form-group">
           <label>Poster</label>
           <div class="form-group">
-            <img style="width: 700px;" src="<?php echo (!empty($main_data['poster'])) ?  base_url() . "assets/img/events/" . $main_data['poster']  :  base_url() . "assets/img/no_image.jpg" ?>" id="edit_preview_poster">
+            <img style="width: 700px; max-width:100%;" src="<?php echo (!empty($main_data['poster'])) ?  base_url() . "assets/img/events/" . $main_data['poster']  :  base_url() . "assets/img/no_image.jpg" ?>" id="edit_preview_poster">
             <p class="text-danger">Disarankan ukuran 700px x 700px</p>
             <p>
               <div class="custom-file">
@@ -191,7 +191,7 @@
   
   <!-- <style type="text/css">*{border: solid 1px red;}</style> -->
   <!-- panitia -->
-  <div class="card">
+  <div class="card" id="panitia_event">
     <div class="card-header">Panitia Event</div>              
     <div class="card-body">
       <div class="container">

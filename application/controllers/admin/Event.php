@@ -195,7 +195,7 @@ class Event extends CI_Controller {
 		$post = $this->input->post(NULL, true);
 		$this->Model_panitia->add( $post );
 		$this->session->set_flashdata("msg", "success#Data berhasil ditambahkan.");
-		redirect(base_url() . "admin/event/editor/" . $post['id_event']);
+		redirect(base_url() . "admin/event/editor/" . $post['id_event'] . "#panitia_event");
 	}
 
 	public function del_panitia($id_panitia, $id_event)
