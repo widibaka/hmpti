@@ -118,7 +118,7 @@ class Model_event extends CI_model {
 	public function get_lama()
 	{
 		$this->db->where( "publish", "1" );
-		$this->db->limit(20);
+		$this->db->limit(6);
 		$this->db->order_by( "jadwal", "DESC" );
 		$this->db->where( "jadwal <", time() );
 		return $this->db->get($this->table);

@@ -17,7 +17,7 @@
 					$("#detail_event_wrapper").show(400); // actually shows the data of details
 				},
 			});
-		}, 100);
+		}, 500);
 	}
 
 	$(document).ready(function() {
