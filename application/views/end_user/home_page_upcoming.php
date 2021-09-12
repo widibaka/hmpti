@@ -3,7 +3,7 @@
 
         <!-- Three columns of text below the carousel -->
         <div class="row d-flex justify-content-center">
-          <div class="col-12 mb-4">
+          <div class="mb-4">
             <h2 class="text-center mb-4 headline-event"><strong>Event Yang Akan Datang</strong></h2>
           </div>
           <?php foreach ($events as $key => $event): ?>
@@ -19,7 +19,7 @@
               <p><?php echo date( "d M Y, H:m", $event['jadwal'] ) . " WIB" ?></p>
               <p class="countdown_wrapper">Countdown: <span class="countdown" data-time="<?php echo date("M d, Y H:i:s", $event['jadwal']) ?>"></span> <i class="fa fa-circle text-danger blinking"></i></p>
               <p><?php echo substr( strip_tags($event['deskripsi']) , 0, 140) ?>...</p>
-              <p><a class="btn btn-success" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">Join now &raquo;</a></p>
+              <p><a class="btn shadow btn-success" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">Join now &raquo;</a></p>
             </div><!-- /.event -->
           <?php endforeach ?>
           <?php if ( empty(count($events)) ): ?>

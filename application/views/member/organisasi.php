@@ -52,7 +52,6 @@
                       <!-- /.input group -->
                     </div>
                     <!-- /.form group -->
-                  </form>
                 </div>
               </div>
               <!-- Card 0 -->

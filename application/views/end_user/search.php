@@ -17,9 +17,9 @@
               <div class="event-list text-start row">
                 <div class="ml-1 my-2 overflow-hidden" style="
                         width: 65px;
-                        height: 35px;
+                        height: 70px;
                   ">
-                  <img src="<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>" width="65" height="35">
+                  <img src="<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>" width="65" height="70">
                 </div>
                 <div class="col-6 mt-3">
                   <h5><?php echo $event['judul'] ?> 

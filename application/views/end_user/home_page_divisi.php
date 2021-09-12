@@ -9,10 +9,10 @@
           </div>
           <div class="row d-flex justify-content-center">
             <?php foreach ($this->all_divisi as $key => $divisi): ?>
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+            <div class="col-12">
               <a class="" href="<?php echo base_url() ?>p/divisi/<?php echo $divisi['id_divisi'] ?>" style="text-decoration: none; color: #5a5a5a;">
-                <div class="card hover-shadow mb-4">
-                  <div class="card-body">
+                <div class="card hover-shadow mb-4" style="border-radius: 10px;">
+                  <div class="card-body text-center">
                     <h2><?php echo $divisi['nama_divisi'] ?></h2>
                   </div>
                 </div>

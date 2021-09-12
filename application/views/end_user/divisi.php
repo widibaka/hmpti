@@ -1,4 +1,23 @@
 
+		  <?php if ( empty($nama_divisi) ): ?>
+
+		  <div class="container marketing">
+
+		    <p class="display-5 mb-4">Divisi</p>
+
+		    <!-- START THE FEATURETTES -->
+
+		    <div class="row featurette mb-5">
+		      <div class="col-md-7">
+		        <h2 class="featurette-heading"><?php echo $nama ?></h2>
+		        	<p class="lead">Divisi tidak ditemukan.</p>
+		      </div>
+		    </div>
+
+		    <!-- /END THE FEATURETTES -->
+
+		  </div><!-- /.container -->
+			<?php return; endif ?>
 		  <!-- Marketing messaging and featurettes
 		  ================================================== -->
 		  <!-- Wrap the rest of the page in another container to center all the content. -->
