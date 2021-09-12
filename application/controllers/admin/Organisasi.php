@@ -45,6 +45,8 @@ class Organisasi extends CI_Controller {
 		 	$post['image'] = $upload;
 		} //<-- To update image file name
 
+		
+
 		$this->Model_detail_organisasi->edit( $post );
 		$this->session->set_flashdata("msg", "success#Perubahan berhasil disimpan.");
 		redirect(base_url() . "admin/organisasi");

@@ -31,9 +31,6 @@
     <link href="<?php echo base_url() ?>assets/widibaka.css?v3" rel="stylesheet">
 
     <style type="text/css">
-      .custom_navbar{
-        background-color: <?php echo $this->website['navbar_bg'] ?>;
-      }
       .custom_navbar a.nav-link{
         color: <?php echo $this->website['navbar_text'] ?>;
       }
@@ -45,11 +42,25 @@
         color: <?php echo $this->website['navbar_text'] ?>;
         transition: background-color border-color ease 300ms; 
       }
+
+      <?php
+        $hex = $this->website['navbar_bg'];
+        list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+      ?>
+      .custom_navbar{
+        background-color: <?php echo "rgba({$r},{$g},{$b},.6)" ?>;
+        box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+        backdrop-filter: blur( 25.0px );
+        -webkit-backdrop-filter: blur( 25.0px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        margin: 0 10px 0 10px;
+      }
       .custom_navbar .search-btn:hover{
         border-color: #1D9058;
-        background-color: #1D9058;
         color: <?php echo $this->website['navbar_text'] ?>;
       }
+
     </style>
 
     
@@ -74,7 +85,7 @@
   </div>
 
     <header>
-      <nav class="navbar navbar-expand-md fixed-top custom_navbar" style="z-index: 3;">
+      <nav class="navbar shadow navbar-expand-md fixed-top custom_navbar" style="z-index: 3;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img width="45" src="<?php echo base_url() ?>assets/img/<?php echo $this->website['image'] ?>">

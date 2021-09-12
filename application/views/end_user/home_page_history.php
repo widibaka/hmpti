@@ -17,35 +17,37 @@
 
 
 
-            <div class="event text-start">
+            <div class="event text-start" title="<?php echo substr( strip_tags($event['deskripsi']) , 0, 140) ?>...">
               <div class="bd-placeholder-img mt-3 overflow-hidden" style="
-                      width: 375px;
-                      height: 200px;
-              ">
-                <img src="<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>" width="375" height="200">
+                      width: 275px;
+                      height: 320px;
+                      background: url('<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>');
+                      background-position: left bottom;
+                      background-size: cover;
+                      background-repeat: no-repeat;
+              " role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">
               </div>
 
-              <h2 class="mt-2 mx-2"><?php echo $event['judul'] ?></h2>
-              <p><?php echo date( "d M Y, H:m", $event['jadwal'] ) . " WIB" ?></p>
-              <p class="countdown_wrapper">Countdown: <span class="countdown"><?php echo ceil( ( $event['jadwal'] - time() ) / 60 ) ?></span> menit <i class="fa fa-circle blinking"></i></p>
-              <p><?php echo substr( strip_tags($event['deskripsi']) , 0, 140) ?>...</p>
-              <p>
+                
+              <p class="mt-2 mx-2 h5" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)"><?php echo $event['judul'] ?></p>
+              <p class="mt-2 mx-2" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)"><?php echo date( "d M Y, H:m", $event['jadwal'] ) . " WIB" ?></p>
+              <p class="countdown_wrapper mt-2 mx-2">Countdown: <span class="countdown"><?php echo ceil( ( $event['jadwal'] - time() ) / 60 ) ?></span> menit <i class="fa fa-circle blinking"></i></p>
+              <p class="mt-2 mx-2">
                 <?php if ( $pendaftar->num_rows() > 0 ): // check, kalau terdaftar, boleh kasih ulasan ?>
                   <?php if ( $pendaftar->row_array()['status']=='Unset' && !empty($pendaftar->row_array()['bintang']) ): ?>
-                      <a class="btn btn-warning mb-2" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Sdg Diproses...</a>
+                      <a class="btn shadow btn-warning mb-2 w-100" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Sdg Diproses...</a>
                     <?php elseif( $pendaftar->row_array()['status']=='Unset' ): ?>
-                      <!-- <a class="btn btn-success <?php echo 'glow' ?>" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review</a> -->
+                      <!-- <a class="btn shadow btn-success <?php echo 'glow' ?>" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review</a> -->
                     <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
-                      <a class="btn btn-success mb-2" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Valid</a>
+                      <!-- <a class="btn shadow btn-success mb-2 w-100" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Valid</a> -->
                       <?php if ( !empty($event['sertifikat']) ) : ?>
-                        <a class="btn btn-primary mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $event['id_event'] ?>" role="button">Download Sertifikat</a>
+                        <a class="btn shadow btn-primary mb-2 w-100" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $event['id_event'] ?>" role="button">Download Sertifikat</a>
                       <?php endif; ?>
                     <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
-                      <a class="btn btn-danger mb-2" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Invalid</a>
+                      <a class="btn shadow btn-danger mb-2 w-100" href="<?php echo base_url() ?>p/review/<?php echo $event['id_event'] ?>" role="button">Review Invalid</a>
                   <?php endif ?>
                 <?php endif ?>
-
-                <a class="btn btn-secondary mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">View details &raquo;</a>
+                <a class="btn shadow btn-secondary mb-2 w-100" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">Lihat detail</a>
               </p>
             </div><!-- /.event -->
           <?php endforeach ?>
@@ -58,7 +60,7 @@
           <?php endif ?>
           <div class="col-12 mt-4">
             <p class="text-center">
-              <a class="btn btn-outline-secondary do_transition" href="<?php echo base_url() ?>p/search?q=" role="button">See more</a>
+              <a class="btn shadow btn-outline-secondary do_transition" href="<?php echo base_url() ?>p/search?q=" role="button">See more</a>
             </p>
           </div> <!-- /load more -->
         </div><!-- /.row -->

@@ -14,10 +14,6 @@
   user-select: none;
 }
 
-.headline-event{
-  /*text-decoration: underline;*/
-}
-
 footer{
   /*border-top: solid 1px #ccc;*/
   margin-top: 20px;
@@ -33,12 +29,22 @@ footer{
   background-color: #ffffff;
   box-shadow: 0 0 15px #ccc;
   transition: box-shadow 300ms ease;
-  width: 400px;
-  margin: 5px;
+  width: 300px;
+  margin: 10px;
+  border-radius: 1rem;
+}
+
+.event .bd-placeholder-img {
+  transition: opacity 300ms ease;
+  border-radius: 1rem;
 }
 
 .event:hover{
   box-shadow: 0 0 15px #999;
+}
+
+.event:hover .bd-placeholder-img{
+  opacity: .6;
 }
 
 .event-list{
@@ -240,8 +246,10 @@ a .link_ke_profil:hover{
 
 
 .hover-shadow {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
   transition: all ease 200ms;
 }
 .hover-shadow:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 .5rem 1rem rgba(0,0,1,.25)!important;
+  padding-bottom: .3rem;
 }
