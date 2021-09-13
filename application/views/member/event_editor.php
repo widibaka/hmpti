@@ -35,7 +35,7 @@
           </div>
           <!-- /.form group -->
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>Thumbnail</label>
           <div class="form-group">
             <img style="width: 375px; max-width:100%;" src="<?php echo (!empty($main_data['thumbnail'])) ?  base_url() . "assets/img/events/" . $main_data['thumbnail']  :  base_url() . "assets/img/no_image.jpg" ?>" id="edit_preview_thumbnail">
@@ -47,12 +47,12 @@
               </div>
             </p>
           </div>
-        </div>
+        </div> -->
         <div class="form-group">
           <label>Poster</label>
           <div class="form-group">
             <img style="width: 700px; max-width:100%;" src="<?php echo (!empty($main_data['poster'])) ?  base_url() . "assets/img/events/" . $main_data['poster']  :  base_url() . "assets/img/no_image.jpg" ?>" id="edit_preview_poster">
-            <p class="text-danger">Disarankan ukuran 700px x 700px</p>
+            <!-- <p class="text-danger">Disarankan ukuran 700px x 700px</p> -->
             <p>
               <div class="custom-file">
                 <input name="update_poster" type="hidden" id="update_poster" value="">

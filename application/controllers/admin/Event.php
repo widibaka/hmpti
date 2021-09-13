@@ -85,20 +85,20 @@ class Event extends CI_Controller {
 
 		// Jadi gini, ketika thumbnail ingin diupdate upload thumbnail doang, ketika poster mau diupdate upload poster doang. Ketika dua-duanya, ya dua-duanya diupload
 		$to_upload = [];
-		if ( !empty($post['update_thumbnail']) ) {
-			array_push($to_upload, 
-				[
-				'element_name' => 'thumbnail',
-				'filename' => 'thumb-'.$post['id_event'],
-				'id_event' => $post['id_event']
-				]
-			);
-		}
+		// if ( !empty($post['update_thumbnail']) ) {
+		// 	array_push($to_upload, 
+		// 		[
+		// 		'element_name' => 'thumbnail',
+		// 		'filename' => 'thumb-'.$post['id_event'],
+		// 		'id_event' => $post['id_event']
+		// 		]
+		// 	);
+		// }
 		if ( !empty($post['update_poster']) ) {
 			array_push($to_upload, 
 				[
 				'element_name' => 'poster',
-				'filename' => 'poster-'.$post['id_event'],
+				'filename' => 'img-'.$post['id_event'],
 				'id_event' => $post['id_event']
 				]
 			);
@@ -145,20 +145,20 @@ class Event extends CI_Controller {
 
 		// Jadi gini, ketika thumbnail ingin diupdate upload thumbnail doang, ketika poster mau diupdate upload poster doang. Ketika dua-duanya, ya dua-duanya diupload
 		$to_upload = [];
-		if ( !empty($post['update_thumbnail']) ) {
-			array_push($to_upload, 
-				[
-				'element_name' => 'thumbnail',
-				'filename' => 'thumb-'.$post['id_event'],
-				'id_event' => $post['id_event']
-				]
-			);
-		}
+		// if ( !empty($post['update_thumbnail']) ) {
+		// 	array_push($to_upload, 
+		// 		[
+		// 		'element_name' => 'thumbnail',
+		// 		'filename' => 'thumb-'.$post['id_event'],
+		// 		'id_event' => $post['id_event']
+		// 		]
+		// 	);
+		// }
 		if ( !empty($post['update_poster']) ) {
 			array_push($to_upload, 
 				[
 				'element_name' => 'poster',
-				'filename' => 'poster-'.$post['id_event'],
+				'filename' => 'img-'.$post['id_event'],
 				'id_event' => $post['id_event']
 				]
 			);
@@ -219,20 +219,21 @@ class Event extends CI_Controller {
 
 
 
-			if ( $val['element_name'] == 'poster' ) {
-				$this->ResizeImage->resizeTo(800, 800, 'maxwidth');
-			}elseif( $val['element_name'] == 'thumbnail' ){
-				$this->ResizeImage->resizeTo(375, 200, 'exact');
-			}
+			// buat gambar poster
+			$this->ResizeImage->resizeTo(800, 800, 'maxwidth');
+			$this->ResizeImage->saveImage('assets/img/events/' . 'poster-' . $upl['file_name']);
+			// buat gambar thumbnail
+			$this->ResizeImage->resizeTo(275, 320, 'maxwidth');
+			$this->ResizeImage->saveImage('assets/img/events/' . 'thumbnail-' .  $upl['file_name']);
 			
 
 
-			$this->ResizeImage->saveImage('assets/img/events/' . $upl['file_name']);
 
 			$this->load->helper('file');
 			unlink($upl['full_path']); // delete temporary file
 
-			$returns[ $val['element_name'] ] = $upl['file_name'] . "?" . time();
+			$returns[ 'poster' ] = 'poster-' . $upl['file_name'] . "?" . time();
+			$returns[ 'thumbnail' ] = 'thumbnail-' .  $upl['file_name'] . "?" . time();
 		}
 		return $returns;
 	}
