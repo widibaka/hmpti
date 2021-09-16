@@ -223,7 +223,7 @@ class Event extends CI_Controller {
 			$this->ResizeImage->resizeTo(800, 800, 'maxwidth');
 			$this->ResizeImage->saveImage('assets/img/events/' . 'poster-' . $upl['file_name']);
 			// buat gambar thumbnail
-			$this->ResizeImage->resizeTo(275, 320, 'maxwidth');
+			$this->ResizeImage->resizeTo(400, 300, 'maxwidth');
 			$this->ResizeImage->saveImage('assets/img/events/' . 'thumbnail-' .  $upl['file_name']);
 			
 
