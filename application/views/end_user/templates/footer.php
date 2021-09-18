@@ -1,11 +1,17 @@
 
       </div>
       <!-- FOOTER -->
-      <footer class="container">
+      <footer class="container" style="font-size: 14pt;">
         <a href="#" class="to_top"><i class="fa fa-arrow-circle-up"></i></a>
-        <p><?= $this->website['nama_organisasi']; ?> <?php 
-          echo date("Y");
-        ?></p>
+        <p>
+          <a class="mr-5" title="Buka instagram HMPTI" href="https://www.instagram.com/hmpti.udb/?hl=id">
+            <i class="fab fa-instagram mr-4"></i> 
+          </a>
+           
+          <?= $this->website['nama_organisasi']; ?> 2019 - <?php 
+            echo date("Y");
+          ?>
+        </p>
         <!-- .widibaka was here -->
       </footer>
 

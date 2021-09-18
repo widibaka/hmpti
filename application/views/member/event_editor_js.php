@@ -48,6 +48,7 @@ $("#edit_sertifikat").change(function() {
 $(document).ready(function () {
 
   $('#edit_deskripsi').summernote({
+    height: 500, 
     toolbar: [
       // [groupName, [list of button]]
       ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -99,10 +100,7 @@ $(document).ready(function () {
         minlength: 50
       },
       <?php if ( empty($main_data['id_event']) ): ?>
-        
-        thumbnail: {
-          required: true,
-        },
+
         poster: {
           required: true,
         },
@@ -123,9 +121,6 @@ $(document).ready(function () {
       },
       <?php if ( empty($main_data['id_event']) ): ?>
         
-        thumbnail: {
-          required: "Harus ada thumbnail",
-        },
         poster: {
           required: "Harus ada poster",
         },
