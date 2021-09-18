@@ -9,6 +9,7 @@
       background-repeat: no-repeat;
       background-position: center;
       min-height: 50px;
+      min-height: 270px;
     ">
       <img width="100%" src="<?php echo base_url() ?>assets/img/events/<?php echo $poster ?>">                  
     </div>

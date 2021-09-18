@@ -14,7 +14,7 @@
 
             <a href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)" style="text-decoration: none;">
               
-              <div class="event-list text-start row">
+              <div class="event-list text-start row" style="border-radius: 10px;">
                 <div class="ml-1 my-2 overflow-hidden" style="
                         width: 65px;
                         height: 70px;

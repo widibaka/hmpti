@@ -253,3 +253,30 @@ a .link_ke_profil:hover{
   box-shadow: 0 .5rem 1rem rgba(0,0,1,.25)!important;
   padding-bottom: .3rem;
 }
+
+
+
+/* Custom Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6610f2; 
+  border-radius: 10px;
+  opacity: .1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6610f2; 
+  opacity: .9;
+}

@@ -18,7 +18,7 @@
               " role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">
               </div>
 
-              <h2 class="mt-2 mx-2"><?php echo $event['judul'] ?></h2>
+              <p class="mt-2 mx-2 h5" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)"><?php echo $event['judul'] ?></p>
               <p><?php echo date( "d M Y, H:m", $event['jadwal'] ) . " WIB" ?></p>
               <p class="countdown_wrapper">Countdown: <span class="countdown" data-time="<?php echo date("M d, Y H:i:s", $event['jadwal']) ?>"></span> <i class="fa fa-circle text-danger blinking"></i></p>
               <p><a class="btn shadow btn-success w-100" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">Join now &raquo;</a></p>

@@ -80,17 +80,18 @@ class Anggota extends CI_Controller {
 
 	public function do_upload($nim)
 	{
-        $config['upload_path']          = './assets/img/members';
+        $config['upload_path']          = './assets/img/members/tmp';
         $config['allowed_types']        = 'gif|jpg|jpeg|png';
-        $config['max_size']             = 700;
-        $config['max_width']            = 1300;
-        $config['max_height']           = 1300;
+        $config['max_size']             = 6000;
+        $config['max_width']            = 4300;
+        $config['max_height']           = 4300;
         $config['file_name']           = $nim;
         $config['overwrite']           = true;
 
         $this->load->library('upload', $config);
-        
-        if ( !$this->upload->do_upload('image') )
+        $upl = $this->upload->do_upload('image');
+
+        if ( !$upl )
         {
             $error = $this->upload->display_errors(); 
             if ( $error != '<p>Anda belum memilih berkas untuk diunggah.</p>' ) { //<-- kalau errornya karena gak ada file, ya berarti ga ada error. User emang gak mau upload
@@ -100,6 +101,19 @@ class Anggota extends CI_Controller {
         }
         else{
         	$nama_file = $this->upload->data('file_name') . "?" . time();
+					// mengecilkan ukuran foto
+					$this->load->model('ResizeImage');
+					$this->ResizeImage->dir( $this->upload->data('full_path') );
+
+
+					// buat gambar poster
+					$this->ResizeImage->resizeTo(500, 500, 'maxwidth');
+					$this->ResizeImage->saveImage('assets/img/members/' . $this->upload->data('file_name'));
+					
+
+					$this->load->helper('file');
+					unlink($this->upload->data('full_path')); // delete temporary file
+
         	return $nama_file;
         }
 	}
