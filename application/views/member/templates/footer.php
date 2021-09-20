@@ -172,6 +172,28 @@
       });
     // LOADER ENDS
 
+  });
+
+  
+
+    
+  // Loader for button
+  function show_loader(element, caption="Loading...") {
+    element.addClass('disabled');
+    let captionAsli = element.html();
+    element.attr('captionAsli', captionAsli);
+    element.html('<img class="mr-2" src="<?php echo base_url() ?>assets/img/loader.gif"> ' + caption);
+  }
+
+  function hide_loader(element) {
+    element.removeClass('disabled');
+    let captionAsli = element.attr('captionAsli');
+    element.html(captionAsli);
+  }
+
+  // kalo submit, otomatis beri loader
+  $('button[onclick^="submit_form"]').click(function () { // find that has onclick start_with "submit_form..."
+    show_loader( $(this) );
   })
 </script>
 
