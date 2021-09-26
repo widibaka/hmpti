@@ -20,8 +20,9 @@
                 <th>Publish</th>
                 <th>Author</th>
                 <th>Update Terakhir</th>
-                <th>Limit Pendaftar</th>
                 <th>Link Absensi/Presensi</th>
+                <th>Limit Peserta</th>
+                <th>Link Pendaftaran</th>
                 <th>Action</th>
               </tr>
               </thead>
@@ -38,8 +39,9 @@
                 <th>Publish</th>
                 <th>Author</th>
                 <th>Update Terakhir</th>
-                <th>Limit Pendaftar</th>
                 <th>Link Absensi/Presensi</th>
+                <th>Limit Peserta</th>
+                <th>Link Pendaftaran</th>
                 <th>Action</th>
               </tr>
               </tfoot>
