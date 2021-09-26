@@ -376,8 +376,8 @@ class Event extends CI_Controller {
 	            $row[] = $t;
 		        $row[] = $field->judul;
 		        $row[] = date( "d M Y, H:m", $field->jadwal );
-		        $row[] = '<a href="'.base_url() . 'assets/img/events/'.$field->poster.'">'.$field->poster.'</a>';
-		        $row[] = substr( strip_tags($field->deskripsi) , 0, 100) . '...';
+		        // $row[] = '<a href="'.base_url() . 'assets/img/events/'.$field->poster.'">'.$field->poster.'</a>';
+		        // $row[] = substr( strip_tags($field->deskripsi) , 0, 100) . '...';
 		        		if ($field->publish == 0) {
 		        			$b = '<span class="btn bg-danger disabled">OFF</span>';
 		        		}else{
@@ -387,12 +387,12 @@ class Event extends CI_Controller {
 		        $row[] = $field->author;
 		        $row[] = date( "d M Y, H:m", $field->last_update );
 		        $row[] = $field->limit_pendaftar;
+		        $row[] = '<a target="_blank" href="'.base_url() . 'p/review/' . $field->id_event.'">'.base_url() . 'p/review/' . $field->id_event.'<a>';
 		        		$ctrl = '<div class="btn-group">
 		  		                      <a href="'.base_url().'admin/event/editor/'.$field->id_event.'" type="button" title="Sunting" class="btn btn-info"><i class="fas fa-pencil-alt"></i> Edit</a>
 		  		                      <a href="'.base_url().'admin/pendaftar/index/'.$field->id_event.'" type="button" class="btn btn-warning"><i class="fas fa-user-alt"></i> Pendaftar ('. $this->Model_pendaftar->pendaftar_event( $field->id_event )->num_rows() .')</a>
 		  		                </div>';
 		        $row[] = $ctrl;
-		        $row[] = base_url() . 'p/review/' . $field->id_event;
 
 		
 		        $data[] = $row;

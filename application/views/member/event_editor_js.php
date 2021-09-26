@@ -189,7 +189,7 @@ $(document).ready(function () {
         noUiSlider.create(updateSliderY, {
             range: {
                 min: 0,
-                max: <?php echo $sertifikat['tinggi_image'] ?>
+                max: <?php echo (int)$sertifikat['tinggi_image'] / 2.5; // Untuk sementara, bug sertifikat diatasi pakai ini aja dulu ?>
             },
             connect: "lower",
             start: <?php echo $sertifikat['posisi_y']; ?>, // dimulai dari sini

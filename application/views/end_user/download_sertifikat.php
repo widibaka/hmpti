@@ -10,8 +10,7 @@ $pdf->AddPage();
 $image_exploded = explode('?', $event['sertifikat']);
 $image_pisah_dengan_titik = explode('.', $image_exploded[0]);
 $filetype = end( $image_pisah_dengan_titik );
-$url = base_url() . 'assets/img/events/' . $image_exploded[0];
-
+$url = 'assets/img/events/' . $image_exploded[0];
 
 $pdf->Image( $url , 0, 0, 297, 0, $filetype ); // zoom out yang paling pas 297. udah saya test
 // setting jenis font yang akan digunakan

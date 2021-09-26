@@ -15,14 +15,14 @@
                 <th>Thumbnail</th>
                 <th>Judul</th>
                 <th>Jadwal</th>
-                <th>Poster</th>
-                <th>Deskripsi</th>
+                <!-- <th>Poster</th> -->
+                <!-- <th>Deskripsi</th> -->
                 <th>Publish</th>
                 <th>Author</th>
                 <th>Update Terakhir</th>
                 <th>Limit Pendaftar</th>
-                <th>Control</th>
                 <th>Link Absensi/Presensi</th>
+                <th>Action</th>
               </tr>
               </thead>
               <tbody>
@@ -33,14 +33,14 @@
                 <th>Thumbnail</th>
                 <th>Judul</th>
                 <th>Jadwal</th>
-                <th>Poster</th>
-                <th>Deskripsi</th>
+                <!-- <th>Poster</th> -->
+                <!-- <th>Deskripsi</th> -->
                 <th>Publish</th>
                 <th>Author</th>
                 <th>Update Terakhir</th>
                 <th>Limit Pendaftar</th>
-                <th>Control</th>
                 <th>Link Absensi/Presensi</th>
+                <th>Action</th>
               </tr>
               </tfoot>
             </table>
@@ -52,5 +52,5 @@
 </div>
 
 <div class="col-12 text-right">
-	<a href="<?php echo base_url() ?>admin/event/editor" role="button" class="btn btn-lg btn-info rounded-circle"><i class="fas fa-plus"></i></a>
+	<a href="<?php echo base_url() ?>admin/event/editor" role="button" class="btn btn-lg btn-info rounded-lg"><i class="fas fa-plus"></i> Tambah Event Baru</a>
 </div>

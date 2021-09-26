@@ -29,11 +29,18 @@
 		});
 	}
 
+	
+
 	$(document).ready(function() {
 		do_countdown(); // <-- at first on load
 		setInterval(function() {
 			do_countdown();
 		},20000); //<-- run at every 20 secs
+
+		<?php if ( !empty( $this->input->get('event') ) ): ?>
+			$("#exampleModal").modal("show");
+			get_detail(<?php echo $this->input->get('event') ?>);
+		<?php endif ?>
 		
 	});
 </script>

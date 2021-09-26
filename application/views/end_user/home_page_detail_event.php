@@ -1,3 +1,9 @@
+<?php if ( empty($judul) ): ?>
+<div class="col-12 row" id="detail_event_wrapper" style="display: none;">
+Event Tidak Ditemukan!
+</div>
+<?php return; endif ?>
+
 <div class="col-12 row" id="detail_event_wrapper" style="display: none;">
   <p class="h5" id="event_judul"><?php echo $judul ?></p>
   <div class="col-12">
@@ -60,7 +66,7 @@
                                                     <?php else: ?>
                                                     Tidak dibatasi
                                                   <?php endif ?></p>
-    <p id="event_deskripsi"><?php echo $deskripsi ?></p>
+    <div id="event_deskripsi" style="word-wrap: break-word;"><?php echo $deskripsi ?></div>
     <p id="event_last_update"><i>Update terakhir: <?php echo date( "d M Y, H:m", $last_update ) . " WIB" ?>. Oleh <?php echo $author ?>.</i></p>
     
     <?php if ( $status == true && $sudah_daftar > 0 ): ?>
