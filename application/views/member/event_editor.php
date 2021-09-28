@@ -25,6 +25,7 @@
     </div>             
     <div class="card-body">
       <div class="container">
+
         <!-- form start -->
         <form action="<?php echo $url ?>" method="post" role="form" id="editForm" novalidate="novalidate" enctype="multipart/form-data">
 
@@ -36,7 +37,7 @@
           <!-- time Picker -->
           <div class="bootstrap-timepicker">
             <div class="form-group">
-              <label>Jadwal</label>
+              <label>Batas waktu pendaftaran</label>
               <input type="text" name="jadwal" class="form-control datetimepicker-input" id="timepicker" data-toggle="datetimepicker" data-target="#timepicker" value="<?php echo (!empty($main_data['jadwal'])) ? date('d/m/Y H.i', $main_data['jadwal']) : ''  ?>" placeholder="Jadwal pelaksanaan ..." autocomplete="off" />
               <?php echo ( !empty($main_data['jadwal']) && $main_data['jadwal'] < time() ) ? '<p><strong class="text-danger">TANGGAL DI ATAS SUDAH TERLEWAT</strong></p>' : '' ?>
               <p>Ini adalah batas waktu bagi peserta untuk mendaftar ke event. Setelah waktu di atas terlewati, maka peserta tidak akan bisa lagi mendaftar ke event.</p>
@@ -73,7 +74,7 @@
             <label>Deskripsi</label>
             <textarea class="form-control" name="deskripsi" id="edit_deskripsi" rows="7" placeholder="Deskripsi ..."><?php echo (!empty($main_data['deskripsi'])) ? $main_data['deskripsi'] : '' ?></textarea>
             <p>
-              Dapat diisi dengan penjelasan tentang event yang sedang Anda buat ini. Dapat pula Anda berikan link grup WhatsApp agar lebih mudah memberikan pengumuman atau pengingat saat event akan dimulai.
+              Dapat diisi dengan captions ataupun penjelasan tentang event yang sedang Anda buat ini. 
             </p>
           </div>
           <div class="form-group">
@@ -131,12 +132,19 @@
             <input type="text" cols="30" rows="10" class="form-control" name="data_tambahan" id="edit_data_tambahan" placeholder="Asal instansi, alamat, ..." value="<?php echo (!empty($main_data['data_tambahan'])) ? $main_data['data_tambahan'] : '' ?>">
             <p>Apa saja yang ingin Anda ketahui dari peserta? Misalnya Anda ingin tahu instansi peserta berasal, atau variabel lain yang relevan dengan event Anda. Silakan pisahkan setiap variabel memakai koma (,) agar sistem dapat berjalan dengan baik.</p>
           </div>
+          <div class="form-group">
+            <label>Pesan Untuk Pendaftar</label>
+            <textarea class="form-control" name="pesan_utk_pendaftar" id="edit_pesan_utk_pendaftar" rows="7" placeholder="Tulis pesan ..."><?php echo (!empty($main_data['pesan_utk_pendaftar'])) ? $main_data['pesan_utk_pendaftar'] : '' ?></textarea>
+            <p>
+              Pesan ini akan muncul ketika peserta sudah berhasil mendaftar di event. Dapat Anda isi dengan link grup WhatsApp agar lebih mudah memberikan pengumuman atau pengingat saat event akan dimulai.
+            </p>
+          </div>
           
         </form>
-
+        
       </div>
       <div class="col-12 text-right mb-2 p-3">
-        <button  type="button" class="btn btn-lg btn-info rounded-lg shadow" onclick="submit_form('#editForm')"><i class="fas fa-save"></i> Simpan </button>
+        <button id="tombol_simpan1" type="button" class="btn btn-lg btn-info rounded-lg shadow" onclick="submit_form('#editForm')"><i class="fas fa-save"></i> Simpan </button>
       </div>
     </div>  
     <div class="col-12 text-right mb-2 p-3">
@@ -170,29 +178,53 @@
       <p><strong>PENTING!</strong> Setelah itu tekan tombol "Tes Download Sertifikat" untuk menentukan apakah koordinat sudah tepat atau belum, karena tampilan di bawah ini tidak selalu tepat.</p>
       <form action="<?php echo base_url(); ?>admin/event/sertifikat_set_koordinat/<?php echo $main_data['id_event']; ?>" method="post">
         <div class="form-group">
-          <div class="row d-flex justify-content-center">
-              <div class="col-6 p-3">
+          <div class="row d-flex justify-content-left">
+
+              <label class="mt-3">Font Size: </label>
+              <div class="col-12 mb-3">
+                  <input class="form-control" type="number" name="font_size" id="font_size" value="<?php echo $sertifikat['font_size'] ?>">
+              </div>
+
+              <label for="font_color_id">Font Color (ID Sertifikat): </label><br>
+              <div class="col-12 mb-3 input-group">
+                  <input class="form-control" type="text" name="font_color_id" id="font_color_id" value="<?php echo $sertifikat['font_color_id'] ?>">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-square" style="color: <?php echo $sertifikat['font_color_id'] ?>"></i></span>
+                  </div>
+              </div>
+
+              <label for="font_color_id">Font Color (Nama): </label><br>
+              <div class="col-12 mb-3 input-group">
+                  <input class="form-control" type="text" name="font_color_nama" id="font_color_nama" value="<?php echo $sertifikat['font_color_nama'] ?>">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-square" style="color: <?php echo $sertifikat['font_color_nama'] ?>"></i></span>
+                  </div>
+              </div>
+
+              <div class="col-6 mb-3">
                   <input type="hidden" name="posisi_x" id="posisi_x">
-                  <p>Koordinat X: <span id="nilaiX">0</span>px</p>
+                  <label>Koordinat X: <span id="nilaiX">0</span>px</label>
                   <div id="sliderX" class="slider"></div>
               </div>
-              <div class="col-6 p-3">
+              <div class="col-6 mb-3">
                   <input type="hidden" name="posisi_y" id="posisi_y">
-                  <p>Koordinat Y: <span id="nilaiY">0</span>px</p>
+                  <label>Koordinat Y: <span id="nilaiY">0</span>px</label>
                   <div id="sliderY" class="slider"></div>
               </div>
+
           </div>
           <br>
-          <div class="row float-center text-center" style="overflow: hidden;">
+          <div class="row d-flex justify-content-center text-center" style="overflow: hidden;">
             <div class="col-sm-12 mt-4 text-center " style="border: solid 2px red">
               <img style="max-width: 100%;" src="<?php echo base_url('assets/img/events/') . $main_data['sertifikat'] ?>" alt="">
-              <span class="nama_peserta text-center" style="width: auto; position: absolute; border: solid 0px red; font-family: Arial; font-size: 3.5vw; font-weight: bold;"><p style=" margin-top: -1.5vw; margin-left:-100%; color: black;">[ Nama Peserta ]</p></span>
+              <span class="nama_peserta text-center" style="width: auto; position: absolute; border: solid 0px red; font-family: Arial; font-size: <?php echo $sertifikat['font_size']/8.571428571428571 ?>vw; font-weight: bold;"><p style=" margin-top: -1.5vw; margin-left:-100%; color: <?php echo $sertifikat['font_color_nama'] ?>;">[ Nama Peserta ]</p></span>
+              <span class="id_sertifikat text-right" style="width: auto; position: absolute; border: solid 0px red; font-family: Arial; font-size: 1.4vw; font-weight: bold; right: 3vw; top: 3vw;"><p style=" margin-top: -1.5vw; margin-left:-100%; color: <?php echo $sertifikat['font_color_id'] ?>;">ID: HMPTI0000000000</p></span>
             </div>
           </div>
-        </div>
-        <div class="col-12 text-right">
-          <button class="btn btn-primary btn-lg mr-2 mb-2">Simpan Koordinat</button>
-          <a target="_blank" class="btn btn-danger btn-lg mr-2 mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $main_data['id_event'] ?>?test=true">Tes Download Sertifikat</a>
+          <div class="col-12 text-right mt-3">
+            <button type="submit" class="btn btn-primary btn-lg mr-2 mb-2">Simpan Koordinat & Lainnya</button>
+            <a target="_blank" class="btn btn-danger btn-lg mr-2 mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $main_data['id_event'] ?>?test=true">Tes Download Sertifikat</a>
+          </div>
         </div>
       </form>
       <?php endif; ?>

@@ -96,38 +96,20 @@ class P extends CI_Controller {
 		$this->load->view('end_user/nonaktif', $data);
 		$this->load->view('end_user/templates/footer', $data);
 	}
-	public function credits()
+	public function verifikasi_sertifikat()
 	{
-		$this->title = 'Credits';
-		$data['developers'] = 
-		[
-			0 => 
-			[
-				'judul' => 'Project Website HMP TI',
-				'tahun' => '2021',
-				'leader' => "Widi Dwi Nurcahyo (KorekSoft)",
-				'members' => 
-				[
-					'Yulidar Ivan Maulana Putra',
-					'Risma Adisty Nilasari',
-					'Yahya Aliya Rohim',
-					'Rekan-rekan Divisi Media Informasi',
-				],
-			],
-			// 1 => 
-			// [
-			// 	'judul' => 'Project A',
-			// 	'tahun' => '2022',
-			// 	'leader' => "X",
-			// 	'members' => 
-			// 	[
-			// 		'A', 'B', 'C',
-			// 	],
-			// ],
-		];
+		$data = [];
+		$data['pendaftar'] = false;
+		if ( !empty( $this->input->post() ) ) {
+			$id_pendaftar = $this->input->post('id_pendaftar');
+			$check_pendaftar = $this->Model_pendaftar->verifikasi_sertifikat( $id_pendaftar )->row_array();
+			$data['pendaftar'] = $check_pendaftar;
+		}
+		$this->title = 'Verifikasi Sertifikat';
 		$this->load->view('end_user/templates/header', $data);
-		$this->load->view('end_user/credits', $data);
+		$this->load->view('end_user/verifikasi_sertifikat', $data);
 		$this->load->view('end_user/templates/footer', $data);
+		$this->load->view('end_user/verifikasi_sertifikat_JS', $data);
 	}
 	public function daftar_event($id_event='')
 	{
@@ -191,12 +173,15 @@ class P extends CI_Controller {
 
 
 			// lalu semua data yang diperlukan dimasukin ke database
+			$jumlah_total_plus1 = (int)$this->Model_pendaftar->jumlah_seluruh_pendaftar()+1;
 			$post_to_db = [
+				'id_pendaftar' => 'HMPTI' . $id_event . rand(10, 100) . $jumlah_total_plus1, 
 				'email' => $this->session->userdata('email'), 
 				'nama' =>	$this->input->post('nama', true), 
 				'id_event' =>	$id_event,
 				'data_tambahan' =>	$data_tambahan,
-				'pembayaran' => $upload['pembayaran']
+				'pembayaran' => $upload['pembayaran'],
+				'waktu' => date('Y-m-d H:i:s'),
 			];
 			$stat_daftar = $this->Model_pendaftar->add( $post_to_db );
 
@@ -214,6 +199,8 @@ class P extends CI_Controller {
 			}else{ //<-- kalau sudah daftar, dan baru sekali
 				$this->session->set_flashdata("msg", "success#Selamat, ". $this->session->userdata('email') ." telah terdaftar di event ini.");
 			}
+			// clear request
+			$_POST = null;
 			redirect( $this->uri->uri_string() );
 		}
 

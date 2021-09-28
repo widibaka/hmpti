@@ -7,9 +7,9 @@ class Model_pendaftar extends CI_model {
 
 // Start DATATABLE SERVER-SIDED
     
-    var $column_order = array('email','nama', null, null, 'bintang', 'saran', 'status'); //field yang ada di table
-    var $column_search = array('email','nama', 'status'); //field yang diizin untuk pencarian 
-    var $order = array('id_pendaftar' => 'asc'); // default order
+    var $column_order = array('email','nama', null, null, 'bintang', 'saran', 'status', 'waktu'); //field yang ada di table
+    var $column_search = array('email','nama', 'status', 'waktu'); //field yang diizin untuk pencarian 
+    var $order = array('waktu' => 'asc'); // default order
     
     private function _get_datatables_query()
     {
@@ -106,6 +106,15 @@ class Model_pendaftar extends CI_model {
 		return $this->db->get($this->table);
 	}
 
+	public function verifikasi_sertifikat($id_pendaftar)
+	{
+		$this->db->where('id_pendaftar', $id_pendaftar);
+		$this->db->select('id_pendaftar,nama,h_pendaftar.id_event,status,judul');
+		$this->db->join('h_events', 'h_events.id_event = h_pendaftar.id_event');
+        $this->db->limit(1);
+		return $this->db->get($this->table);
+	}
+
 	public function check_exists($email, $id_event)
 	{
 		$this->db->where('email', $email);
@@ -121,6 +130,11 @@ class Model_pendaftar extends CI_model {
 	public function jumlah_pendaftar_event($id_event)
 	{
 		$this->db->where('id_event', $id_event);
+		return $this->db->get($this->table)->num_rows();
+	}
+    
+	public function jumlah_seluruh_pendaftar()
+	{
 		return $this->db->get($this->table)->num_rows();
 	}
 	public function add($data)

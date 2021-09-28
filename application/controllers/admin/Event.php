@@ -69,7 +69,7 @@ class Event extends CI_Controller {
 	{
 		$post = $this->input->post(NULL, true);
 		foreach ($post as $name => $val) { //<-- langsung sapu semua
-			if ( $name != 'deskripsi' ) { //<-- filter all except deskripsi
+			if ( $name != 'deskripsi' AND $name != 'pesan_utk_pendaftar' ) { //<-- filter all except deskripsi & pesan_utk_pendaftar
 				$this->form_validation->set_rules($name, $name, 'trim|strip_tags');
 			}
 		}
@@ -320,7 +320,7 @@ class Event extends CI_Controller {
         
 				// Update tabel sertifikat
 				$this->load->model('Model_sertifikat');
-        $masukin_ke_db = $this->Model_sertifikat->set_data_sertifikat(0, 0, $id_event, $gambar['image_height'], $gambar['image_width']);
+        $masukin_ke_db = $this->Model_sertifikat->set_data_sertifikat(0, 0, $id_event, $gambar['image_height'], $gambar['image_width'], 30, 'rgb(0, 0, 0)', 'rgb(0, 0, 0)');
         if ($masukin_ke_db != false) {
           $this->session->set_flashdata('msg', 'success#Upload sertifikat berhasil. Silakan tentukan koordinat untuk meletakkan nama peserta.');
           redirect( base_url() . 'admin/event/editor/' . $id_event . '#section_sertifikat' ); // kembali ke editor
@@ -341,9 +341,13 @@ class Event extends CI_Controller {
       $x = $this->input->post('posisi_x') /4 ; // dibagi empat. ini berdasarkan hasil proyeksi
       $y = $this->input->post('posisi_y') /4 ;
 
+      $font_size = $this->input->post('font_size');
+      $font_color_nama = $this->input->post('font_color_nama');
+      $font_color_id = $this->input->post('font_color_id');
+
 			$this->load->model('Model_sertifikat');
-      $this->Model_sertifikat->set_data_sertifikat($x, $y, $id_event, 0, 0); // ubah posisi x dan y
-      $this->session->set_flashdata('msg','success#Koordinat berhasil disimpan.');
+      $this->Model_sertifikat->set_data_sertifikat($x, $y, $id_event, 0, 0, $font_size, $font_color_nama, $font_color_id); // ubah posisi x dan y
+      $this->session->set_flashdata('msg','success#Perubahan berhasil disimpan.');
       redirect( base_url( 'admin/event/editor/' . $id_event . '#section_sertifikat' ) ); // refresh halaman
     }
 
