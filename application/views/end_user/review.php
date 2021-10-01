@@ -61,15 +61,15 @@
 			    	    <?php if( $pendaftar->row_array()['status']=='Unset' ): ?>
 			    	      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
 			    	    <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
-			    	      Review ini dinyatakan Valid dan telah dikunci oleh panitia. <br><br>
+			    	      <div class="alert alert-success mt-2"><i class="fa fa-check"></i> Review ini dinyatakan Valid dan telah dikunci oleh panitia.</div>
 			    	    <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
-			    	      Maaf, review ini dinyatakan Invalid (tidak sah) oleh panitia karena melanggar ketentuan event <br><br>
+			    	      <div class="alert alert-danger mt-2"><i class="fa fa-times"></i> Maaf, review ini dinyatakan Invalid (tidak sah) oleh panitia karena melanggar ketentuan event.</div>
 			    	  <?php endif ?>
 			    	<?php endif ?>
 
 
 			    	
-		    		<a href="<?php echo base_url() ?>" class="btn btn-danger btn-lg">Kembali ke Home</a>
+		    		<a href="<?php echo base_url() ?>" class="btn btn-primary btn-lg"><i class="fa fa-home"></i> Kembali ke Home</a>
 			    </form>
 
 			    

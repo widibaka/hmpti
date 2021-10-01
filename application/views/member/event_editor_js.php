@@ -48,6 +48,22 @@ $("#edit_sertifikat").change(function() {
 $(document).ready(function () {
 
   $('#edit_deskripsi').summernote({
+    height: 500, 
+    toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough', 'superscript', 'subscript']],
+      ['fontsize', ['fontsize']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['height', ['height']],
+      ['insert', ['link']],
+      ['view', ['fullscreen', 'codeview', 'help']]
+    ]
+  });
+
+  $('#edit_pesan_utk_pendaftar').summernote({
+    height: 500, 
     toolbar: [
       // [groupName, [list of button]]
       ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -99,10 +115,7 @@ $(document).ready(function () {
         minlength: 50
       },
       <?php if ( empty($main_data['id_event']) ): ?>
-        
-        thumbnail: {
-          required: true,
-        },
+
         poster: {
           required: true,
         },
@@ -123,9 +136,6 @@ $(document).ready(function () {
       },
       <?php if ( empty($main_data['id_event']) ): ?>
         
-        thumbnail: {
-          required: "Harus ada thumbnail",
-        },
         poster: {
           required: "Harus ada poster",
         },
@@ -136,6 +146,7 @@ $(document).ready(function () {
     errorPlacement: function (error, element) {
       error.addClass('invalid-feedback');
       element.closest('.form-group').append(error);
+      hide_loader($('#tombol_simpan1'));
     },
     highlight: function (element, errorClass, validClass) {
       $(element).addClass('is-invalid');
@@ -170,7 +181,7 @@ $(document).ready(function () {
 
         noUiSlider.create(updateSliderX, {
             range: {
-                min: 0,
+                min: 1,
                 max: <?php echo $sertifikat['lebar_image'] ?>
             },
             connect: "lower",
@@ -193,8 +204,8 @@ $(document).ready(function () {
 
         noUiSlider.create(updateSliderY, {
             range: {
-                min: 0,
-                max: <?php echo $sertifikat['tinggi_image'] ?>
+                min: 1,
+                max: <?php echo (int)$sertifikat['tinggi_image'] / 2.5; // Untuk sementara, bug sertifikat diatasi pakai ini aja dulu ?>
             },
             connect: "lower",
             start: <?php echo $sertifikat['posisi_y']; ?>, // dimulai dari sini
@@ -207,4 +218,27 @@ $(document).ready(function () {
         });
 
     });
+
+
+    $('#font_color_nama').colorpicker({
+      format: 'rgb'
+    })
+    $('#font_color_nama').on('colorpickerChange', function(event) {
+      $('#font_color_nama').parent().find('.fa-square').css('color', event.color.toString());
+      $('.nama_peserta p').css('color', event.color.toString());
+    });
+
+    $('#font_color_id').colorpicker({
+      format: 'rgb'
+    })
+    $('#font_color_id').on('colorpickerChange', function(event) {
+      $('#font_color_id').parent().find('.fa-square').css('color', event.color.toString());
+      $('.id_sertifikat p').css('color', event.color.toString());
+
+    });
+
+    $('#font_size').on('change', function(e){
+      $(".nama_peserta").css( 'font-size', $(this).val()/8.571428571428571+"vw" );
+      // sek sek, tak mikir... kalau 3.5vh = 30pt maka ...
+    })
 </script>

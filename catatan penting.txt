@@ -1,0 +1,48 @@
+Untuk Peserta & umum:
+- Halaman Home:
+	- Slide show gambar
+	- Event Yang akan datang
+	- Riwayat Event
+	- Daftar Divisi Organisasi
+- Halaman organisasi:
+	- Struktur organisasi (Anggota & jabatan)
+	- Visi & Misi
+	- Anggota Nonaktif
+- Halaman divisi:
+	- Keterangan divisi
+	- Anggota divisi
+	- Program kerja divisi
+- Event:
+	- Detail event
+	- Mendaftar ke event memakai akun google
+	- Dapat mengunggah bukti hadir
+	- Dapat mengunggah bukti bayar
+	- Mengunduh sertifikat
+
+Untuk Panitia:
+- Dashboard:
+	- Progres jumlah pendaftar 10 event terakhir
+- Event:
+	- Membuat event baru
+	- Mengubah event
+	- Fasilitas di event editor:
+		- Thumbnail
+		- Poster
+		- Judul
+		- Jadwal
+		- Deskripsi
+		- Publikasi (on/off)
+		- Pembatasan jumlah pendaftar
+		- Upload desain sertifikat
+		- Panitia event
+		- Link presensi / absensi
+		- Custom variable data peserta
+- Proker:
+	- Menambah / Mengubah program kerja di tiap divisi
+- Keanggotaan:
+	- CRUD Data anggota
+	- CRUD Data jabatan
+	- CRUD Data divisi
+- Website:
+	- Mengubah data organisasi dan pengaturan website
+	- Mengolah Carousel / Slideshow halaman home

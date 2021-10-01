@@ -1,3 +1,9 @@
+<?php if ( empty($judul) ): ?>
+<div class="col-12 row" id="detail_event_wrapper" style="display: none;">
+Event Tidak Ditemukan!
+</div>
+<?php return; endif ?>
+
 <div class="col-12 row" id="detail_event_wrapper" style="display: none;">
   <p class="h5" id="event_judul"><?php echo $judul ?></p>
   <div class="col-12">
@@ -9,6 +15,7 @@
       background-repeat: no-repeat;
       background-position: center;
       min-height: 50px;
+      min-height: 270px;
     ">
       <img width="100%" src="<?php echo base_url() ?>assets/img/events/<?php echo $poster ?>">                  
     </div>
@@ -51,7 +58,7 @@
     <?php endif ?>
 
     <br>
-    <p id="event_jadwal">Pelaksanaan: <strong><?php echo date( "d M Y, H:m", $jadwal ) . " WIB" ?></strong></p>
+    <p id="event_jadwal">Batas waktu pendaftaran: <strong><?php echo date( "d M Y, H:m", $jadwal ) . " WIB" ?></strong></p>
     <p id="event_status">Status pendaftaran: <strong><?php echo $spendaf ?></strong></p>
     <p id="event_status">Jumlah pendaftar: <strong class="text-success"><?php echo $jum_pendaftar ?></strong></p>
     <p id="event_status">Batas jumlah pendaftar:  <?php if ( $limit_pendaftar != 0 ): ?>
@@ -59,7 +66,7 @@
                                                     <?php else: ?>
                                                     Tidak dibatasi
                                                   <?php endif ?></p>
-    <p id="event_deskripsi"><?php echo $deskripsi ?></p>
+    <div id="event_deskripsi" style="word-wrap: break-word;"><?php echo $deskripsi ?></div>
     <p id="event_last_update"><i>Update terakhir: <?php echo date( "d M Y, H:m", $last_update ) . " WIB" ?>. Oleh <?php echo $author ?>.</i></p>
     
     <?php if ( $status == true && $sudah_daftar > 0 ): ?>

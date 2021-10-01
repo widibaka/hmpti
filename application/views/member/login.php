@@ -35,13 +35,16 @@
       <p class="login-box-msg">Login ke sistem untuk dapat mendaftar ke event kami</p>
 
       <div class="social-auth-links text-center mb-3">
-        <a href="<?php echo $auth_url ?>" class="btn btn-block btn-danger">
+        <a href="<?php echo $auth_url ?>" class="btn btn-block btn-info">
           <i class="fab fa-google mr-2"></i> Login dengan Google
         </a>
       </div>
       <!-- /.social-auth-links -->
       <p class="mb-0">
-        <i>Login sistem menggunakan akun gmail <br>Atau <br> <a href="<?php echo base_url() . 'login/login_anggota' ?>">login sebagai anggota ormawa</a></i>
+        <i>Login sistem menggunakan akun gmail
+        <!--  <br>Atau <br> 
+        <a href="<?php echo base_url() . 'login/login_anggota' ?>">login sebagai anggota ormawa</a> -->
+        </i>
       </p>
 
     </div>

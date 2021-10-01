@@ -134,7 +134,13 @@ class Pendaftar extends CI_Controller {
 
 
 		        $row[] = substr($field->saran, 0, 30).'...' . ' <a href="javascrip:void(0)" data-toggle="modal" data-target="#modal-default" onclick="saran_more(\''. htmlentities($field->saran) .'\')">read more</a>';
+		        $row[] = '<button type="button" class="btn btn-primary" onclick="show_data_tambahan(\'' . $field->id_pendaftar . '\')">Data Tambahan</button>';
 
+						// Waktu
+		        $row[] = $field->waktu;
+
+
+						// Action buttons (Status)
 		        	$color = '';
 		        	if ( $field->status == 'Unset' ) {
 		        		$color = 'default';
@@ -156,7 +162,6 @@ class Pendaftar extends CI_Controller {
 				            </div>
 				            ';
 		        $row[] = $btn.$drop_items;
-		        $row[] = '<button type="button" class="btn btn-primary" onclick="show_data_tambahan(' . $field->id_pendaftar . ')">Data Tambahan</button>';
 
 
 		

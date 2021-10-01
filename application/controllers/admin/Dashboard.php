@@ -17,6 +17,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model("Model_proker");
 		$this->load->model("Model_event");
 		$this->load->model("Model_pendaftar");
+		$this->load->model("Model_panitia");
 
 		$this->x->harus_login($this->session);
 
@@ -30,6 +31,20 @@ class Dashboard extends CI_Controller {
 
 		// $data['carousel'] = $this->Model_carousel->get()->result_array();
 		$data['events'] = $this->Model_event->get_10_event_terakhir()->result_array();
+		$data_members = $this->Model_member->get_all()->result_array();
+
+		// Membuat array baru
+		$data['members'] = array();
+		$menjadi_panitia = array();
+		foreach ($data_members as $key => $val) {
+			$data['members'][$key]['nama'] = $val['nama'];
+			$menjadi_panitia[$key] = $this->Model_panitia->hitung_row_by_email($val['email']);
+			$data['members'][$key]['menjadi_panitia'] = $menjadi_panitia[$key];
+			$data['members'][$key]['details'] = $this->Model_panitia->get_panitia_by_email($val['email']);
+		}
+		array_multisort($menjadi_panitia, SORT_DESC, $data['members']);
+
+
 		foreach ($data['events'] as $key => $val) {
 			$data['events'][$key]['jumlah_pendaftar'] = $this->Model_pendaftar->jumlah_pendaftar_event($val['id_event']);
 		}

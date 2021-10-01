@@ -77,6 +77,9 @@
 
   function submit_form(form_id) {
     // transition_onleave(); <-- function ini berbahaya. Menghilangkan validate
+
+    // sebagai gantinya, kalo submit, beri loader
+    show_loader( $('button[onclick^="submit_form(\''+form_id+'"]') ); // find that has onclick start_with "submit_form..."
     $(form_id).submit();
   }
 
@@ -172,6 +175,30 @@
       });
     // LOADER ENDS
 
+  });
+
+  
+
+    
+  // Loader for button
+  function show_loader(element, caption="Loading...") {
+    element.addClass('disabled');
+    let captionAsli = element.html();
+    element.attr('captionAsli', captionAsli);
+    element.html('<img class="mr-2" src="<?php echo base_url() ?>assets/img/loader.gif"> ' + caption);
+  }
+
+  function hide_loader(element) {
+    element.removeClass('disabled');
+    let captionAsli = element.attr('captionAsli');
+    console.log(captionAsli)
+    element.html(captionAsli);
+  }
+
+  
+
+  $('form').on('submit', function () {
+    show_loader( $(this).find('[type="submit"]') );
   })
 </script>
 

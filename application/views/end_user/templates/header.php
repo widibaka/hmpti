@@ -95,7 +95,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="<?php echo base_url() ?>">Home</a>
               </li>
 
@@ -120,6 +120,15 @@
                     <li><a class="dropdown-item" href="<?php echo base_url() ?>p/divisi/<?php echo $divisi['id_divisi'] ?>"><?php echo $divisi['nama_divisi'] ?></a></li>
                   <?php endforeach ?>
                   <!-- <li><hr class="dropdown-divider"></li> -->
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Alat
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="<?php echo base_url() ?>p/verifikasi_sertifikat">Verifikasi Sertifikat</a></li>
                 </ul>
               </li>
               <!-- <li class="nav-item active">

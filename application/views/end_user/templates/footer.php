@@ -1,11 +1,17 @@
 
       </div>
       <!-- FOOTER -->
-      <footer class="container">
+      <footer class="container" style="font-size: 14pt;">
         <a href="#" class="to_top"><i class="fa fa-arrow-circle-up"></i></a>
-        <p><?= $this->website['nama_organisasi']; ?> <?php 
-          echo date("Y");
-        ?></p>
+        <p>
+          <a class="mr-5" title="Buka instagram HMPTI" href="https://www.instagram.com/hmpti.udb/?hl=id">
+            <i class="fab fa-instagram mr-4"></i> 
+          </a>
+           
+          <?= $this->website['nama_organisasi']; ?> 2019 - <?php 
+            echo date("Y");
+          ?>
+        </p>
         <!-- .widibaka was here -->
       </footer>
 
@@ -32,6 +38,26 @@
 
       // myModal.show();
 
+      function get_detail(id_event) {
+        var loader = `<div class="col-12" style="
+                  background-image: url('<?php echo base_url() ?>assets/img/loader.gif');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  min-height: 50px;
+                ">`;
+
+        $("#detail_event").html(loader);
+        setTimeout(function() {
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url() ?>p/ajax_detail_event/"+id_event,
+            success: function (data) {
+              $("#detail_event").html(data);
+              $("#detail_event_wrapper").slideDown(600); // actually shows the data of details
+            },
+          });
+        }, 500);
+      }
 
     // LOADER STARTS
       function transition_onleave() {
@@ -89,6 +115,36 @@
           
     // LOADER ENDS
       });
+
+    // Add slideDown animation to Bootstrap dropdown when expanding.
+    $('.dropdown').on('show.bs.dropdown', function() {
+      $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+    });
+
+    // Add slideUp animation to Bootstrap dropdown when collapsing.
+    $('.dropdown').on('hide.bs.dropdown', function() {
+      $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+    });
+
+    
+    
+    // Loader for button
+    function show_loader(element, caption="Loading...") {
+      element.addClass('disabled');
+      let captionAsli = element.html();
+      element.attr('captionAsli', captionAsli);
+      element.html('<img class="mr-2" src="<?php echo base_url() ?>assets/img/loader.gif"> ' + caption);
+    }
+
+    function hide_loader(element) {
+      element.removeClass('disabled');
+      let captionAsli = element.attr('captionAsli');
+      element.html(captionAsli);
+    }
+
+    $('form').submit(function (e) {
+      show_loader( $(this).find('button[type="submit"]') );
+    })
 
     </script>
 

@@ -49,8 +49,9 @@
                   <th>Pembayaran</th>
                   <th>Bintang</th>
                   <th>Saran</th>
-                  <th>Status</th>
                   <th>Data Tambahan</th>
+                  <th>Waktu</th>
+                  <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -64,8 +65,9 @@
                   <th>Pembayaran</th>
                   <th>Bintang</th>
                   <th>Saran</th>
-                  <th>Status</th>
                   <th>Data Tambahan</th>
+                  <th>Waktu</th>
+                  <th>Status</th>
                 </tr>
                 </tfoot>
               </table>

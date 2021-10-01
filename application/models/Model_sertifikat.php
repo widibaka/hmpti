@@ -11,7 +11,7 @@ class Model_sertifikat extends CI_model {
 		return $this->db->get($this->table);
 	}
 
-  public function set_data_sertifikat($x, $y, $id_event, $tinggi_image, $lebar_image)
+  public function set_data_sertifikat($x, $y, $id_event, $tinggi_image, $lebar_image, $font_size, $font_color_nama, $font_color_id)
 	{
 
 		// variabel yang nilainya 0 akan diabaikan
@@ -37,6 +37,10 @@ class Model_sertifikat extends CI_model {
 		if (!empty($lebar_image)) {
 			$data['lebar_image'] = $lebar_image;
 		}
+
+		$data['font_size'] = $font_size;
+		$data['font_color_nama'] = $font_color_nama;
+		$data['font_color_id'] = $font_color_id;
 
 
 		$this->db->where('id_event =', $id_event);

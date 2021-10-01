@@ -69,7 +69,7 @@ class Event extends CI_Controller {
 	{
 		$post = $this->input->post(NULL, true);
 		foreach ($post as $name => $val) { //<-- langsung sapu semua
-			if ( $name != 'deskripsi' ) { //<-- filter all except deskripsi
+			if ( $name != 'deskripsi' AND $name != 'pesan_utk_pendaftar' ) { //<-- filter all except deskripsi & pesan_utk_pendaftar
 				$this->form_validation->set_rules($name, $name, 'trim|strip_tags');
 			}
 		}
@@ -85,20 +85,20 @@ class Event extends CI_Controller {
 
 		// Jadi gini, ketika thumbnail ingin diupdate upload thumbnail doang, ketika poster mau diupdate upload poster doang. Ketika dua-duanya, ya dua-duanya diupload
 		$to_upload = [];
-		if ( !empty($post['update_thumbnail']) ) {
-			array_push($to_upload, 
-				[
-				'element_name' => 'thumbnail',
-				'filename' => 'thumb-'.$post['id_event'],
-				'id_event' => $post['id_event']
-				]
-			);
-		}
+		// if ( !empty($post['update_thumbnail']) ) {
+		// 	array_push($to_upload, 
+		// 		[
+		// 		'element_name' => 'thumbnail',
+		// 		'filename' => 'thumb-'.$post['id_event'],
+		// 		'id_event' => $post['id_event']
+		// 		]
+		// 	);
+		// }
 		if ( !empty($post['update_poster']) ) {
 			array_push($to_upload, 
 				[
 				'element_name' => 'poster',
-				'filename' => 'poster-'.$post['id_event'],
+				'filename' => 'img-'.$post['id_event'],
 				'id_event' => $post['id_event']
 				]
 			);
@@ -145,20 +145,20 @@ class Event extends CI_Controller {
 
 		// Jadi gini, ketika thumbnail ingin diupdate upload thumbnail doang, ketika poster mau diupdate upload poster doang. Ketika dua-duanya, ya dua-duanya diupload
 		$to_upload = [];
-		if ( !empty($post['update_thumbnail']) ) {
-			array_push($to_upload, 
-				[
-				'element_name' => 'thumbnail',
-				'filename' => 'thumb-'.$post['id_event'],
-				'id_event' => $post['id_event']
-				]
-			);
-		}
+		// if ( !empty($post['update_thumbnail']) ) {
+		// 	array_push($to_upload, 
+		// 		[
+		// 		'element_name' => 'thumbnail',
+		// 		'filename' => 'thumb-'.$post['id_event'],
+		// 		'id_event' => $post['id_event']
+		// 		]
+		// 	);
+		// }
 		if ( !empty($post['update_poster']) ) {
 			array_push($to_upload, 
 				[
 				'element_name' => 'poster',
-				'filename' => 'poster-'.$post['id_event'],
+				'filename' => 'img-'.$post['id_event'],
 				'id_event' => $post['id_event']
 				]
 			);
@@ -219,20 +219,21 @@ class Event extends CI_Controller {
 
 
 
-			if ( $val['element_name'] == 'poster' ) {
-				$this->ResizeImage->resizeTo(800, 800, 'maxwidth');
-			}elseif( $val['element_name'] == 'thumbnail' ){
-				$this->ResizeImage->resizeTo(375, 200, 'exact');
-			}
+			// buat gambar poster
+			$this->ResizeImage->resizeTo(800, 800, 'maxwidth');
+			$this->ResizeImage->saveImage('assets/img/events/' . 'poster-' . $upl['file_name']);
+			// buat gambar thumbnail
+			$this->ResizeImage->resizeTo(400, 300, 'maxwidth');
+			$this->ResizeImage->saveImage('assets/img/events/' . 'thumbnail-' .  $upl['file_name']);
 			
 
 
-			$this->ResizeImage->saveImage('assets/img/events/' . $upl['file_name']);
 
 			$this->load->helper('file');
 			unlink($upl['full_path']); // delete temporary file
 
-			$returns[ $val['element_name'] ] = $upl['file_name'] . "?" . time();
+			$returns[ 'poster' ] = 'poster-' . $upl['file_name'] . "?" . time();
+			$returns[ 'thumbnail' ] = 'thumbnail-' .  $upl['file_name'] . "?" . time();
 		}
 		return $returns;
 	}
@@ -319,7 +320,7 @@ class Event extends CI_Controller {
         
 				// Update tabel sertifikat
 				$this->load->model('Model_sertifikat');
-        $masukin_ke_db = $this->Model_sertifikat->set_data_sertifikat(0, 0, $id_event, $gambar['image_height'], $gambar['image_width']);
+        $masukin_ke_db = $this->Model_sertifikat->set_data_sertifikat(0, 0, $id_event, $gambar['image_height'], $gambar['image_width'], 30, 'rgb(0, 0, 0)', 'rgb(0, 0, 0)');
         if ($masukin_ke_db != false) {
           $this->session->set_flashdata('msg', 'success#Upload sertifikat berhasil. Silakan tentukan koordinat untuk meletakkan nama peserta.');
           redirect( base_url() . 'admin/event/editor/' . $id_event . '#section_sertifikat' ); // kembali ke editor
@@ -340,9 +341,13 @@ class Event extends CI_Controller {
       $x = $this->input->post('posisi_x') /4 ; // dibagi empat. ini berdasarkan hasil proyeksi
       $y = $this->input->post('posisi_y') /4 ;
 
+      $font_size = $this->input->post('font_size');
+      $font_color_nama = $this->input->post('font_color_nama');
+      $font_color_id = $this->input->post('font_color_id');
+
 			$this->load->model('Model_sertifikat');
-      $this->Model_sertifikat->set_data_sertifikat($x, $y, $id_event, 0, 0); // ubah posisi x dan y
-      $this->session->set_flashdata('msg','success#Koordinat berhasil disimpan.');
+      $this->Model_sertifikat->set_data_sertifikat($x, $y, $id_event, 0, 0, $font_size, $font_color_nama, $font_color_id); // ubah posisi x dan y
+      $this->session->set_flashdata('msg','success#Perubahan berhasil disimpan.');
       redirect( base_url( 'admin/event/editor/' . $id_event . '#section_sertifikat' ) ); // refresh halaman
     }
 
@@ -375,8 +380,8 @@ class Event extends CI_Controller {
 	            $row[] = $t;
 		        $row[] = $field->judul;
 		        $row[] = date( "d M Y, H:m", $field->jadwal );
-		        $row[] = '<a href="'.base_url() . 'assets/img/events/'.$field->poster.'">'.$field->poster.'</a>';
-		        $row[] = substr( strip_tags($field->deskripsi) , 0, 100) . '...';
+		        // $row[] = '<a href="'.base_url() . 'assets/img/events/'.$field->poster.'">'.$field->poster.'</a>';
+		        // $row[] = substr( strip_tags($field->deskripsi) , 0, 100) . '...';
 		        		if ($field->publish == 0) {
 		        			$b = '<span class="btn bg-danger disabled">OFF</span>';
 		        		}else{
@@ -385,15 +390,15 @@ class Event extends CI_Controller {
 		        $row[] = $b;
 		        $row[] = $field->author;
 		        $row[] = date( "d M Y, H:m", $field->last_update );
+		        $row[] = '<a target="_blank" href="'.base_url() . 'p/review/' . $field->id_event.'">'.base_url() . 'p/review/' . $field->id_event.'<a>';
 		        $row[] = $field->limit_pendaftar;
+		        $row[] = '<a target="_blank" href="'.base_url() . '?event=' . $field->id_event.'">'.base_url() . '?event=' . $field->id_event.'<a>';
 		        		$ctrl = '<div class="btn-group">
 		  		                      <a href="'.base_url().'admin/event/editor/'.$field->id_event.'" type="button" title="Sunting" class="btn btn-info"><i class="fas fa-pencil-alt"></i> Edit</a>
 		  		                      <a href="'.base_url().'admin/pendaftar/index/'.$field->id_event.'" type="button" class="btn btn-warning"><i class="fas fa-user-alt"></i> Pendaftar ('. $this->Model_pendaftar->pendaftar_event( $field->id_event )->num_rows() .')</a>
 		  		                </div>';
 		        $row[] = $ctrl;
-		        $row[] = base_url() . 'p/review/' . $field->id_event;
 
-		
 		        $data[] = $row;
 		    }
 		

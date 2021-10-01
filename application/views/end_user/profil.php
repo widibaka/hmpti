@@ -46,15 +46,16 @@
 		        <p class="lead"><?php echo $deskripsi ?></p>
 		      </div>
 		      <div class="col-md-5">
-		      	<div class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-3 overflow-hidden" style="
-		      			width: 500px;
-		      			height: 500px; 
-		      			background: url('<?php echo base_url() . "assets/img/members/" . $image ?>');
+		      	<div class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto overflow-hidden" style="
+		      			width: 300px;
+		      			height: auto; 
+								border-radius: 10px;
+		      			background: url('<?php echo (!empty($image)) ? base_url() . 'assets/img/members/' . $image : base_url() . 'assets/img/members/no_photo.png'; ?> ?>');
 		      			background-size: cover;
 		      			background-repeat: no-repeat;
 		      			background-position: center;
 		      	">
-		      		<img src="<?php echo base_url() . "assets/img/members/" . $image ?>" style="opacity: 0; width: 100%; height: 100%;">
+		      		<img src="<?php echo (!empty($image)) ? base_url() . 'assets/img/members/' . $image : base_url() . 'assets/img/members/no_photo.png'; ?> ?>" style="opacity: 0; width: 100%; height: 100%;">
 		      	</div>
 
 		      </div>
