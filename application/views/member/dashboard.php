@@ -57,6 +57,17 @@
                 <div class="chart">
                   <canvas id="barChart_panitia" style="min-height: 250px; height: 550px; max-height: 550px; max-width: 100%;"></canvas>
                 </div>
+                <hr>
+                <div class="col-12 mt-5">
+                  <?php foreach ($members as $key => $val): ?>
+                    <p>
+                      <?php echo $val['nama'] ?> <br>
+                      <?php foreach ($val['details'] as $key => $value): ?>
+                        <li><?php echo $value['peran'] ?> (<?php echo $value['judul'] ?>)</li>
+                      <?php endforeach ?>
+                    </p>
+                  <?php endforeach ?>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>

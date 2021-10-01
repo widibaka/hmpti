@@ -40,6 +40,7 @@ class Dashboard extends CI_Controller {
 			$data['members'][$key]['nama'] = $val['nama'];
 			$menjadi_panitia[$key] = $this->Model_panitia->hitung_row_by_email($val['email']);
 			$data['members'][$key]['menjadi_panitia'] = $menjadi_panitia[$key];
+			$data['members'][$key]['details'] = $this->Model_panitia->get_panitia_by_email($val['email']);
 		}
 		array_multisort($menjadi_panitia, SORT_DESC, $data['members']);
 
