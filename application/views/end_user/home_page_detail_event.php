@@ -60,7 +60,7 @@ Event Tidak Ditemukan!
     <br>
     <p id="event_jadwal">Batas waktu pendaftaran: <strong><?php echo date( "d M Y, H:m", $jadwal ) . " WIB" ?></strong></p>
     <p id="event_status">Status pendaftaran: <strong><?php echo $spendaf ?></strong></p>
-    <p id="event_status">Jumlah pendaftar: <strong class="text-success"><?php echo $jum_pendaftar ?></strong></p>
+    <!-- <p id="event_status">Jumlah pendaftar: <strong class="text-success"><?php echo  '' //$jum_pendaftar ?></strong></p> -->
     <p id="event_status">Batas jumlah pendaftar:  <?php if ( $limit_pendaftar != 0 ): ?>
                                                     <strong class="text-danger"><?php echo $limit_pendaftar ?></strong>
                                                     <?php else: ?>
