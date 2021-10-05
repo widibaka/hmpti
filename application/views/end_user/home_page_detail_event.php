@@ -5,7 +5,7 @@ Event Tidak Ditemukan!
 <?php return; endif ?>
 
 <div class="col-12 row" id="detail_event_wrapper" style="display: none;">
-  <p class="h5" id="event_judul"><?php echo $judul ?></p>
+  <!-- <p class="h5" id="event_judul"><?php echo $judul ?></p> -->
   <div class="col-12">
     <button class="btn btn-light col-12" onclick="$('#poster_original').toggle(400)"><span class="text-muted">Show/hide poster</span></button>
   </div>
