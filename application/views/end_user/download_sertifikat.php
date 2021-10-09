@@ -31,9 +31,9 @@ $color = explode(',', str_replace( ')', '', str_replace( 'rgb(', '', $sertifikat
 $pdf->SetTextColor( (int)$color[0], (int)$color[1], (int)$color[2] );
 // mencetak string 
 if ( !empty( $this->input->get('test') ) ) { // menyiapkan bila test download berlaku
-    $pdf->Cell($sertifikat['posisi_x'], $sertifikat['posisi_y'], 'TES NAMA PESERTA', 0, 1, 'C');   
+    $pdf->Cell($sertifikat['posisi_x'], $sertifikat['posisi_y'], ucwords( strtolower( 'TES NAMA PESERTA' )), 0, 1, 'C');   
 }else{ 
-    $pdf->Cell($sertifikat['posisi_x'], $sertifikat['posisi_y'], $pendaftar['nama'], 0, 1, 'C');
+    $pdf->Cell($sertifikat['posisi_x'], $sertifikat['posisi_y'], ucwords( strtolower( $pendaftar['nama'] )), 0, 1, 'C');
 }
 
 
