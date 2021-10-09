@@ -156,9 +156,9 @@ class Pendaftar extends CI_Controller {
 				            ';
 				    $drop_items= '
 				    		<div class="dropdown-menu"  role="menu">
-				              <a class="dropdown-item" href="javascript:void(0)" onclick="unset('.$field->id_pendaftar.')">Unset</a>
-				              <a class="dropdown-item" href="javascript:void(0)" onclick="valid('.$field->id_pendaftar.')">Valid</a>
-				              <a class="dropdown-item" href="javascript:void(0)" onclick="invalid('.$field->id_pendaftar.')">Invalid</a>
+				              <a class="dropdown-item" href="javascript:void(0)" onclick="unset(\''.$field->id_pendaftar.'\')">Unset</a>
+				              <a class="dropdown-item" href="javascript:void(0)" onclick="valid(\''.$field->id_pendaftar.'\')">Valid</a>
+				              <a class="dropdown-item" href="javascript:void(0)" onclick="invalid(\''.$field->id_pendaftar.'\')">Invalid</a>
 				            </div>
 				            ';
 		        $row[] = $btn.$drop_items;

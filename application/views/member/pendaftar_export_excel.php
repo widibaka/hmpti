@@ -49,7 +49,7 @@
 				<?php elseif ( $val['status'] == 'Invalid' ): ?>
 					<td style="background-color: red"><?php echo $val['status'] ?></td>
 				<?php endif ?>
-				<?php foreach (json_decode($main_data[0]['data_tambahan'], true) as $key => $val): ?>
+				<?php foreach (json_decode($main_data[$key]['data_tambahan'], true) as $key => $val): ?>
 					<td><?php echo $val ?></td>
 				<?php endforeach; ?>
 				
