@@ -261,7 +261,7 @@ class P extends CI_Controller {
 			$this->Model_pendaftar->update_review($post, $pendaftar->row_array()['id_pendaftar']);
 
 			$this->session->set_flashdata("msg", "success#Ulasan telah tersimpan. Anda dapat menutup tab ini.");
-			redirect( base_url() . $this->uri->uri_string() );	
+			redirect( base_url() );	
 
 		}
 			
