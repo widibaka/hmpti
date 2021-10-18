@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `h_carousel` (
   PRIMARY KEY (`id_carousel`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_hmpti.h_carousel: ~3 rows (approximately)
+-- Dumping data for table db_hmpti.h_carousel: ~2 rows (approximately)
 DELETE FROM `h_carousel`;
 /*!40000 ALTER TABLE `h_carousel` DISABLE KEYS */;
 INSERT INTO `h_carousel` (`id_carousel`, `include_logo`, `judul`, `paragraf`, `image`, `posisi`) VALUES
@@ -92,17 +92,18 @@ CREATE TABLE IF NOT EXISTS `h_events` (
   `wajib_bukti_kehadiran` int(1) DEFAULT 0,
   `sertifikat` varchar(50) DEFAULT '',
   `data_tambahan` varchar(500) DEFAULT '',
+  `pesan_utk_pendaftar` text DEFAULT '',
   PRIMARY KEY (`id_event`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table db_hmpti.h_events: ~5 rows (approximately)
 DELETE FROM `h_events`;
 /*!40000 ALTER TABLE `h_events` DISABLE KEYS */;
-INSERT INTO `h_events` (`id_event`, `thumbnail`, `judul`, `jadwal`, `poster`, `deskripsi`, `publish`, `author`, `last_update`, `limit_pendaftar`, `apakah_berbayar`, `wajib_bukti_kehadiran`, `sertifikat`, `data_tambahan`) VALUES
-	(0, 'thumb-1624963579.jpg?1624964280', 'SIBARMATI - Sinau CRUD Bareng', 1622291400, 'poster-1624963579.jpg?1624963838', '<p>Belajar bareng tentang CRUD memakai bahasa pemrograman PHP.</p>', 1, 'WIDI DWI NURCAHYO', 1624965403, 0, 0, 0, '', ''),
-	(1624963850, 'thumb-1624963850.jpg?1624964180', 'SIBARMATI - Sinau Deployment Bareng', 1630933200, 'poster-1624963850.jpg?1624964180', '<p>Sinau bareng cara set up deploy website berbasis PHP secara otomatis memakai GITLAB CI</p><p><a href="http://google.com" target="_blank">whatsapp</a></p>', 1, 'Widi Dwi Nurcahyo', 1631003296, 1, 0, 1, 'sertifikat-1624963850.jpeg?1631023720', ''),
-	(1624965855, 'thumb-1624965855.jpg?1624966103', 'WEBINAR ANDROID FUNDAMENTAL', 1617429600, 'poster-1624965855.jpg?1624965983', '<p>Kegiatan ini dilaksanakan oleh Divisi Minat dan\r\nBakat Himpunan Mahasiswa Prodi Teknik Informatika Fakultas Ilmu Komputer Universitas\r\nDuta Bangsa Surakarta, yang di ikuti oleh Mahasiswa Fakultas Ilmu Komputer\r\nUniversitas Duta Bangsa Surakarta dan umum, kuota perserta yaitu 450 orang dengan\r\npendaftar sejumlah mendaftar 339, konfirmasi 295 yang hadir<br></p>', 1, 'WIDI DWI NURCAHYO', 1624966103, 0, 0, 0, '', ''),
-	(1631028424, 'thumb-1631028424.jpg?1631028489', 'SIBARMATI X', 1631032020, 'poster-1631028424.jpg?1631028489', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quasi quisquam assumenda esse, magni omnis nulla sunt natus necessitatibus distinctio tempora magnam perspiciatis ipsam eos! Maxime placeat nisi quisquam quos?<br></p>', 1, 'WIDI DWI NURCAHYO', 1631484290, 0, 0, 1, '', '');
+INSERT INTO `h_events` (`id_event`, `thumbnail`, `judul`, `jadwal`, `poster`, `deskripsi`, `publish`, `author`, `last_update`, `limit_pendaftar`, `apakah_berbayar`, `wajib_bukti_kehadiran`, `sertifikat`, `data_tambahan`, `pesan_utk_pendaftar`) VALUES
+	(11111220, 'thumb-1624963579.jpg?1624964280', 'SIBARMATI - Sinau CRUD Bareng', 1622291400, 'poster-1624963579.jpg?1624963838', '<p>Belajar bareng tentang CRUD memakai bahasa pemrograman PHP.</p>', 1, 'WIDI DWI NURCAHYO', 1624965403, 0, 0, 0, '', '', ''),
+	(1624963850, 'thumb-1624963850.jpg?1624964180', 'SIBARMATI - Sinau Deployment Bareng', 1630933200, 'poster-1624963850.jpg?1624964180', '<p>Sinau bareng cara set up deploy website berbasis PHP secara otomatis memakai GITLAB CI</p><p><a href="http://google.com" target="_blank">whatsapp</a></p>', 1, 'Widi Dwi Nurcahyo', 1632787639, 1, 0, 1, 'sertifikat-1624963850.jpeg?1631023720', '', ''),
+	(1624965855, 'thumb-1624965855.jpg?1624966103', 'WEBINAR ANDROID FUNDAMENTAL', 1617429600, 'poster-1624965855.jpg?1624965983', '<p>Kegiatan ini dilaksanakan oleh Divisi Minat dan\r\nBakat Himpunan Mahasiswa Prodi Teknik Informatika Fakultas Ilmu Komputer Universitas\r\nDuta Bangsa Surakarta, yang di ikuti oleh Mahasiswa Fakultas Ilmu Komputer\r\nUniversitas Duta Bangsa Surakarta dan umum, kuota perserta yaitu 450 orang dengan\r\npendaftar sejumlah mendaftar 339, konfirmasi 295 yang hadir<br></p>', 1, 'WIDI DWI NURCAHYO', 1624966103, 0, 0, 0, '', '', ''),
+	(1631028424, 'thumbnail-img-1631028424.jpg?1631500299', 'SIBARMATI X', 1632886200, 'poster-img-1631028424.jpg?1631500299', '<p>Terserah <span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><span style="font-size: 1rem;">Terserah </span><br></p>', 1, 'WIDI DWI NURCAHYO', 1632819892, 0, 0, 1, 'sertifikat-1631028424.jpg?1632788135', 'Asal instansi, Alamat', 'xxxx9999i');
 /*!40000 ALTER TABLE `h_events` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_jabatan
@@ -150,24 +151,7 @@ CREATE TABLE IF NOT EXISTS `h_member` (
 DELETE FROM `h_member`;
 /*!40000 ALTER TABLE `h_member` DISABLE KEYS */;
 INSERT INTO `h_member` (`nim`, `email`, `nama`, `kelas`, `id_jabatan`, `kontak`, `deskripsi`, `image`, `aktif`) VALUES
-	(170103158, 'jemyka@jemyka', 'Jemyka Phalupi', '17TIA3', 0, '', 'Ketua HMPTI Tahun 2019 Ketua HMPTI Tahun 2019 Ketua HMPTI Tahun 2019', '', 0),
-	(180103023, 'andreas_abi@fikom.udb.ac.id', 'ANDREAS ABI PERMANA', '18TIA2', 11, '', 'Andreas Abi Permana. Menjabat sebagai Ketua HMP TI UDB periode 2021.', '', 1),
-	(180103029, 'arif_eko@fikom.udb.ac.id', 'Arif Eko Fitrianto', '18TIA1', 18, '', 'Arif Eko Fitrianto. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(180103088, 'matin_muhith@fikom.udb.ac.id', 'Matin Muhith', '18TIA2', 14, '', 'Matin Muhith. Menjabat sebagai wakil ketua HMP TI UDB periode 2021.', '', 1),
-	(180103106, 'rizki_febriansyah@fikom.udb.ac.id', 'Muhammad Rizki Febriansyah', '18TIA3', 18, '', 'Muhammad Rizki Febriansyah. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(180103121, 'pipin_yulanda@fikom.udb.ac.id', 'Pipin Yulanda', '18TIA2', 20, '', 'Pipin Yulanda. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(180103133, 'rifqi_firdausi@fikom.udb.ac.id', 'Rifqi Firdausi Arafadh', '18TIA4', 17, '', 'Rifqi Firdausi Arafadh. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(180103159, 'widi_dwi@fikom.udb.ac.id', 'Widi Dwi Nurcahyo', '18TIA3', 12, 'Whatsapp: 081226203761, Email: widibaka55@gmail.com, Github: https://github.com/widibaka', 'Saya Widi Dwi Nurcahyo. Makanan kesukaan saya adalah ice cream.', '180103159.jpg?1624956871', 1),
-	(180103167, 'yulidar_maulana@fikom.udb.ac.id', 'Yulidar Maulana Ivan Saputra', '18TIA1', 15, '', 'Yulidar Maulana Ivan Saputra. Menjabat sebagai anggota HMP TI UDB periode 2021.', '180103167.jpg?1631024866', 1),
-	(190103028, '190103028@fikom.udb.ac.id', 'Very Fitri Anto', '19TIA1', 18, '', 'Very Fitri Anto. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(190103117, '190103117@fikom.udb.ac.id', 'Risma Adisty Nilasari', '19TIA4', 13, '', 'Risma Adisty Nilasari. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(190103161, '190103161@fikom.udb.ac.id', 'Ikhsan Nur Afif', '19TIA4', 18, '', 'Ikhsan Nur Afif. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(190103168, '190103168@fikom.udb.ac.id', 'Rio Suryo Laksono', '19TIA6', 18, '', 'Rio Suryo Laksono. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(200103026, '202030334@mhs.udb.ac.id', 'Yahya Aliya Rohim', '20TIA1', 13, '', 'Yahya Aliya Rohim. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(200103058, '202020270@mhs.udb.ac.id', 'Ahmad Alif Apriyanto', '20TIA3', 16, '', 'Ahmad Alif Apriyanto. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(200103091, '202030275@mhs.udb.ac.id', 'Dika Adi Pratama', '20TIA4', 16, '', 'Dika Adi Pratama. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(200103097, '202020685@mhs.udb.ac.id', 'Fitroh Ahmad Abdul Aziz', '20TIA4', 18, '', 'Fitroh Ahmad Abdul Aziz. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1),
-	(200103196, '202030335@mhs.udb.ac.id', 'Jamilatun Safitri', '20TIA3', 19, '', 'Jamilatun Safitri. Menjabat sebagai anggota HMP TI UDB periode 2021.', '', 1);
+	(180103159, 'widi_dwi@fikom.udb.ac.id', 'Widi Dwi Nurcahyo', '18TIA3', 12, 'Whatsapp: 081226203761, Email: widibaka55@gmail.com, Github: https://github.com/widibaka', 'Saya Widi Dwi Nurcahyo. Makanan kesukaan saya adalah ice cream.', '180103159.jpg?1624956871', 1);
 /*!40000 ALTER TABLE `h_member` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_member_login_log
@@ -177,9 +161,9 @@ CREATE TABLE IF NOT EXISTS `h_member_login_log` (
   `nama` varchar(255) NOT NULL DEFAULT '0',
   `time` int(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_hmpti.h_member_login_log: ~15 rows (approximately)
+-- Dumping data for table db_hmpti.h_member_login_log: ~31 rows (approximately)
 DELETE FROM `h_member_login_log`;
 /*!40000 ALTER TABLE `h_member_login_log` DISABLE KEYS */;
 INSERT INTO `h_member_login_log` (`id`, `nama`, `time`) VALUES
@@ -204,7 +188,25 @@ INSERT INTO `h_member_login_log` (`id`, `nama`, `time`) VALUES
 	(53, 'Widi Dwi Nurcahyo', 1631119713),
 	(54, 'Widi Dwi Nurcahyo', 1631340953),
 	(55, 'Widi Dwi Nurcahyo', 1631363538),
-	(56, 'WIDI DWI NURCAHYO', 1631480447);
+	(56, 'WIDI DWI NURCAHYO', 1631480447),
+	(57, 'WIDI DWI NURCAHYO', 1631951447),
+	(58, 'WIDI DWI NURCAHYO', 1632008196),
+	(59, 'WIDI DWI NURCAHYO', 1632129148),
+	(60, 'WIDI DWI NURCAHYO', 1632535229),
+	(61, 'WIDI DWI NURCAHYO', 1632580591),
+	(62, 'WIDI DWI NURCAHYO', 1632630790),
+	(63, 'WIDI DWI NURCAHYO', 1632650696),
+	(64, 'WIDI DWI NURCAHYO', 1632656448),
+	(65, 'WIDI DWI NURCAHYO', 1632666819),
+	(66, 'WIDI DWI NURCAHYO', 1632677464),
+	(67, 'WIDI DWI NURCAHYO', 1632721946),
+	(68, 'WIDI DWI NURCAHYO', 1632744385),
+	(69, 'Widi Dwi Nurcahyo', 1632780037),
+	(70, 'WIDI DWI NURCAHYO', 1632818558),
+	(71, 'WIDI DWI NURCAHYO', 1632976980),
+	(72, 'WIDI DWI NURCAHYO', 1633059744),
+	(73, 'WIDI DWI NURCAHYO', 1633753796),
+	(74, 'WIDI DWI NURCAHYO', 1634352922);
 /*!40000 ALTER TABLE `h_member_login_log` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_panitia
@@ -215,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `h_panitia` (
   `id_event` int(12) NOT NULL DEFAULT 0,
   `peran` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_panitia`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table db_hmpti.h_panitia: ~18 rows (approximately)
 DELETE FROM `h_panitia`;
@@ -242,13 +244,14 @@ INSERT INTO `h_panitia` (`id_panitia`, `email`, `id_event`, `peran`) VALUES
 	(35, 'matin_muhith@fikom.udb.ac.id', 1624963850, 'Moderator'),
 	(36, 'arif_eko@fikom.udb.ac.id', 1631028893, 'Ketua Panitia'),
 	(37, '190103117@fikom.udb.ac.id', 1631028893, 'Sie Acara 1'),
-	(38, 'rifqi_firdausi@fikom.udb.ac.id', 1631028424, 'Sie PDD 2');
+	(38, 'rifqi_firdausi@fikom.udb.ac.id', 1631028424, 'Sie PDD 2'),
+	(39, 'andreas_abi@fikom.udb.ac.id', 1624963850, 'Moderator');
 /*!40000 ALTER TABLE `h_panitia` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_pendaftar
 DROP TABLE IF EXISTS `h_pendaftar`;
 CREATE TABLE IF NOT EXISTS `h_pendaftar` (
-  `id_pendaftar` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pendaftar` varchar(50) NOT NULL DEFAULT 'HMPTI',
   `email` varchar(500) DEFAULT '',
   `nama` varchar(500) DEFAULT '',
   `id_event` int(12) NOT NULL DEFAULT 0,
@@ -258,16 +261,17 @@ CREATE TABLE IF NOT EXISTS `h_pendaftar` (
   `bintang` tinyint(1) NOT NULL DEFAULT 0,
   `saran` varchar(500) DEFAULT '',
   `status` char(16) DEFAULT 'Unset',
+  `waktu` datetime DEFAULT NULL,
   PRIMARY KEY (`id_pendaftar`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_hmpti.h_pendaftar: ~2 rows (approximately)
+-- Dumping data for table db_hmpti.h_pendaftar: ~3 rows (approximately)
 DELETE FROM `h_pendaftar`;
 /*!40000 ALTER TABLE `h_pendaftar` DISABLE KEYS */;
-INSERT INTO `h_pendaftar` (`id_pendaftar`, `email`, `nama`, `id_event`, `data_tambahan`, `kehadiran`, `pembayaran`, `bintang`, `saran`, `status`) VALUES
-	(16, 'widi_dwi@fikom.udb.ac.id', 'Widi Dwi Nurcahyo', 1624963850, '', 'kehadiran-16-1624963850.jpg?1631001655', '', 5, 'kk', 'Valid'),
-	(22, 'widi_dwi@fikom.udb.ac.id', 'Widi Dwi Nurcahyo1', 1631028893, '{"Asal_instansi":"udb","Alamat":"xxx"}', '', '', 0, '', 'Valid'),
-	(24, 'widi_dwi@fikom.udb.ac.id', 'Widi Dwi Nurcahyo', 1631341784, '{"Asal_instansi":"7","Alamat":"8"}', 'kehadiran-24-1631341784.jpg?1631343921', 'pembayaran-2835985744-1631341784.jpg?1631343627', 4, 'uuuuuuuuuuuuuu', 'Invalid');
+INSERT INTO `h_pendaftar` (`id_pendaftar`, `email`, `nama`, `id_event`, `data_tambahan`, `kehadiran`, `pembayaran`, `bintang`, `saran`, `status`, `waktu`) VALUES
+	('16', 'widi_dwi@fikom.udb.ac.id', 'Widi nwi eurcahyo', 1624963850, '', 'kehadiran-16-1624963850.jpg?1631001655', '', 5, 'aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menyerah aku saya menye', 'Unset', NULL),
+	('HMPTI202109284', 'widi.udb@gmail.com', 'widi udb', 1631028424, '{"Asal_instansi":"t","Alamat":"t"}', '', NULL, 0, '', 'Unset', '2021-09-28 14:45:37'),
+	('HMPTI202109285', 'widi_dwi@fikom.udb.ac.id', 'wdi dwi nchah', 1631028424, '{"Asal_instansi":"udb","Alamat":"k"}', '', NULL, 0, '', 'Unset', '2021-09-28 16:08:12');
 /*!40000 ALTER TABLE `h_pendaftar` ENABLE KEYS */;
 
 -- Dumping structure for table db_hmpti.h_proker
@@ -321,16 +325,20 @@ CREATE TABLE IF NOT EXISTS `h_sertifikat` (
   `posisi_y` varchar(5) NOT NULL DEFAULT '0',
   `tinggi_image` varchar(10) NOT NULL DEFAULT '0',
   `lebar_image` varchar(10) NOT NULL DEFAULT '0',
+  `font_size` varchar(3) DEFAULT '30',
+  `font_color_nama` varchar(50) DEFAULT '0,0,0',
+  `font_color_id` varchar(50) DEFAULT '0,0,0',
   PRIMARY KEY (`id_sertifikat`),
   UNIQUE KEY `id_event` (`id_event`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table db_hmpti.h_sertifikat: ~2 rows (approximately)
 DELETE FROM `h_sertifikat`;
 /*!40000 ALTER TABLE `h_sertifikat` DISABLE KEYS */;
-INSERT INTO `h_sertifikat` (`id_sertifikat`, `id_event`, `posisi_x`, `posisi_y`, `tinggi_image`, `lebar_image`) VALUES
-	(1, '1624963850', '281', '125.0', '1590', '2248'),
-	(3, '1631028893', '278.0', '122.4', '1590', '2248');
+INSERT INTO `h_sertifikat` (`id_sertifikat`, `id_event`, `posisi_x`, `posisi_y`, `tinggi_image`, `lebar_image`, `font_size`, `font_color_nama`, `font_color_id`) VALUES
+	(1, '1624963850', '281', '124.5', '1590', '2248', '30', 'rgb(13, 0, 140)', 'rgb(255, 38, 141)'),
+	(3, '1631028893', '278.0', '122.4', '1590', '2248', '30', '0,0,0', '0,0,0'),
+	(4, '1631028424', '280.9', '70.23', '1590', '2248', '30', 'rgb(129, 68, 154)', 'rgb(129, 68, 154)');
 /*!40000 ALTER TABLE `h_sertifikat` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
