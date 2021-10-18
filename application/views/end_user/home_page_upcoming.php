@@ -5,6 +5,7 @@
         <div class="row d-flex justify-content-center">
           <div class="mb-4">
             <h2 class="text-center mb-4 headline-event"><strong>Event Yang Akan Datang</strong></h2>
+            <hr class="garis-bawah">
           </div>
           <?php foreach ($events as $key => $event): ?>
             <div class="event text-start" title="<?php echo substr( strip_tags($event['deskripsi']) , 0, 140) ?>...">

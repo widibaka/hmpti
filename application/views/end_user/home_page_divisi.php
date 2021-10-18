@@ -5,6 +5,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-12 mb-4">
             <h2 class="text-center mb-4 headline-event"><strong>Divisi</strong></h2>
+            <hr class="garis-bawah">
             <center><p>Berikut daftar divisi, klik untuk melihat detail divisi beserta program kerjanya.</p></center>
           </div>
           <div class="row d-flex justify-content-center">
