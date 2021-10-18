@@ -132,8 +132,12 @@ class Pendaftar extends CI_Controller {
 		        $row[] = $bintang;
 
 
-
-		        $row[] = substr($field->saran, 0, 30).'...' . ' <a href="javascrip:void(0)" data-toggle="modal" data-target="#modal-default" onclick="saran_more(\''. htmlentities($field->saran) .'\')">read more</a>';
+							$readmore = '';
+							if ( strlen($field->saran) > 30 ) {
+								$readmore = '...' . ' <a href="javascrip:void(0)" data-toggle="modal" data-target="#modal-default" onclick="saran_more(\''. htmlentities($field->saran) .'\')">read more</a>';
+							}
+							
+		        $row[] = substr($field->saran, 0, 30).$readmore;
 		        $row[] = '<button type="button" class="btn btn-primary" onclick="show_data_tambahan(\'' . $field->id_pendaftar . '\')">Data Tambahan</button>';
 
 						// Waktu
@@ -159,6 +163,8 @@ class Pendaftar extends CI_Controller {
 				              <a class="dropdown-item" href="javascript:void(0)" onclick="unset(\''.$field->id_pendaftar.'\')">Unset</a>
 				              <a class="dropdown-item" href="javascript:void(0)" onclick="valid(\''.$field->id_pendaftar.'\')">Valid</a>
 				              <a class="dropdown-item" href="javascript:void(0)" onclick="invalid(\''.$field->id_pendaftar.'\')">Invalid</a>
+											<hr>
+				              <a target="_blank" class="dropdown-item" href="' . base_url() . 'p/download_sertifikat/'.$id_event.'.pdf/'.$field->id_pendaftar.'">Download Sertifikat</a>
 				            </div>
 				            ';
 		        $row[] = $btn.$drop_items;

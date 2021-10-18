@@ -49,7 +49,7 @@ Event Tidak Ditemukan!
           <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
             <a class="btn btn-success mb-2" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Valid</a>
             <?php if ( !empty($sertifikat) ) : ?>
-              <a class="btn btn-primary mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $id_event ?>" role="button">Download Sertifikat</a>
+              <a class="btn btn-primary mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $id_event ?>.pdf" role="button">Download Sertifikat</a>
             <?php endif; ?>
           <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
             <a class="btn btn-danger mb-2" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Invalid</a>

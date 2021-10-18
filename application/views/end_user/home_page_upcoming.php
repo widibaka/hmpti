@@ -27,7 +27,7 @@
           <?php if ( empty(count($events)) ): ?>
             <div class="text-center text-muted">
               <p>
-                <i>Belum ada jadwal event terbaru.</i>
+                <i>Coming soon....</i>
               </p>  
             </div>
           <?php endif ?>

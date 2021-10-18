@@ -22,7 +22,7 @@
             <div class="row mb-4 d-flex justify-content-center">
               <img height="150" src="<?php echo base_url() ?>assets/img/events/<?php echo $event['thumbnail'] ?>">
               <div class="col-12 text-center">
-                <p>Rata-rata bintang: <strong><?php echo $average_bintang ?></strong></p>
+                <p>Rata-rata bintang: <strong><?php echo number_format($average_bintang, 2, ',', '.'); ?></strong></p>
                 <p>
                   <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
