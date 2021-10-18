@@ -261,7 +261,7 @@ class P extends CI_Controller {
 			$this->Model_pendaftar->update_review($post, $pendaftar->row_array()['id_pendaftar']);
 
 			$this->session->set_flashdata("msg", "success#Ulasan telah tersimpan. Anda dapat menutup tab ini.");
-			redirect( base_url() . $this->uri->uri_string() );	
+			redirect( base_url() );	
 
 		}
 			
@@ -344,12 +344,35 @@ class P extends CI_Controller {
         }
 	}
 
-	public function download_sertifikat($id_event)
+	public function download_sertifikat($id_event, $id_pendaftar=null)
 	{
+		$id_event_array = explode('.', $id_event);
+		array_pop($id_event_array);
+		$id_event = implode('.', $id_event_array);
+
+		// kalau ada id pendaftarnya, cari email nya lewat database, bukan session. Ini fitur alternatif buat downlaod sertifikat oleh panitia untuk membantu peserta
+		if (!empty($id_pendaftar)) {
+			$email = $this->Model_pendaftar->get_by_id($id_pendaftar)->row_array()['email'];
+		}else{
+			// kalo belum login, mental ke halaman login
+			if ( empty($this->session->userdata('email')) ) {
+				$this->session->set_flashdata("msg", "error#Session sudah habis. Silakan login lagi.");
+				redirect( base_url() . "login" );
+			}
+        
+			$email = $this->session->userdata('email');
+		}
+		
 		$this->load->library('F_pdf');
-		$data['pendaftar'] = $this->Model_pendaftar->check_exists( $this->session->userdata('email'), $id_event )->row_array();
+		$data['pendaftar'] = $this->Model_pendaftar->check_exists( $email, $id_event )->row_array();
 		$data['event'] = $this->Model_event->get_single($id_event)->row_array();
 		$data['sertifikat'] = $this->Model_sertifikat->get_data_sertifikat($id_event)->row_array();
+
+		if ( $data['pendaftar']['status'] != 'Valid' ) {
+				$this->session->set_flashdata("msg", "error#Akun ini tidak berhak mendapatkan sertifikat.");
+				redirect( base_url() );
+		}
+		
 		$this->load->view('end_user/download_sertifikat', $data);
 	}
 

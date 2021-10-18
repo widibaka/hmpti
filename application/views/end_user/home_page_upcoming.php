@@ -19,15 +19,15 @@
               </div>
 
               <p class="mt-2 mx-2 h5" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)"><?php echo $event['judul'] ?></p>
-              <p><?php echo date( "d M Y, H:m", $event['jadwal'] ) . " WIB" ?></p>
-              <p class="countdown_wrapper">Countdown: <span class="countdown" data-time="<?php echo date("M d, Y H:i:s", $event['jadwal']) ?>"></span> <i class="fa fa-circle text-danger blinking"></i></p>
+              <p class="mt-2 mx-2"><?php echo date( "d M Y, H:m", $event['jadwal'] ) . " WIB" ?></p>
+              <p class="countdown_wrapper mt-2 mx-2">Countdown: <span class="countdown" data-time="<?php echo date("M d, Y H:i:s", $event['jadwal']) ?>"></span> <i class="fa fa-circle text-danger blinking"></i></p>
               <p><a class="btn shadow btn-success w-100" href="#" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="get_detail(<?php echo $event['id_event'] ?>)">Join now &raquo;</a></p>
             </div><!-- /.event -->
           <?php endforeach ?>
           <?php if ( empty(count($events)) ): ?>
             <div class="text-center text-muted">
               <p>
-                <i>Belum ada jadwal event terbaru.</i>
+                <i>Coming soon....</i>
               </p>  
             </div>
           <?php endif ?>

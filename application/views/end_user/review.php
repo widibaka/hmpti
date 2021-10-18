@@ -59,7 +59,10 @@
 			    	$pendaftar = $this->Model_pendaftar->check_exists( $email, $id_event ); //gak mau ribet wkwkwk ?>
 			    	<?php if ( $pendaftar->num_rows() > 0 ): // check, kalau terdaftar, boleh kasih ulasan ?>
 			    	    <?php if( $pendaftar->row_array()['status']=='Unset' ): ?>
+									<?php if (empty($get_pendaftar->row_array()['kehadiran'])): ?>
+									<!-- Solusi sementara gini dulu. Besok upgrade server! -->
 			    	      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+									<?php endif ?>
 			    	    <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
 			    	      <div class="alert alert-success mt-2"><i class="fa fa-check"></i> Review ini dinyatakan Valid dan telah dikunci oleh panitia.</div>
 			    	    <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>

@@ -5,7 +5,7 @@ Event Tidak Ditemukan!
 <?php return; endif ?>
 
 <div class="col-12 row" id="detail_event_wrapper" style="display: none;">
-  <p class="h5" id="event_judul"><?php echo $judul ?></p>
+  <!-- <p class="h5" id="event_judul"><?php echo $judul ?></p> -->
   <div class="col-12">
     <button class="btn btn-light col-12" onclick="$('#poster_original').toggle(400)"><span class="text-muted">Show/hide poster</span></button>
   </div>
@@ -49,7 +49,7 @@ Event Tidak Ditemukan!
           <?php elseif( $pendaftar->row_array()['status']=='Valid' ): ?>
             <a class="btn btn-success mb-2" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Valid</a>
             <?php if ( !empty($sertifikat) ) : ?>
-              <a class="btn btn-primary mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $id_event ?>" role="button">Download Sertifikat</a>
+              <a class="btn btn-primary mb-2" href="<?php echo base_url() ?>p/download_sertifikat/<?php echo $id_event ?>.pdf" role="button">Download Sertifikat</a>
             <?php endif; ?>
           <?php elseif( $pendaftar->row_array()['status']=='Invalid' ): ?>
             <a class="btn btn-danger mb-2" href="<?php echo base_url() ?>p/review/<?php echo $id_event ?>" role="button">Review Invalid</a>
@@ -60,7 +60,7 @@ Event Tidak Ditemukan!
     <br>
     <p id="event_jadwal">Batas waktu pendaftaran: <strong><?php echo date( "d M Y, H:m", $jadwal ) . " WIB" ?></strong></p>
     <p id="event_status">Status pendaftaran: <strong><?php echo $spendaf ?></strong></p>
-    <p id="event_status">Jumlah pendaftar: <strong class="text-success"><?php echo $jum_pendaftar ?></strong></p>
+    <!-- <p id="event_status">Jumlah pendaftar: <strong class="text-success"><?php echo  '' //$jum_pendaftar ?></strong></p> -->
     <p id="event_status">Batas jumlah pendaftar:  <?php if ( $limit_pendaftar != 0 ): ?>
                                                     <strong class="text-danger"><?php echo $limit_pendaftar ?></strong>
                                                     <?php else: ?>

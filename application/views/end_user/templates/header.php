@@ -62,7 +62,41 @@
       }
 
     </style>
-
+      
+    <style>
+    /* CSS Buatan Dika */
+    .mepet-ke-bawah {
+      margin-bottom: 0!important;
+    }
+    .rapat {
+      height: auto !important;
+    }
+    .garis-bawah {
+      width: 80px;
+      height: 2px !important;
+      box-sizing: border-box !important;
+      margin: auto;
+      margin-top: -12px;
+      margin-bottom: 22px;
+      color: #2b2b2b !important;
+      opacity: 1;
+      
+    }
+    .section-subheading {
+      font-size: 12pt;
+      margin-top: 10px;
+      font-weight: 400;
+      /* font-style: italic; */
+      text-align: center;
+    }
+    .text-muted {
+      color: #6c757d;
+    }
+    ::selection {
+      background-color: #cc4f89;
+      color: white;
+    }
+    </style>
     
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url() ?>assets/bootstrap5/carousel.css" rel="stylesheet">
