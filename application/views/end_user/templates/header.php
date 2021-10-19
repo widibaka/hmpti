@@ -56,6 +56,15 @@
         border: 1px solid rgba( 255, 255, 255, 0.18 );
         margin: 0 10px 0 10px;
       }
+      .navbar_tanpa_margin_tanpa_shadow{
+        background-color: <?php echo "rgba({$r},{$g},{$b},.4)" ?>!important;
+        box-shadow: 0 0 0 0 !important;
+        backdrop-filter: none!important;
+        -webkit-backdrop-filter: none!important;
+        border-radius: 10px;
+        border: 0!important;
+        /* margin: 0!important; */
+      }
       .custom_navbar .search-btn:hover{
         border-color: #1D9058;
         color: <?php echo $this->website['navbar_text'] ?>;
@@ -101,12 +110,13 @@
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url() ?>assets/bootstrap5/carousel.css" rel="stylesheet">
   </head>
-  <body class="bg-gray-1" style="
+  <body onscroll="ubah_navbar()" class="bg-gray-1" style="
       background-image: url('<?php echo base_url() ?>assets/img/bg0.png');
       /*background-attachment: fixed;*/
       background-position: left bottom;
       background-size: 20% auto;
       background-repeat: no-repeat;
+      padding-top: 0!important;
   ">
 
   <div class="loader" style="opacity: 1; position: fixed;">
@@ -119,7 +129,7 @@
   </div>
 
     <header>
-      <nav class="navbar shadow navbar-expand-md fixed-top custom_navbar" style="z-index: 3;">
+      <nav class="navbar shadow navbar-expand-md fixed-top custom_navbar navbar_tanpa_margin_tanpa_shadow" style="z-index: 3;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img width="45" src="<?php echo base_url() ?>assets/img/<?php echo $this->website['image'] ?>">
