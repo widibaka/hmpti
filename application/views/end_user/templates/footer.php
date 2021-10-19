@@ -29,6 +29,17 @@
     <script src="<?= base_url() ?>assets/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
 
     <script type="text/javascript">
+      // bayangan navbar punya bayangan hanya ketika di-scroll doang
+      function ubah_navbar() {
+        if ( $( "html" ).scrollTop() > 200 ) {
+          $(".custom_navbar").removeClass('navbar_tanpa_margin_tanpa_shadow');
+        }else{
+          $(".custom_navbar").addClass('navbar_tanpa_margin_tanpa_shadow');
+        }
+      }
+
+
+
       var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
       var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
@@ -95,6 +106,8 @@
             }, 500);
           });
 
+          
+
           // showing alert
           <?php $alert = $this->session->flashdata("msg") ?>
           <?php if ( !empty($alert) ): ?>
@@ -145,6 +158,10 @@
     $('form').submit(function (e) {
       show_loader( $(this).find('button[type="submit"]') );
     })
+
+
+    
+    
 
     </script>
 
