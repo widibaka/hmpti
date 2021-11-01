@@ -59,7 +59,7 @@
       .navbar_tanpa_margin_tanpa_shadow{
         background-color: <?php echo "rgba({$r},{$g},{$b},.4)" ?>!important;
         box-shadow: 0 0 0 0 !important;
-        backdrop-filter: none!important;
+        backdrop-filter: blur( 4.0px )!important;
         -webkit-backdrop-filter: none!important;
         border-radius: 10px;
         border: 0!important;
