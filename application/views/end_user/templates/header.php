@@ -218,5 +218,10 @@
       </nav>
     </header>
 
+    <?php if ( $this->title != 'Home Page' ): // beri jarak antara navbar dan konten, ketika bukan di Home Page ?>
+      <div class="mb-5">
+      </div>
+    <?php endif ?>
+
     <main class="bg-transparent">
       <div style="min-height: 80vh;">

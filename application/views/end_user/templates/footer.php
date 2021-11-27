@@ -101,7 +101,7 @@
             e.preventDefault();
             transition_onleave();
             this_element = $(this);
-            setInterval(function () {
+            setTimeout(function () { // Bug setInterval jadi setTimeout FIXED!
               window.location.href = this_element.attr("href");
             }, 500);
           });
